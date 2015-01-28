@@ -23,6 +23,9 @@
 		ABC6E8B81A7966060050B623 /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC6E8B71A7966060050B623 /* UsageViewController.swift */; };
 		ABC6E8BA1A79678D0050B623 /* roselogo.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC6E8B91A79678D0050B623 /* roselogo.png */; };
 		ABC6E8BD1A79728A0050B623 /* DevicesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC6E8BC1A79728A0050B623 /* DevicesTableViewController.m */; };
+		FF48FD831A7993BD00FBB5D1 /* greenlight.png in Resources */ = {isa = PBXBuildFile; fileRef = FF48FD801A7993BD00FBB5D1 /* greenlight.png */; };
+		FF48FD841A7993BD00FBB5D1 /* redlight.png in Resources */ = {isa = PBXBuildFile; fileRef = FF48FD811A7993BD00FBB5D1 /* redlight.png */; };
+		FF48FD851A7993BD00FBB5D1 /* yellowlight.png in Resources */ = {isa = PBXBuildFile; fileRef = FF48FD821A7993BD00FBB5D1 /* yellowlight.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		ABC6E8B91A79678D0050B623 /* roselogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roselogo.png; sourceTree = "<group>"; };
 		ABC6E8BB1A79728A0050B623 /* DevicesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DevicesTableViewController.h; path = ../DevicesTableViewController.h; sourceTree = "<group>"; };
 		ABC6E8BC1A79728A0050B623 /* DevicesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DevicesTableViewController.m; path = ../DevicesTableViewController.m; sourceTree = "<group>"; };
+		FF48FD801A7993BD00FBB5D1 /* greenlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenlight.png; sourceTree = "<group>"; };
+		FF48FD811A7993BD00FBB5D1 /* redlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redlight.png; sourceTree = "<group>"; };
+		FF48FD821A7993BD00FBB5D1 /* yellowlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowlight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,9 @@
 		ABC6E8731A7949F40050B623 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF48FD801A7993BD00FBB5D1 /* greenlight.png */,
+				FF48FD811A7993BD00FBB5D1 /* redlight.png */,
+				FF48FD821A7993BD00FBB5D1 /* yellowlight.png */,
 				ABC6E8B91A79678D0050B623 /* roselogo.png */,
 				ABC6E8A91A795F5F0050B623 /* devices.png */,
 				ABC6E8AA1A795F5F0050B623 /* deviceshover.png */,
@@ -227,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC6E8B41A795F5F0050B623 /* usagehover.png in Resources */,
+				FF48FD851A7993BD00FBB5D1 /* yellowlight.png in Resources */,
 				ABC6E8BA1A79678D0050B623 /* roselogo.png in Resources */,
 				ABC6E8B11A795F5F0050B623 /* settings.png in Resources */,
 				ABC6E8B31A795F5F0050B623 /* usage.png in Resources */,
@@ -236,6 +246,8 @@
 				ABC6E8B01A795F5F0050B623 /* deviceshover.png in Resources */,
 				ABC6E8821A7949F40050B623 /* LaunchScreen.xib in Resources */,
 				ABC6E87F1A7949F40050B623 /* Images.xcassets in Resources */,
+				FF48FD841A7993BD00FBB5D1 /* redlight.png in Resources */,
+				FF48FD831A7993BD00FBB5D1 /* greenlight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +470,7 @@
 				ABC6E8931A7949F40050B623 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABC6E8941A7949F40050B623 /* Build configuration list for PBXNativeTarget "Rose-Hulman BandwidthTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +479,7 @@
 				ABC6E8961A7949F40050B623 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
