@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB3A88D61A7F2DC1004AEF23 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3A88D51A7F2DC1004AEF23 /* SettingsViewController.swift */; };
+		AB3A88D81A7F3B6F004AEF23 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3A88D71A7F3B6F004AEF23 /* AlertsTableViewController.swift */; };
 		ABC6E8761A7949F40050B623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC6E8751A7949F40050B623 /* AppDelegate.swift */; };
 		ABC6E87D1A7949F40050B623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC6E87B1A7949F40050B623 /* Main.storyboard */; };
 		ABC6E87F1A7949F40050B623 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABC6E87E1A7949F40050B623 /* Images.xcassets */; };
 		ABC6E8821A7949F40050B623 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC6E8801A7949F40050B623 /* LaunchScreen.xib */; };
 		ABC6E88E1A7949F40050B623 /* Rose_Hulman_BandwidthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC6E88D1A7949F40050B623 /* Rose_Hulman_BandwidthTests.swift */; };
-		ABC6E89C1A7957160050B623 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC6E89B1A7957160050B623 /* SettingsTableViewController.swift */; };
 		ABC6E8AF1A795F5F0050B623 /* devices.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC6E8A91A795F5F0050B623 /* devices.png */; };
 		ABC6E8B01A795F5F0050B623 /* deviceshover.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC6E8AA1A795F5F0050B623 /* deviceshover.png */; };
 		ABC6E8B11A795F5F0050B623 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC6E8AB1A795F5F0050B623 /* settings.png */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB3A88D51A7F2DC1004AEF23 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AB3A88D71A7F3B6F004AEF23 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
 		ABC6E8701A7949F40050B623 /* Rose-Hulman Bandwidth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rose-Hulman Bandwidth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC6E8741A7949F40050B623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABC6E8751A7949F40050B623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,7 +52,6 @@
 		ABC6E88C1A7949F40050B623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABC6E88D1A7949F40050B623 /* Rose_Hulman_BandwidthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rose_Hulman_BandwidthTests.swift; sourceTree = "<group>"; };
 		ABC6E8971A7955820050B623 /* Rose-Hulman Bandwidth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rose-Hulman Bandwidth-Bridging-Header.h"; sourceTree = "<group>"; };
-		ABC6E89B1A7957160050B623 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		ABC6E8A91A795F5F0050B623 /* devices.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = devices.png; sourceTree = "<group>"; };
 		ABC6E8AA1A795F5F0050B623 /* deviceshover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deviceshover.png; sourceTree = "<group>"; };
 		ABC6E8AB1A795F5F0050B623 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
@@ -109,8 +111,9 @@
 				ABC6E8BC1A79728A0050B623 /* DevicesTableViewController.m */,
 				ABC6E8B71A7966060050B623 /* UsageViewController.swift */,
 				ABC6E8751A7949F40050B623 /* AppDelegate.swift */,
-				ABC6E89B1A7957160050B623 /* SettingsTableViewController.swift */,
 				ABC6E87B1A7949F40050B623 /* Main.storyboard */,
+				AB3A88D71A7F3B6F004AEF23 /* AlertsTableViewController.swift */,
+				AB3A88D51A7F2DC1004AEF23 /* SettingsViewController.swift */,
 				ABC6E8B51A7965F30050B623 /* LoginViewController.swift */,
 				ABC6E87E1A7949F40050B623 /* Images.xcassets */,
 				ABC6E8801A7949F40050B623 /* LaunchScreen.xib */,
@@ -266,9 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC6E8BD1A79728A0050B623 /* DevicesTableViewController.m in Sources */,
-				ABC6E89C1A7957160050B623 /* SettingsTableViewController.swift in Sources */,
 				ABC6E8761A7949F40050B623 /* AppDelegate.swift in Sources */,
+				AB3A88D81A7F3B6F004AEF23 /* AlertsTableViewController.swift in Sources */,
 				ABC6E8B61A7965F30050B623 /* LoginViewController.swift in Sources */,
+				AB3A88D61A7F2DC1004AEF23 /* SettingsViewController.swift in Sources */,
 				ABC6E8B81A7966060050B623 /* UsageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

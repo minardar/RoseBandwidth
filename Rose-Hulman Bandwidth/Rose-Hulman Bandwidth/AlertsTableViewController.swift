@@ -1,17 +1,30 @@
 //
-//  SettingsTableViewController.swift
+//  AlertsTableViewController.swift
 //  Rose-Hulman Bandwidth
 //
-//  Created by Jonathan Jungck on 1/28/15.
+//  Created by Jonathan Jungck on 2/1/15.
 //  Copyright (c) 2015 Jonathan Jungck and Anthony Minardo. All rights reserved.
 //
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController {
+class AlertsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navigationItem.
+        //self.navigationItem.title. = @"Alerts"
+        
+        //self.navigationItem.title = @"Alerts View"
+        
+        //navigationController.setNavigationBarHidden(false, animated:true)
+        /*
+        var myBackButton:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        myBackButton.addTarget(self, action: "Settings", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: myBackButton)
+        self.navigationItem.leftBarButtonItem = myCustomBackButtonItem
+        */
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,13 +43,13 @@ class SettingsTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return 3
     }
 
     /*
