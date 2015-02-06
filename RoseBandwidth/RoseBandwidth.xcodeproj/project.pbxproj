@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FFFCD3C71A8469F7008A7F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3C61A8469F7008A7F54 /* AppDelegate.swift */; };
+		FFFCD3CA1A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3C81A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld */; };
+		FFFCD3CC1A8469F7008A7F54 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3CB1A8469F7008A7F54 /* MasterViewController.swift */; };
+		FFFCD3CE1A8469F7008A7F54 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3CD1A8469F7008A7F54 /* DetailViewController.swift */; };
+		FFFCD3D31A8469F7008A7F54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3D21A8469F7008A7F54 /* Images.xcassets */; };
+		FFFCD3D61A8469F7008A7F54 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3D41A8469F7008A7F54 /* LaunchScreen.xib */; };
+		FFFCD3E21A8469F7008A7F54 /* RoseBandwidthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3E11A8469F7008A7F54 /* RoseBandwidthTests.swift */; };
+		FFFCD3F51A846A5A008A7F54 /* devices.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3EB1A846A5A008A7F54 /* devices.png */; };
+		FFFCD3F61A846A5A008A7F54 /* deviceshover.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3EC1A846A5A008A7F54 /* deviceshover.png */; };
+		FFFCD3F71A846A5A008A7F54 /* greenlight.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3ED1A846A5A008A7F54 /* greenlight.png */; };
+		FFFCD3F81A846A5A008A7F54 /* redlight.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3EE1A846A5A008A7F54 /* redlight.png */; };
+		FFFCD3F91A846A5A008A7F54 /* roselogo.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3EF1A846A5A008A7F54 /* roselogo.png */; };
+		FFFCD3FA1A846A5A008A7F54 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3F01A846A5A008A7F54 /* settings.png */; };
+		FFFCD3FB1A846A5A008A7F54 /* settingshover.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3F11A846A5A008A7F54 /* settingshover.png */; };
+		FFFCD3FC1A846A5A008A7F54 /* usage.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3F21A846A5A008A7F54 /* usage.png */; };
+		FFFCD3FD1A846A5A008A7F54 /* usagehover.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3F31A846A5A008A7F54 /* usagehover.png */; };
+		FFFCD3FE1A846A5A008A7F54 /* yellowlight.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3F41A846A5A008A7F54 /* yellowlight.png */; };
+		FFFCD4021A846A75008A7F54 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3FF1A846A75008A7F54 /* AlertsTableViewController.swift */; };
+		FFFCD4031A846A75008A7F54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4001A846A75008A7F54 /* LoginViewController.swift */; };
+		FFFCD4041A846A75008A7F54 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4011A846A75008A7F54 /* SettingsViewController.swift */; };
+		FFFCD4091A846A8E008A7F54 /* DevicesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */; };
+		FFFCD40A1A846A8E008A7F54 /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4081A846A8E008A7F54 /* UsageViewController.swift */; };
+		FFFCD40D1A846AD1008A7F54 /* LoginCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD40C1A846AD1008A7F54 /* LoginCredentials.m */; };
+		FFFCD40F1A846B10008A7F54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD40E1A846B10008A7F54 /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FFFCD3DC1A8469F7008A7F54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFFCD3B91A8469F7008A7F54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFFCD3C01A8469F7008A7F54;
+			remoteInfo = RoseBandwidth;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FFFCD3C11A8469F7008A7F54 /* RoseBandwidth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoseBandwidth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFFCD3C51A8469F7008A7F54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFFCD3C61A8469F7008A7F54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FFFCD3C91A8469F7008A7F54 /* RoseBandwidth.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoseBandwidth.xcdatamodel; sourceTree = "<group>"; };
+		FFFCD3CB1A8469F7008A7F54 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		FFFCD3CD1A8469F7008A7F54 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FFFCD3D21A8469F7008A7F54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FFFCD3D51A8469F7008A7F54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FFFCD3DB1A8469F7008A7F54 /* RoseBandwidthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoseBandwidthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFFCD3E01A8469F7008A7F54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFFCD3E11A8469F7008A7F54 /* RoseBandwidthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoseBandwidthTests.swift; sourceTree = "<group>"; };
+		FFFCD3EB1A846A5A008A7F54 /* devices.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = devices.png; sourceTree = "<group>"; };
+		FFFCD3EC1A846A5A008A7F54 /* deviceshover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deviceshover.png; sourceTree = "<group>"; };
+		FFFCD3ED1A846A5A008A7F54 /* greenlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenlight.png; sourceTree = "<group>"; };
+		FFFCD3EE1A846A5A008A7F54 /* redlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redlight.png; sourceTree = "<group>"; };
+		FFFCD3EF1A846A5A008A7F54 /* roselogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roselogo.png; sourceTree = "<group>"; };
+		FFFCD3F01A846A5A008A7F54 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		FFFCD3F11A846A5A008A7F54 /* settingshover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingshover.png; sourceTree = "<group>"; };
+		FFFCD3F21A846A5A008A7F54 /* usage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usage.png; sourceTree = "<group>"; };
+		FFFCD3F31A846A5A008A7F54 /* usagehover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usagehover.png; sourceTree = "<group>"; };
+		FFFCD3F41A846A5A008A7F54 /* yellowlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowlight.png; sourceTree = "<group>"; };
+		FFFCD3FF1A846A75008A7F54 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
+		FFFCD4001A846A75008A7F54 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FFFCD4011A846A75008A7F54 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FFFCD4051A846A8E008A7F54 /* RoseBandwidth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RoseBandwidth-Bridging-Header.h"; sourceTree = "<group>"; };
+		FFFCD4061A846A8E008A7F54 /* DevicesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesTableViewController.h; sourceTree = "<group>"; };
+		FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicesTableViewController.m; sourceTree = "<group>"; };
+		FFFCD4081A846A8E008A7F54 /* UsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageViewController.swift; sourceTree = "<group>"; };
+		FFFCD40B1A846AD1008A7F54 /* LoginCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCredentials.h; sourceTree = "<group>"; };
+		FFFCD40C1A846AD1008A7F54 /* LoginCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCredentials.m; sourceTree = "<group>"; };
+		FFFCD40E1A846B10008A7F54 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FFFCD3BE1A8469F7008A7F54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFFCD3D81A8469F7008A7F54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FFFCD3B81A8469F7008A7F54 = {
+			isa = PBXGroup;
+			children = (
+				FFFCD3C31A8469F7008A7F54 /* RoseBandwidth */,
+				FFFCD3DE1A8469F7008A7F54 /* RoseBandwidthTests */,
+				FFFCD3C21A8469F7008A7F54 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FFFCD3C21A8469F7008A7F54 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD3C11A8469F7008A7F54 /* RoseBandwidth.app */,
+				FFFCD3DB1A8469F7008A7F54 /* RoseBandwidthTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFFCD3C31A8469F7008A7F54 /* RoseBandwidth */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD40E1A846B10008A7F54 /* Main.storyboard */,
+				FFFCD4061A846A8E008A7F54 /* DevicesTableViewController.h */,
+				FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */,
+				FFFCD4081A846A8E008A7F54 /* UsageViewController.swift */,
+				FFFCD3FF1A846A75008A7F54 /* AlertsTableViewController.swift */,
+				FFFCD4001A846A75008A7F54 /* LoginViewController.swift */,
+				FFFCD4011A846A75008A7F54 /* SettingsViewController.swift */,
+				FFFCD3C61A8469F7008A7F54 /* AppDelegate.swift */,
+				FFFCD3CB1A8469F7008A7F54 /* MasterViewController.swift */,
+				FFFCD3CD1A8469F7008A7F54 /* DetailViewController.swift */,
+				FFFCD3D21A8469F7008A7F54 /* Images.xcassets */,
+				FFFCD3D41A8469F7008A7F54 /* LaunchScreen.xib */,
+				FFFCD3C81A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld */,
+				FFFCD3C41A8469F7008A7F54 /* Supporting Files */,
+				FFFCD4051A846A8E008A7F54 /* RoseBandwidth-Bridging-Header.h */,
+				FFFCD40B1A846AD1008A7F54 /* LoginCredentials.h */,
+				FFFCD40C1A846AD1008A7F54 /* LoginCredentials.m */,
+			);
+			path = RoseBandwidth;
+			sourceTree = "<group>";
+		};
+		FFFCD3C41A8469F7008A7F54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD3EB1A846A5A008A7F54 /* devices.png */,
+				FFFCD3EC1A846A5A008A7F54 /* deviceshover.png */,
+				FFFCD3ED1A846A5A008A7F54 /* greenlight.png */,
+				FFFCD3EE1A846A5A008A7F54 /* redlight.png */,
+				FFFCD3EF1A846A5A008A7F54 /* roselogo.png */,
+				FFFCD3F01A846A5A008A7F54 /* settings.png */,
+				FFFCD3F11A846A5A008A7F54 /* settingshover.png */,
+				FFFCD3F21A846A5A008A7F54 /* usage.png */,
+				FFFCD3F31A846A5A008A7F54 /* usagehover.png */,
+				FFFCD3F41A846A5A008A7F54 /* yellowlight.png */,
+				FFFCD3C51A8469F7008A7F54 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FFFCD3DE1A8469F7008A7F54 /* RoseBandwidthTests */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD3E11A8469F7008A7F54 /* RoseBandwidthTests.swift */,
+				FFFCD3DF1A8469F7008A7F54 /* Supporting Files */,
+			);
+			path = RoseBandwidthTests;
+			sourceTree = "<group>";
+		};
+		FFFCD3DF1A8469F7008A7F54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD3E01A8469F7008A7F54 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FFFCD3C01A8469F7008A7F54 /* RoseBandwidth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFFCD3E51A8469F7008A7F54 /* Build configuration list for PBXNativeTarget "RoseBandwidth" */;
+			buildPhases = (
+				FFFCD3BD1A8469F7008A7F54 /* Sources */,
+				FFFCD3BE1A8469F7008A7F54 /* Frameworks */,
+				FFFCD3BF1A8469F7008A7F54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoseBandwidth;
+			productName = RoseBandwidth;
+			productReference = FFFCD3C11A8469F7008A7F54 /* RoseBandwidth.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FFFCD3DA1A8469F7008A7F54 /* RoseBandwidthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFFCD3E81A8469F7008A7F54 /* Build configuration list for PBXNativeTarget "RoseBandwidthTests" */;
+			buildPhases = (
+				FFFCD3D71A8469F7008A7F54 /* Sources */,
+				FFFCD3D81A8469F7008A7F54 /* Frameworks */,
+				FFFCD3D91A8469F7008A7F54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFFCD3DD1A8469F7008A7F54 /* PBXTargetDependency */,
+			);
+			name = RoseBandwidthTests;
+			productName = RoseBandwidthTests;
+			productReference = FFFCD3DB1A8469F7008A7F54 /* RoseBandwidthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FFFCD3B91A8469F7008A7F54 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = edu.rosehulman;
+				TargetAttributes = {
+					FFFCD3C01A8469F7008A7F54 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					FFFCD3DA1A8469F7008A7F54 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = FFFCD3C01A8469F7008A7F54;
+					};
+				};
+			};
+			buildConfigurationList = FFFCD3BC1A8469F7008A7F54 /* Build configuration list for PBXProject "RoseBandwidth" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FFFCD3B81A8469F7008A7F54;
+			productRefGroup = FFFCD3C21A8469F7008A7F54 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FFFCD3C01A8469F7008A7F54 /* RoseBandwidth */,
+				FFFCD3DA1A8469F7008A7F54 /* RoseBandwidthTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FFFCD3BF1A8469F7008A7F54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFFCD3FE1A846A5A008A7F54 /* yellowlight.png in Resources */,
+				FFFCD3F91A846A5A008A7F54 /* roselogo.png in Resources */,
+				FFFCD3F51A846A5A008A7F54 /* devices.png in Resources */,
+				FFFCD3FC1A846A5A008A7F54 /* usage.png in Resources */,
+				FFFCD3F61A846A5A008A7F54 /* deviceshover.png in Resources */,
+				FFFCD3F81A846A5A008A7F54 /* redlight.png in Resources */,
+				FFFCD40F1A846B10008A7F54 /* Main.storyboard in Resources */,
+				FFFCD3FD1A846A5A008A7F54 /* usagehover.png in Resources */,
+				FFFCD3D61A8469F7008A7F54 /* LaunchScreen.xib in Resources */,
+				FFFCD3FA1A846A5A008A7F54 /* settings.png in Resources */,
+				FFFCD3FB1A846A5A008A7F54 /* settingshover.png in Resources */,
+				FFFCD3F71A846A5A008A7F54 /* greenlight.png in Resources */,
+				FFFCD3D31A8469F7008A7F54 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFFCD3D91A8469F7008A7F54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FFFCD3BD1A8469F7008A7F54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFFCD4031A846A75008A7F54 /* LoginViewController.swift in Sources */,
+				FFFCD4091A846A8E008A7F54 /* DevicesTableViewController.m in Sources */,
+				FFFCD3CA1A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld in Sources */,
+				FFFCD4041A846A75008A7F54 /* SettingsViewController.swift in Sources */,
+				FFFCD40D1A846AD1008A7F54 /* LoginCredentials.m in Sources */,
+				FFFCD40A1A846A8E008A7F54 /* UsageViewController.swift in Sources */,
+				FFFCD3C71A8469F7008A7F54 /* AppDelegate.swift in Sources */,
+				FFFCD3CC1A8469F7008A7F54 /* MasterViewController.swift in Sources */,
+				FFFCD3CE1A8469F7008A7F54 /* DetailViewController.swift in Sources */,
+				FFFCD4021A846A75008A7F54 /* AlertsTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFFCD3D71A8469F7008A7F54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFFCD3E21A8469F7008A7F54 /* RoseBandwidthTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FFFCD3DD1A8469F7008A7F54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFFCD3C01A8469F7008A7F54 /* RoseBandwidth */;
+			targetProxy = FFFCD3DC1A8469F7008A7F54 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FFFCD3D41A8469F7008A7F54 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFFCD3D51A8469F7008A7F54 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FFFCD3E31A8469F7008A7F54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FFFCD3E41A8469F7008A7F54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FFFCD3E61A8469F7008A7F54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = RoseBandwidth/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RoseBandwidth/RoseBandwidth-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FFFCD3E71A8469F7008A7F54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = RoseBandwidth/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RoseBandwidth/RoseBandwidth-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		FFFCD3E91A8469F7008A7F54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RoseBandwidthTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoseBandwidth.app/RoseBandwidth";
+			};
+			name = Debug;
+		};
+		FFFCD3EA1A8469F7008A7F54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RoseBandwidthTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoseBandwidth.app/RoseBandwidth";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FFFCD3BC1A8469F7008A7F54 /* Build configuration list for PBXProject "RoseBandwidth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFFCD3E31A8469F7008A7F54 /* Debug */,
+				FFFCD3E41A8469F7008A7F54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFFCD3E51A8469F7008A7F54 /* Build configuration list for PBXNativeTarget "RoseBandwidth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFFCD3E61A8469F7008A7F54 /* Debug */,
+				FFFCD3E71A8469F7008A7F54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FFFCD3E81A8469F7008A7F54 /* Build configuration list for PBXNativeTarget "RoseBandwidthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFFCD3E91A8469F7008A7F54 /* Debug */,
+				FFFCD3EA1A8469F7008A7F54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FFFCD3C81A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FFFCD3C91A8469F7008A7F54 /* RoseBandwidth.xcdatamodel */,
+			);
+			currentVersion = FFFCD3C91A8469F7008A7F54 /* RoseBandwidth.xcdatamodel */;
+			path = RoseBandwidth.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FFFCD3B91A8469F7008A7F54 /* Project object */;
+}
