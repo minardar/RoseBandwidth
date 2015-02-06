@@ -12,6 +12,7 @@ import CoreData
 class LoginViewController: UIViewController {
     var managedObjectContext : NSManagedObjectContext?
     var credentials = [LoginCredentials]()
+    var loginData = [NSManagedObject]()
     
     let loginCredentialsIdentifier = "LoginCredentials"
     
@@ -50,7 +51,7 @@ class LoginViewController: UIViewController {
         
         savedManagedObjectContext()
         updateLoginCredentials()
-        
+  
         
     }
     

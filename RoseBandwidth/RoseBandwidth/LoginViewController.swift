@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
         savedManagedObjectContext()
         updateLoginCredentials()
         
-        println("username: \(credentials[0].username!) password: \(credentials[0].password!)");
+        //println("username: \(credentials[0].username!) password: \(credentials[0].password!)");
         
     }
     

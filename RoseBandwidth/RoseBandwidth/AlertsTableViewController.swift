@@ -7,11 +7,41 @@
 //
 
 import UIKit
+import CoreData
 
 class AlertsTableViewController: UITableViewController {
+    var managedObjectContext : NSManagedObjectContext?
 
+    var backButton = UIBarButtonItem()
+    
+    var alerts = [Alerts]()
+    
+    let alertsIdentifier = "Alerts"
+
+    var alertCellIdentifier = "alertCell"
     override func viewDidLoad() {
         super.viewDidLoad()
+        //backButton = self.navigationItem.leftBarButtonItem!
+//        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "showEditAlertsView"), animated: true)
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        managedObjectContext = appDelegate.managedObjectContext
+        
+        //var newAlert = Alerts()
+        let newAlert = NSEntityDescription.insertNewObjectForEntityForName(alertsIdentifier, inManagedObjectContext: self.managedObjectContext!) as Alerts
+        newAlert.alertName = "8 GB"
+        newAlert.threshold = 1.0
+        newAlert.isEnabled = true
+        
+        alerts.append(newAlert)
+        
+        newAlert.alertName = "75%"
+        newAlert.threshold = 0.75
+        newAlert.isEnabled = false
+        
+        alerts.append(newAlert)
+        
+        
         //self.navigationItem.
         //self.navigationItem.title. = @"Alerts"
         
@@ -32,6 +62,22 @@ class AlertsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    func showEditAlertsView() {
+//        backButton = self.navigationController?.navigationItem.leftBarButtonItem!
+        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "showAddAlertsView"), animated: true)
+        self.navigationItem.setLeftBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "hideEditAlertsView"), animated: true)
+        
+    }
+    
+    func hideEditAlertsView() {
+        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "showAddAlertsView"), animated: true)
+        self.navigationItem.leftBarButtonItem = backButton
+    }
+    
+    func showAddAlertsView() {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,18 +95,20 @@ class AlertsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 3
+        return alerts.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(alertCellIdentifier, forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
+        
+        
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -70,17 +118,18 @@ class AlertsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            alerts.removeAtIndex(indexPath.item)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

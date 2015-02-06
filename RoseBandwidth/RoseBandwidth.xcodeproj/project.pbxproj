@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABE64C471A848EFE007FC893 /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE64C461A848EFE007FC893 /* Alerts.m */; };
 		FFFCD3C71A8469F7008A7F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3C61A8469F7008A7F54 /* AppDelegate.swift */; };
 		FFFCD3CA1A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3C81A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld */; };
 		FFFCD3CC1A8469F7008A7F54 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3CB1A8469F7008A7F54 /* MasterViewController.swift */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ABE64C451A848EFE007FC893 /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
+		ABE64C461A848EFE007FC893 /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
 		FFFCD3C11A8469F7008A7F54 /* RoseBandwidth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoseBandwidth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFCD3C51A8469F7008A7F54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFFCD3C61A8469F7008A7F54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				FFFCD4051A846A8E008A7F54 /* RoseBandwidth-Bridging-Header.h */,
 				FFFCD40B1A846AD1008A7F54 /* LoginCredentials.h */,
 				FFFCD40C1A846AD1008A7F54 /* LoginCredentials.m */,
+				ABE64C451A848EFE007FC893 /* Alerts.h */,
+				ABE64C461A848EFE007FC893 /* Alerts.m */,
 			);
 			path = RoseBandwidth;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 				FFFCD4031A846A75008A7F54 /* LoginViewController.swift in Sources */,
 				FFFCD4091A846A8E008A7F54 /* DevicesTableViewController.m in Sources */,
 				FFFCD3CA1A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld in Sources */,
+				ABE64C471A848EFE007FC893 /* Alerts.m in Sources */,
 				FFFCD4041A846A75008A7F54 /* SettingsViewController.swift in Sources */,
 				FFFCD40D1A846AD1008A7F54 /* LoginCredentials.m in Sources */,
 				FFFCD40A1A846A8E008A7F54 /* UsageViewController.swift in Sources */,
@@ -480,6 +486,7 @@
 				FFFCD3E71A8469F7008A7F54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FFFCD3E81A8469F7008A7F54 /* Build configuration list for PBXNativeTarget "RoseBandwidthTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +495,7 @@
 				FFFCD3EA1A8469F7008A7F54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
