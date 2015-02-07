@@ -38,11 +38,13 @@ class AlertsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         alerts.append(newAlert)
         
-        newAlert.alertName = "75%"
-        newAlert.threshold = 0.75
-        newAlert.isEnabled = false
+        let newAlertAgain = NSEntityDescription.insertNewObjectForEntityForName(alertsIdentifier, inManagedObjectContext: self.managedObjectContext!) as Alerts
         
-        alerts.append(newAlert)
+        newAlertAgain.alertName = "75%"
+        newAlertAgain.threshold = 0.75
+        newAlertAgain.isEnabled = false
+        
+        alerts.append(newAlertAgain)
         
         
         //self.navigationItem.
@@ -99,12 +101,15 @@ class AlertsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(alertCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(alertCellIdentifier, forIndexPath: indexPath) as AlertTableViewCell
 
+        println(alerts[indexPath.row])
         // Configure the cell...
+        cell.titleLabel.text = "\(alerts[indexPath.row].alertName)";
+        cell.descLabel.text = "Your data has exceeded your \(alerts[indexPath.row].alertName) limit";
+        var truth = alerts[indexPath.row].isEnabled as Bool;
+        cell.onSwitch.setOn(truth, animated: false)
         
-        
-
         return cell
     }
     

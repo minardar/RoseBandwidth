@@ -679,7 +679,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alertCell" rowHeight="121" id="PeI-Nl-hOq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alertCell" rowHeight="121" id="PeI-Nl-hOq" customClass="AlertTableViewCell" customModule="RoseBandwidth" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PeI-Nl-hOq" id="FLJ-uq-kAL">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -762,6 +762,11 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="K7N-xt-tw1" secondAttribute="trailing" id="eau-rW-iYv"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descLabel" destination="Bxp-16-tOy" id="cre-E3-g91"/>
+                                            <outlet property="onSwitch" destination="GOt-jh-1Yu" id="jfH-xU-jOe"/>
+                                            <outlet property="titleLabel" destination="KiR-U3-4cd" id="MKy-rO-tlM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
