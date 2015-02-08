@@ -19,6 +19,15 @@ class AlertsViewController: UIViewController {
         super.viewDidLoad()
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
+        
+        
+        var localNotification:UILocalNotification = UILocalNotification()
+        localNotification.alertBody = "Local notifications are working"
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
+        localNotification.category = "alert"
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        
+        
         //backButton = self.navigationItem.leftBarButtonItem!
 //        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "showEditAlertsView"), animated: true)
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "showEditAlertsView"), animated: true)

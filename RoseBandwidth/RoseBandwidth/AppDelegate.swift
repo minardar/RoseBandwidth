@@ -19,7 +19,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let controller = self.window!.rootViewController as LoginViewController
         controller.managedObjectContext = self.managedObjectContext
+        
+        let notificationType = UIUserNotificationType.Alert
+        let acceptAction = UIMutableUserNotificationAction()
+        acceptAction.identifier = "View"
+        acceptAction.title = "View"
+        acceptAction.activationMode = UIUserNotificationActivationMode.Foreground
+        acceptAction.destructive = false
+        acceptAction.authenticationRequired = true
+        
+        
+        let category = UIMutableUserNotificationCategory()
+        category.identifier = "alert"
+        category.setActions([acceptAction], forContext: UIUserNotificationActionContext.Default)
+        let categories = NSSet(array: [category])
+        let settings = UIUserNotificationSettings(forTypes: notificationType, categories: categories)
+        application.registerUserNotificationSettings(settings)
+        
+        application.setMinimumBackgroundFetchInterval(NSTimeInterval.abs(10))
+        
         return true
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        NSLog("Handle identifier : \(identifier)")
+        // Must be called when finished
+        completionHandler()
+    }
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        let controller = self.window!.rootViewController as LoginViewController
+        
+        
+        var localNotification:UILocalNotification = UILocalNotification()
+        localNotification.alertBody = "Local notifications are working"
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
+        localNotification.category = "alert"
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
