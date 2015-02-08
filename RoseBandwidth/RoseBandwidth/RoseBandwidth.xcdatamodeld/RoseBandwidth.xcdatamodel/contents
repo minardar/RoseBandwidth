@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="alertsIdentifier" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Alerts" representedClassName="Alerts" syncable="YES">
         <attribute name="alertName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="alertType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="threshold" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
@@ -10,7 +11,7 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Alerts" positionX="-54" positionY="9" width="128" height="105"/>
         <element name="LoginCredentials" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="Alerts" positionX="-54" positionY="9" width="128" height="90"/>
     </elements>
 </model>

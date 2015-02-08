@@ -1,5 +1,5 @@
 //
-//  alertTableViewCell.swift
+//  AlertTableViewCell.swift
 //  RoseBandwidth
 //
 //  Created by Anthony Minardo on 2/7/15.
@@ -10,8 +10,8 @@ import UIKit
 
 class AlertTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var onSwitch: UISwitch!
     
     override func awakeFromNib() {
