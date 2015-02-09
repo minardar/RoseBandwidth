@@ -49,6 +49,7 @@ class LoginViewController: UIViewController {
             managedObjectContext?.deleteObject(dataSet)
         }
         
+        
         credentials.removeAll(keepCapacity: false);
         
         let newCredentials = NSEntityDescription.insertNewObjectForEntityForName(loginCredentialsIdentifier, inManagedObjectContext: self.managedObjectContext!) as LoginCredentials

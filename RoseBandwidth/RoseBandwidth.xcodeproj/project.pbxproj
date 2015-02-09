@@ -10,6 +10,8 @@
 		AB1447E11A889D80004A51DF /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1447DE1A889D80004A51DF /* HTMLNode.swift */; };
 		AB1447E21A889D80004A51DF /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1447DF1A889D80004A51DF /* HTMLParser.swift */; };
 		AB1447E41A889EC0004A51DF /* example-parser in Resources */ = {isa = PBXBuildFile; fileRef = AB1447E31A889EC0004A51DF /* example-parser */; };
+		AB1DE6271A8949BB006DBC01 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1DE6261A8949BB006DBC01 /* libxml2.dylib */; };
+		AB29EB121A8954F600AF811E /* DataGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29EB111A8954F600AF811E /* DataGrabber.swift */; };
 		FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73C5081A86A356003440CB /* AddAlertViewController.swift */; };
 		FFABA60C1A8711DC00263E76 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */; };
 		FFCDEF071A86F338002ACEDD /* TypeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDEF061A86F338002ACEDD /* TypeTableView.swift */; };
@@ -58,6 +60,8 @@
 		AB1447DE1A889D80004A51DF /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		AB1447DF1A889D80004A51DF /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 		AB1447E31A889EC0004A51DF /* example-parser */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "example-parser"; sourceTree = "<group>"; };
+		AB1DE6261A8949BB006DBC01 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		AB29EB111A8954F600AF811E /* DataGrabber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataGrabber.swift; sourceTree = "<group>"; };
 		FF73C5081A86A356003440CB /* AddAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlertViewController.swift; sourceTree = "<group>"; };
 		FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
 		FFCDEF061A86F338002ACEDD /* TypeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeTableView.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1DE6271A8949BB006DBC01 /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +129,7 @@
 				AB1447DE1A889D80004A51DF /* HTMLNode.swift */,
 				AB1447DF1A889D80004A51DF /* HTMLParser.swift */,
 				AB1447E31A889EC0004A51DF /* example-parser */,
+				AB29EB111A8954F600AF811E /* DataGrabber.swift */,
 			);
 			name = "HTML Parser";
 			sourceTree = "<group>";
@@ -131,6 +137,7 @@
 		FFFCD3B81A8469F7008A7F54 = {
 			isa = PBXGroup;
 			children = (
+				AB1DE6261A8949BB006DBC01 /* libxml2.dylib */,
 				FFFCD3C31A8469F7008A7F54 /* RoseBandwidth */,
 				FFFCD3DE1A8469F7008A7F54 /* RoseBandwidthTests */,
 				FFFCD3C21A8469F7008A7F54 /* Products */,
@@ -343,6 +350,7 @@
 				AB1447E21A889D80004A51DF /* HTMLParser.swift in Sources */,
 				FFE4CB331A86CD6E00922F1D /* Alerts.m in Sources */,
 				FFFCD40D1A846AD1008A7F54 /* LoginCredentials.m in Sources */,
+				AB29EB121A8954F600AF811E /* DataGrabber.swift in Sources */,
 				FFFCD40A1A846A8E008A7F54 /* UsageViewController.swift in Sources */,
 				FFFCD3C71A8469F7008A7F54 /* AppDelegate.swift in Sources */,
 				FFE4CB301A86BE7F00922F1D /* AlertTableViewCell.swift in Sources */,
@@ -466,6 +474,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = RoseBandwidth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -479,6 +492,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = RoseBandwidth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
