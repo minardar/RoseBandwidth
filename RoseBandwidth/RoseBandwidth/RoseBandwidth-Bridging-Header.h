@@ -5,3 +5,5 @@
 #import "DevicesTableViewController.h"
 #import "LoginCredentials.h"
 #import "Alerts.h"
+#import <libxml/HTMLtree.h>
+#import <libxml/xpath.h>

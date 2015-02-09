@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB1447E11A889D80004A51DF /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1447DE1A889D80004A51DF /* HTMLNode.swift */; };
+		AB1447E21A889D80004A51DF /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1447DF1A889D80004A51DF /* HTMLParser.swift */; };
+		AB1447E41A889EC0004A51DF /* example-parser in Resources */ = {isa = PBXBuildFile; fileRef = AB1447E31A889EC0004A51DF /* example-parser */; };
 		FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73C5081A86A356003440CB /* AddAlertViewController.swift */; };
 		FFABA60C1A8711DC00263E76 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */; };
 		FFCDEF071A86F338002ACEDD /* TypeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDEF061A86F338002ACEDD /* TypeTableView.swift */; };
@@ -52,6 +55,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB1447DE1A889D80004A51DF /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
+		AB1447DF1A889D80004A51DF /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
+		AB1447E31A889EC0004A51DF /* example-parser */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "example-parser"; sourceTree = "<group>"; };
 		FF73C5081A86A356003440CB /* AddAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlertViewController.swift; sourceTree = "<group>"; };
 		FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
 		FFCDEF061A86F338002ACEDD /* TypeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeTableView.swift; sourceTree = "<group>"; };
@@ -112,6 +118,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB1447DD1A889D74004A51DF /* HTML Parser */ = {
+			isa = PBXGroup;
+			children = (
+				AB1447DE1A889D80004A51DF /* HTMLNode.swift */,
+				AB1447DF1A889D80004A51DF /* HTMLParser.swift */,
+				AB1447E31A889EC0004A51DF /* example-parser */,
+			);
+			name = "HTML Parser";
+			sourceTree = "<group>";
+		};
 		FFFCD3B81A8469F7008A7F54 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +149,7 @@
 		FFFCD3C31A8469F7008A7F54 /* RoseBandwidth */ = {
 			isa = PBXGroup;
 			children = (
+				AB1447DD1A889D74004A51DF /* HTML Parser */,
 				FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */,
 				FFCDEF061A86F338002ACEDD /* TypeTableView.swift */,
 				FFFCD40E1A846B10008A7F54 /* Main.storyboard */,
@@ -283,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1447E41A889EC0004A51DF /* example-parser in Resources */,
 				FFFCD3FE1A846A5A008A7F54 /* yellowlight.png in Resources */,
 				FFFCD3F91A846A5A008A7F54 /* roselogo.png in Resources */,
 				FFFCD3F51A846A5A008A7F54 /* devices.png in Resources */,
@@ -317,10 +335,12 @@
 				FFFCD4091A846A8E008A7F54 /* DevicesTableViewController.m in Sources */,
 				FFABA60C1A8711DC00263E76 /* AlertsTableViewController.swift in Sources */,
 				FFCDEF071A86F338002ACEDD /* TypeTableView.swift in Sources */,
+				AB1447E11A889D80004A51DF /* HTMLNode.swift in Sources */,
 				FFFCD3CA1A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld in Sources */,
 				FFFCD4041A846A75008A7F54 /* SettingsViewController.swift in Sources */,
 				FFCDEF091A86F4D2002ACEDD /* ModalViewController.swift in Sources */,
 				FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */,
+				AB1447E21A889D80004A51DF /* HTMLParser.swift in Sources */,
 				FFE4CB331A86CD6E00922F1D /* Alerts.m in Sources */,
 				FFFCD40D1A846AD1008A7F54 /* LoginCredentials.m in Sources */,
 				FFFCD40A1A846A8E008A7F54 /* UsageViewController.swift in Sources */,

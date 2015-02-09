@@ -20,7 +20,6 @@ class AlertsViewController: UIViewController {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         
-        
         var localNotification:UILocalNotification = UILocalNotification()
         localNotification.alertBody = "Local notifications are working"
         localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
