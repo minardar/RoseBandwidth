@@ -60,6 +60,8 @@ class LoginViewController: UIViewController {
         savedManagedObjectContext()
         updateLoginCredentials()
         
+        var dataGrabber = DataGrabber()
+        
         //println("username: \(credentials[0].username!) password: \(credentials[0].password!)");
         
     }

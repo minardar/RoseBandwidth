@@ -63,12 +63,12 @@ class DataGrabber: NSObject {
     override init() {
         myURLString = "http://netreg.rose-hulman.edu/tools/networkUsage.pl"
         super.init()
-        if let myURL = NSURL(string: myURLString) {
-            request = NSMutableURLRequest(URL: myURL)
-            if let conn = NSURLConnection(request: request!, delegate: self){
-                conn.start()
-            }
-            
+        myURL = NSURL(string: myURLString)
+        if myURL != nil {
+            println(myURL)
+            request = NSMutableURLRequest(URL: myURL!)
+            conn = NSURLConnection(request: request!, delegate: self)
+            conn?.start()
         }
     }
     
@@ -79,7 +79,7 @@ class DataGrabber: NSObject {
     }
     
     func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge!){
-        var authentication: NSURLCredential = NSURLCredential(user: "jungckjp", password: "", persistence: NSURLCredentialPersistence.ForSession)
+        var authentication: NSURLCredential = NSURLCredential(user: "", password: "", persistence: NSURLCredentialPersistence.ForSession)
         challenge.sender.useCredential(authentication, forAuthenticationChallenge: challenge)
     }
     
@@ -98,7 +98,23 @@ class DataGrabber: NSObject {
     
     //NSURLConnection delegate method
     func connectionDidFinishLoading(connection: NSURLConnection!) {
-        println(self.data)
+        //println(self.data)
+        var error: NSError?
+        let myHTMLString = NSString(contentsOfURL: myURL!, encoding: NSUTF8StringEncoding, error: &error)
+        
+        if let error = error {
+            println("Error : \(error)")
+        } else {
+            println("HTML : \(myHTMLString)")
+        }
+        
+        
+        var err : NSError?
+        var parser     = HTMLParser(html: myHTMLString!, error: &err)
+        if err != nil {
+            println(err)
+            exit(1)
+        }
         NSLog("connectionDidFinishLoading");
     }
 
