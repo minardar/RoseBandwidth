@@ -51,6 +51,7 @@ NSLog(@"previous authentication failure");
 */
 
 import UIKit
+import CoreData
 
 class DataGrabber: NSObject {
 
@@ -59,6 +60,7 @@ class DataGrabber: NSObject {
     var conn: NSURLConnection?
     var request : NSMutableURLRequest?
     var data: NSMutableData = NSMutableData()
+    var login : LoginCredentials?
 
     override init() {
         myURLString = "http://netreg.rose-hulman.edu/tools/networkUsage.pl"
@@ -72,6 +74,11 @@ class DataGrabber: NSObject {
         }
     }
     
+    convenience init(login : LoginCredentials) {
+        self.init()
+        self.login = login
+    }
+    
     
     //NSURLConnection delegate method
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
@@ -79,8 +86,10 @@ class DataGrabber: NSObject {
     }
     
     func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge!){
-        var authentication: NSURLCredential = NSURLCredential(user: "", password: "", persistence: NSURLCredentialPersistence.ForSession)
-        challenge.sender.useCredential(authentication, forAuthenticationChallenge: challenge)
+        if login != nil {
+            var authentication: NSURLCredential = NSURLCredential(user: login!.username, password: login!.password, persistence: NSURLCredentialPersistence.ForSession)
+            challenge.sender.useCredential(authentication, forAuthenticationChallenge: challenge)
+        }
     }
     
     //NSURLConnection delegate method
@@ -105,7 +114,7 @@ class DataGrabber: NSObject {
         if let error = error {
             println("Error : \(error)")
         } else {
-            println("HTML : \(myHTMLString)")
+            //println("HTML : \(myHTMLString)")
         }
         
         
@@ -114,6 +123,34 @@ class DataGrabber: NSObject {
         if err != nil {
             println(err)
             exit(1)
+        } else {
+            var items = parser.body?.findChildTags("td")
+            var i = 0
+            for item in items! {
+                println("\(i): \(item.contents)")
+                i++
+            }
+            if items != nil {
+                
+                var array = items!
+                var overview = [NSString]()
+                overview.append(array[16].contents)
+                overview.append(array[17].contents)
+                overview.append(array[18].contents)
+                
+                var numDevices = (array.count - 28)/7
+                
+                for i in 0..<numDevices {
+                    var device = [NSString]()
+                    device.append(array[28+7*i].contents)
+                    device.append(array[29+7*i].contents)
+                    device.append(array[31+7*i].contents)
+                    device.append(array[32+7*i].contents)
+                    println(device)
+                }
+                
+            }
+            
         }
         NSLog("connectionDidFinishLoading");
     }
