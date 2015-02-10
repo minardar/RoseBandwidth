@@ -5,6 +5,8 @@
 #import "DevicesTableViewController.h"
 #import "LoginCredentials.h"
 #import "Alerts.h"
+#import "DataDevice.h"
+#import "DataOverview.h"
 
 #import <libxml/HTMLtree.h>
 #import <libxml/xpath.h>

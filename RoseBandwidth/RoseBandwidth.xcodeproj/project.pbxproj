@@ -14,6 +14,8 @@
 		AB29EB121A8954F600AF811E /* DataGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29EB111A8954F600AF811E /* DataGrabber.swift */; };
 		FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73C5081A86A356003440CB /* AddAlertViewController.swift */; };
 		FFABA60C1A8711DC00263E76 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */; };
+		FFB100681A89C11D0006A83C /* DataOverview.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB100671A89C11D0006A83C /* DataOverview.m */; };
+		FFB1006B1A89C11E0006A83C /* DataDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB1006A1A89C11E0006A83C /* DataDevice.m */; };
 		FFCDEF071A86F338002ACEDD /* TypeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDEF061A86F338002ACEDD /* TypeTableView.swift */; };
 		FFCDEF091A86F4D2002ACEDD /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDEF081A86F4D2002ACEDD /* ModalViewController.swift */; };
 		FFCDEF0F1A87072F002ACEDD /* AlertSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDEF0E1A87072F002ACEDD /* AlertSettingTableViewController.swift */; };
@@ -64,6 +66,10 @@
 		AB29EB111A8954F600AF811E /* DataGrabber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataGrabber.swift; sourceTree = "<group>"; };
 		FF73C5081A86A356003440CB /* AddAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlertViewController.swift; sourceTree = "<group>"; };
 		FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
+		FFB100661A89C11D0006A83C /* DataOverview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOverview.h; sourceTree = "<group>"; };
+		FFB100671A89C11D0006A83C /* DataOverview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataOverview.m; sourceTree = "<group>"; };
+		FFB100691A89C11E0006A83C /* DataDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataDevice.h; sourceTree = "<group>"; };
+		FFB1006A1A89C11E0006A83C /* DataDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataDevice.m; sourceTree = "<group>"; };
 		FFCDEF061A86F338002ACEDD /* TypeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeTableView.swift; sourceTree = "<group>"; };
 		FFCDEF081A86F4D2002ACEDD /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		FFCDEF0E1A87072F002ACEDD /* AlertSettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertSettingTableViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +189,10 @@
 				FFE4CB361A86F08D00922F1D /* ValueTableView.swift */,
 				FFCDEF081A86F4D2002ACEDD /* ModalViewController.swift */,
 				FFCDEF0E1A87072F002ACEDD /* AlertSettingTableViewController.swift */,
+				FFB100691A89C11E0006A83C /* DataDevice.h */,
+				FFB1006A1A89C11E0006A83C /* DataDevice.m */,
+				FFB100661A89C11D0006A83C /* DataOverview.h */,
+				FFB100671A89C11D0006A83C /* DataOverview.m */,
 			);
 			path = RoseBandwidth;
 			sourceTree = "<group>";
@@ -356,6 +366,8 @@
 				FFE4CB301A86BE7F00922F1D /* AlertTableViewCell.swift in Sources */,
 				FFCDEF0F1A87072F002ACEDD /* AlertSettingTableViewController.swift in Sources */,
 				FFFCD3CC1A8469F7008A7F54 /* MasterViewController.swift in Sources */,
+				FFB1006B1A89C11E0006A83C /* DataDevice.m in Sources */,
+				FFB100681A89C11D0006A83C /* DataOverview.m in Sources */,
 				FFFCD3CE1A8469F7008A7F54 /* DetailViewController.swift in Sources */,
 				FFFCD4021A846A75008A7F54 /* AlertsViewController.swift in Sources */,
 				FFE4CB371A86F08D00922F1D /* ValueTableView.swift in Sources */,

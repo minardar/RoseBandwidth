@@ -61,8 +61,17 @@ class DataGrabber: NSObject {
     var request : NSMutableURLRequest?
     var data: NSMutableData = NSMutableData()
     var login : LoginCredentials?
+    var managedObjectContext : NSManagedObjectContext? 
+    
+    let dataOverviewIdentifier = "DataOverview"
+    let dataDeviceIdentifier = "DataDevice"
+    
+    var overviews = [DataOverview]()
+    var devices = [DataDevice]()
 
     override init() {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        managedObjectContext = appDelegate.managedObjectContext
         myURLString = "http://netreg.rose-hulman.edu/tools/networkUsage.pl"
         super.init()
         myURL = NSURL(string: myURLString)
@@ -133,20 +142,37 @@ class DataGrabber: NSObject {
             if items != nil {
                 
                 var array = items!
-                var overview = [NSString]()
-                overview.append(array[16].contents)
-                overview.append(array[17].contents)
-                overview.append(array[18].contents)
+                
+                //Gather old data
+                updateData()
+                
+                //Delete any old data
+                for i in 0..<overviews.count {
+                    managedObjectContext?.deleteObject(overviews[i])
+                }
+                for i in 0..<devices.count {
+                    managedObjectContext?.deleteObject(devices[i])
+                }
+                
+                //Set overview data
+                var newOverview = NSEntityDescription.insertNewObjectForEntityForName(dataOverviewIdentifier, inManagedObjectContext: self.managedObjectContext!) as DataOverview
+                newOverview.bandwidthClass = array[16].contents
+                newOverview.recievedData = array[17].contents
+                newOverview.recievedData = array[18].contents
+                overviews.append(newOverview)
                 
                 var numDevices = (array.count - 28)/7
                 
                 for i in 0..<numDevices {
                     var device = [NSString]()
-                    device.append(array[28+7*i].contents)
-                    device.append(array[29+7*i].contents)
-                    device.append(array[31+7*i].contents)
-                    device.append(array[32+7*i].contents)
-                    println(device)
+                    
+                    //Set devices data
+                    var newDevice = NSEntityDescription.insertNewObjectForEntityForName(dataDeviceIdentifier, inManagedObjectContext: self.managedObjectContext!) as DataDevice
+                    newDevice.addressIP = array[28+7*i].contents
+                    newDevice.hostName = array[29+7*i].contents
+                    newDevice.recievedData = array[31+7*i].contents
+                    newDevice.sentData = array[32+7*i].contents
+                    devices.append(newDevice)
                 }
                 
             }
@@ -155,6 +181,30 @@ class DataGrabber: NSObject {
         NSLog("connectionDidFinishLoading");
     }
 
+    func updateData() {
+        let fetchRequestDevices = NSFetchRequest(entityName: dataDeviceIdentifier)
+        let fetchRequestOverview = NSFetchRequest(entityName: dataOverviewIdentifier)
+        
+        var error : NSError? = nil
+        devices = managedObjectContext?.executeFetchRequest(fetchRequestDevices, error: &error) as [DataDevice]
+        overviews = managedObjectContext?.executeFetchRequest(fetchRequestOverview, error: &error) as [DataOverview]
+        
+        if error != nil {
+            println("There was an unresolved error: \(error?.userInfo)")
+            abort()
+        }
+        
+    }
+    
+    func savedManagedObjectContext() {
+        var error : NSError?
+        
+        managedObjectContext?.save(&error)
+        if error != nil {
+            println("There was an unresolved error: \(error?.userInfo)")
+            abort()
+        }
+    }
 
 
     func grabData(){
