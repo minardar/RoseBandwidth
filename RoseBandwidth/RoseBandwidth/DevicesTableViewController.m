@@ -7,8 +7,16 @@
 //
 
 #import "DevicesTableViewController.h"
+#import "DeviceTableViewCell.h"
+#import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "DataDevice.h"
+#import "DataOverview.h"
 
 @interface DevicesTableViewController ()
+
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -16,6 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self fetchData];
+    [self.tableView reloadData];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -29,29 +39,83 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)fetchData{
+    
+    self.devicesIdentifier = @"DataDevice";
+    DevicesTableViewController *appDelegate = (DevicesTableViewController *)[[UIApplication sharedApplication] delegate];
+    
+    self.managedObjectContext = appDelegate.managedObjectContext;
+    NSEntityDescription * entityDescription = [NSEntityDescription entityForName:self.devicesIdentifier inManagedObjectContext:self.managedObjectContext];
+    
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSError * error;
+    self.devices = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    if (&error != nil) {
+        // ERRA
+    }
+    
+    self.dataIdentifier = @"DataOverview";
+
+    NSEntityDescription * entityDescription2 = [NSEntityDescription entityForName:self.dataIdentifier inManagedObjectContext:self.managedObjectContext];
+    
+    NSFetchRequest * request2 = [[NSFetchRequest alloc] init];
+    [request2 setEntity:entityDescription2];
+    
+    NSError * error2;
+    self.dataOverview = [self.managedObjectContext executeFetchRequest:request2 error:&error2];
+    
+    if (&error2 != nil) {
+        // ERRA
+    }
+
+    
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.devices.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
     // Configure the cell...
+    DeviceTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: @"deviceTableCell"];
+    DataDevice *curr = ((DataDevice *)self.devices[indexPath.row]);
+    DataOverview * overview = ((DataOverview *)self.dataOverview[0]);
+    if ([curr.hostName isEqualToString:@""]){
+        cell.deviceLabel.text = @"Unnamed Device";
+    } else {
+        cell.deviceLabel.text = curr.hostName;
+    }
+    cell.addressLabel.text = curr.addressIP;
+    NSString * thisReceived = [curr.recievedData substringToIndex: [curr.recievedData length] - 3];
+    NSString * thisSent = [curr.sentData substringToIndex: [curr.sentData length] - 3];
+    NSString * thatReceived = [overview.recievedData substringToIndex: [overview.recievedData length] - 3];
+    NSString * thatSent = [overview.sentData substringToIndex: [overview.sentData length] - 3];
+    
+    float used = ((thisReceived.floatValue + thisSent.floatValue) / (thatReceived.floatValue + thatSent.floatValue))*100;
+    
+    NSString * usedText = [NSString stringWithFormat:@"%.1f%%", used];
+    
+    cell.usageLabel.text = usedText;
+    
+    
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

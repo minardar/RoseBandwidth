@@ -5,51 +5,6 @@
 //  Created by Jonathan Jungck on 2/9/15.
 //  Copyright (c) 2015 edu.rosehulman. All rights reserved.
 //
-
-/*
-// Setup NSURLConnection
-NSURL *URL = [NSURL URLWithString:url];
-NSURLRequest *request = [NSURLRequest requestWithURL:URL
-cachePolicy:NSURLRequestUseProtocolCachePolicy
-timeoutInterval:30.0];
-
-NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-[connection start];
-[connection release];
-
-// NSURLConnection Delegates
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-if ([challenge previousFailureCount] == 0) {
-NSLog(@"received authentication challenge");
-NSURLCredential *newCredential = [NSURLCredential credentialWithUser:@"USER"
-password:@"PASSWORD"
-persistence:NSURLCredentialPersistenceForSession];
-NSLog(@"credential created");
-[[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
-NSLog(@"responded to authentication challenge");
-}
-else {
-NSLog(@"previous authentication failure");
-}
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-...
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-...
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-...
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-...
-}
-*/
-
 import UIKit
 import CoreData
 
@@ -68,6 +23,9 @@ class DataGrabber: NSObject {
     
     var overviews = [DataOverview]()
     var devices = [DataDevice]()
+    var isReady = false
+    var loginSuccessful = false
+    var cancelledAttempt = false
 
     override init() {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -81,6 +39,10 @@ class DataGrabber: NSObject {
             conn = NSURLConnection(request: request!, delegate: self)
             conn?.start()
         }
+    }
+    
+    func killConnection() {
+        conn?.cancel()
     }
     
     convenience init(login : LoginCredentials) {
@@ -112,6 +74,8 @@ class DataGrabber: NSObject {
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
         //Append incoming data
         self.data.appendData(data)
+
+        
     }
     
     //NSURLConnection delegate method
@@ -158,7 +122,7 @@ class DataGrabber: NSObject {
                 var newOverview = NSEntityDescription.insertNewObjectForEntityForName(dataOverviewIdentifier, inManagedObjectContext: self.managedObjectContext!) as DataOverview
                 newOverview.bandwidthClass = array[16].contents
                 newOverview.recievedData = array[17].contents
-                newOverview.recievedData = array[18].contents
+                newOverview.sentData = array[18].contents
                 overviews.append(newOverview)
                 
                 var numDevices = (array.count - 28)/7
@@ -179,6 +143,8 @@ class DataGrabber: NSObject {
             
         }
         NSLog("connectionDidFinishLoading");
+        isReady = true
+        loginSuccessful = true
     }
 
     func updateData() {

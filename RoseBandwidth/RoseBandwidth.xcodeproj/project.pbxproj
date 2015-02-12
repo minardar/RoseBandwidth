@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB1115981A8BF77E0002F803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB1115971A8BF77E0002F803 /* Main.storyboard */; };
+		AB11159B1A8C1F540002F803 /* LoginCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = AB11159A1A8C1F540002F803 /* LoginCredentials.m */; };
+		AB1115A01A8C30690002F803 /* DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB11159F1A8C30690002F803 /* DeviceTableViewCell.m */; };
 		AB1447E11A889D80004A51DF /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1447DE1A889D80004A51DF /* HTMLNode.swift */; };
 		AB1447E21A889D80004A51DF /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1447DF1A889D80004A51DF /* HTMLParser.swift */; };
 		AB1447E41A889EC0004A51DF /* example-parser in Resources */ = {isa = PBXBuildFile; fileRef = AB1447E31A889EC0004A51DF /* example-parser */; };
@@ -44,8 +47,6 @@
 		FFFCD4041A846A75008A7F54 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4011A846A75008A7F54 /* SettingsViewController.swift */; };
 		FFFCD4091A846A8E008A7F54 /* DevicesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */; };
 		FFFCD40A1A846A8E008A7F54 /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4081A846A8E008A7F54 /* UsageViewController.swift */; };
-		FFFCD40D1A846AD1008A7F54 /* LoginCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD40C1A846AD1008A7F54 /* LoginCredentials.m */; };
-		FFFCD40F1A846B10008A7F54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD40E1A846B10008A7F54 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB1115971A8BF77E0002F803 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		AB1115991A8C1F540002F803 /* LoginCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCredentials.h; sourceTree = "<group>"; };
+		AB11159A1A8C1F540002F803 /* LoginCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCredentials.m; sourceTree = "<group>"; };
+		AB11159E1A8C30690002F803 /* DeviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceTableViewCell.h; sourceTree = "<group>"; };
+		AB11159F1A8C30690002F803 /* DeviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceTableViewCell.m; sourceTree = "<group>"; };
 		AB1447DE1A889D80004A51DF /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		AB1447DF1A889D80004A51DF /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 		AB1447E31A889EC0004A51DF /* example-parser */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "example-parser"; sourceTree = "<group>"; };
@@ -105,9 +111,6 @@
 		FFFCD4061A846A8E008A7F54 /* DevicesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesTableViewController.h; sourceTree = "<group>"; };
 		FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicesTableViewController.m; sourceTree = "<group>"; };
 		FFFCD4081A846A8E008A7F54 /* UsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageViewController.swift; sourceTree = "<group>"; };
-		FFFCD40B1A846AD1008A7F54 /* LoginCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCredentials.h; sourceTree = "<group>"; };
-		FFFCD40C1A846AD1008A7F54 /* LoginCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCredentials.m; sourceTree = "<group>"; };
-		FFFCD40E1A846B10008A7F54 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,10 +168,12 @@
 				AB1447DD1A889D74004A51DF /* HTML Parser */,
 				FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */,
 				FFCDEF061A86F338002ACEDD /* TypeTableView.swift */,
-				FFFCD40E1A846B10008A7F54 /* Main.storyboard */,
+				AB11159E1A8C30690002F803 /* DeviceTableViewCell.h */,
+				AB11159F1A8C30690002F803 /* DeviceTableViewCell.m */,
 				FFFCD4061A846A8E008A7F54 /* DevicesTableViewController.h */,
 				FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */,
 				FFFCD4081A846A8E008A7F54 /* UsageViewController.swift */,
+				AB1115971A8BF77E0002F803 /* Main.storyboard */,
 				FFFCD3FF1A846A75008A7F54 /* AlertsViewController.swift */,
 				FF73C5081A86A356003440CB /* AddAlertViewController.swift */,
 				FFFCD4001A846A75008A7F54 /* LoginViewController.swift */,
@@ -181,8 +186,8 @@
 				FFFCD3C81A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld */,
 				FFFCD3C41A8469F7008A7F54 /* Supporting Files */,
 				FFFCD4051A846A8E008A7F54 /* RoseBandwidth-Bridging-Header.h */,
-				FFFCD40B1A846AD1008A7F54 /* LoginCredentials.h */,
-				FFFCD40C1A846AD1008A7F54 /* LoginCredentials.m */,
+				AB1115991A8C1F540002F803 /* LoginCredentials.h */,
+				AB11159A1A8C1F540002F803 /* LoginCredentials.m */,
 				FFE4CB311A86CD6E00922F1D /* Alerts.h */,
 				FFE4CB321A86CD6E00922F1D /* Alerts.m */,
 				FFE4CB2F1A86BE7F00922F1D /* AlertTableViewCell.swift */,
@@ -324,7 +329,7 @@
 				FFFCD3FC1A846A5A008A7F54 /* usage.png in Resources */,
 				FFFCD3F61A846A5A008A7F54 /* deviceshover.png in Resources */,
 				FFFCD3F81A846A5A008A7F54 /* redlight.png in Resources */,
-				FFFCD40F1A846B10008A7F54 /* Main.storyboard in Resources */,
+				AB1115981A8BF77E0002F803 /* Main.storyboard in Resources */,
 				FFFCD3FD1A846A5A008A7F54 /* usagehover.png in Resources */,
 				FFFCD3D61A8469F7008A7F54 /* LaunchScreen.xib in Resources */,
 				FFFCD3FA1A846A5A008A7F54 /* settings.png in Resources */,
@@ -358,8 +363,9 @@
 				FFCDEF091A86F4D2002ACEDD /* ModalViewController.swift in Sources */,
 				FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */,
 				AB1447E21A889D80004A51DF /* HTMLParser.swift in Sources */,
+				AB11159B1A8C1F540002F803 /* LoginCredentials.m in Sources */,
+				AB1115A01A8C30690002F803 /* DeviceTableViewCell.m in Sources */,
 				FFE4CB331A86CD6E00922F1D /* Alerts.m in Sources */,
-				FFFCD40D1A846AD1008A7F54 /* LoginCredentials.m in Sources */,
 				AB29EB121A8954F600AF811E /* DataGrabber.swift in Sources */,
 				FFFCD40A1A846A8E008A7F54 /* UsageViewController.swift in Sources */,
 				FFFCD3C71A8469F7008A7F54 /* AppDelegate.swift in Sources */,

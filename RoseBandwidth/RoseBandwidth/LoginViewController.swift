@@ -17,15 +17,28 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
-        
         updateLoginCredentials()
+        
+
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if (credentials.count > 0) {
+            var isLogged = credentials[0].isLoggedIn
+            if isLogged.boolValue {
+                println("Logged :D")
+                println(credentials[0].username)
+                self.loadNextPage()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +46,9 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func loadNextPage() {
+        performSegueWithIdentifier("loginPush", sender: self.loginButton)
+    }
 
     
     // MARK: - Navigation
@@ -44,6 +60,28 @@ class LoginViewController: UIViewController {
         
     }
     
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    
+    func verifyLogin(dataGrabber : DataGrabber) -> Bool {
+        if (dataGrabber.isReady) {
+            if (dataGrabber.loginSuccessful) {
+                println("Login Successful")
+                return true
+            } else {
+                println("Login Failed")
+                return false
+            }
+        }
+        return false
+    }
+    
     @IBAction func loginPressed(sender: AnyObject) {
         for dataSet in credentials {
             managedObjectContext?.deleteObject(dataSet)
@@ -53,7 +91,7 @@ class LoginViewController: UIViewController {
         credentials.removeAll(keepCapacity: false);
         
         let newCredentials = NSEntityDescription.insertNewObjectForEntityForName(loginCredentialsIdentifier, inManagedObjectContext: self.managedObjectContext!) as LoginCredentials
-        
+        newCredentials.isLoggedIn = false;
         newCredentials.username = username.text
         newCredentials.password = password.text
         
@@ -61,6 +99,51 @@ class LoginViewController: UIViewController {
         updateLoginCredentials()
         
         var dataGrabber = DataGrabber(login: credentials[0])
+        
+        let loadingController = UIAlertController(title: "Connecting...", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (_) -> Void in
+            loadingController.dismissViewControllerAnimated(true, completion: nil)
+            dataGrabber.cancelledAttempt = true
+            dataGrabber.killConnection()
+        }
+        
+        loadingController.addAction(cancelAction)
+        
+        presentViewController(loadingController, animated: true, completion: nil)
+        
+        
+        delay(5) {
+            if (dataGrabber.cancelledAttempt) {
+                return
+            }
+            if(self.verifyLogin(dataGrabber)) {
+                println("Pushing")
+                self.performSegueWithIdentifier("loginPush", sender: sender)
+                newCredentials.isLoggedIn = true
+                self.savedManagedObjectContext()
+            } else {
+                self.delay(5) {
+                    if (dataGrabber.cancelledAttempt) {
+                        println("Cancelled")
+                        loadingController.dismissViewControllerAnimated(true, completion: nil)
+                        return
+                    }
+                    if(self.verifyLogin(dataGrabber)) {
+                        println("Pushing")
+                        newCredentials.isLoggedIn = true
+                        self.savedManagedObjectContext()
+                        self.loadNextPage()
+                    } else {
+                        println("Failure")
+                        dataGrabber.killConnection()
+
+                    }
+                }
+            }
+        }
+        
+        
         
         //println("username: \(credentials[0].username!) password: \(credentials[0].password!)");
         
