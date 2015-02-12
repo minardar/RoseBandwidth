@@ -12,6 +12,7 @@
 #import <CoreData/CoreData.h>
 #import "DataDevice.h"
 #import "DataOverview.h"
+#import "RoseBandwidth-Swift.h"
 
 @interface DevicesTableViewController ()
 
@@ -52,6 +53,40 @@
     
     NSError * error;
     self.devices = [self.managedObjectContext executeFetchRequest:request error:&error];
+    NSLog(@"%@",self.devices);
+    self.devices = [self.devices sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            DataDevice* device1 = (DataDevice *)obj1;
+            DataDevice* device2 = (DataDevice *)obj2;
+        
+        NSString *d1rNoComma = [device1.recievedData
+                                     stringByReplacingOccurrencesOfString:@"," withString:@""];
+        NSString *d1sNoComma = [device1.sentData
+                                 stringByReplacingOccurrencesOfString:@"," withString:@""];
+        
+        NSString *d1Received = [d1rNoComma substringToIndex: [d1rNoComma length] - 3];
+        NSString *d1Sent = [d1sNoComma substringToIndex: [d1sNoComma length] - 3];
+        
+        NSString *d2rNoComma = [device2.recievedData
+                                stringByReplacingOccurrencesOfString:@"," withString:@""];
+        NSString *d2sNoComma = [device2.sentData
+                                stringByReplacingOccurrencesOfString:@"," withString:@""];
+        
+        NSString *d2Received = [d2rNoComma substringToIndex: [d2rNoComma length] - 3];
+        NSString *d2Sent = [d2sNoComma substringToIndex: [d2sNoComma length] - 3];
+        
+        float d1Total = d1Received.floatValue + d1Sent.floatValue;
+        float d2Total = d2Received.floatValue + d2Sent.floatValue;
+        
+        if (d1Total > d2Total) {
+            return NSOrderedAscending;
+        } else if (d1Total < d2Total) {
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
+    
+    NSLog(@"%@",self.devices);
     
     if (&error != nil) {
         // ERRA
@@ -100,10 +135,20 @@
         cell.deviceLabel.text = curr.hostName;
     }
     cell.addressLabel.text = curr.addressIP;
-    NSString * thisReceived = [curr.recievedData substringToIndex: [curr.recievedData length] - 3];
-    NSString * thisSent = [curr.sentData substringToIndex: [curr.sentData length] - 3];
-    NSString * thatReceived = [overview.recievedData substringToIndex: [overview.recievedData length] - 3];
-    NSString * thatSent = [overview.sentData substringToIndex: [overview.sentData length] - 3];
+    
+    NSString *receivedNoComma = [curr.recievedData
+                                 stringByReplacingOccurrencesOfString:@"," withString:@""];
+    NSString *sentNoComma = [curr.sentData
+                                 stringByReplacingOccurrencesOfString:@"," withString:@""];
+    NSString *receivedTotalNoComma = [overview.recievedData
+                                 stringByReplacingOccurrencesOfString:@"," withString:@""];
+    NSString *sentTotalNoComma = [overview.sentData
+                             stringByReplacingOccurrencesOfString:@"," withString:@""];
+    
+    NSString * thisReceived = [receivedNoComma substringToIndex: [receivedNoComma length] - 3];
+    NSString * thisSent = [sentNoComma substringToIndex: [sentNoComma length] - 3];
+    NSString * thatReceived = [receivedTotalNoComma substringToIndex: [receivedTotalNoComma length] - 3];
+    NSString * thatSent = [sentTotalNoComma substringToIndex: [sentTotalNoComma length] - 3];
     
     float used = ((thisReceived.floatValue + thisSent.floatValue) / (thatReceived.floatValue + thatSent.floatValue))*100;
     

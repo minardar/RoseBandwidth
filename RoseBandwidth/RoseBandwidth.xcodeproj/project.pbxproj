@@ -15,6 +15,7 @@
 		AB1447E41A889EC0004A51DF /* example-parser in Resources */ = {isa = PBXBuildFile; fileRef = AB1447E31A889EC0004A51DF /* example-parser */; };
 		AB1DE6271A8949BB006DBC01 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1DE6261A8949BB006DBC01 /* libxml2.dylib */; };
 		AB29EB121A8954F600AF811E /* DataGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29EB111A8954F600AF811E /* DataGrabber.swift */; };
+		FF549FE41A8C53B9000C2B18 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */; };
 		FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73C5081A86A356003440CB /* AddAlertViewController.swift */; };
 		FFABA60C1A8711DC00263E76 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */; };
 		FFB100681A89C11D0006A83C /* DataOverview.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB100671A89C11D0006A83C /* DataOverview.m */; };
@@ -44,7 +45,6 @@
 		FFFCD3FE1A846A5A008A7F54 /* yellowlight.png in Resources */ = {isa = PBXBuildFile; fileRef = FFFCD3F41A846A5A008A7F54 /* yellowlight.png */; };
 		FFFCD4021A846A75008A7F54 /* AlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3FF1A846A75008A7F54 /* AlertsViewController.swift */; };
 		FFFCD4031A846A75008A7F54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4001A846A75008A7F54 /* LoginViewController.swift */; };
-		FFFCD4041A846A75008A7F54 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4011A846A75008A7F54 /* SettingsViewController.swift */; };
 		FFFCD4091A846A8E008A7F54 /* DevicesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */; };
 		FFFCD40A1A846A8E008A7F54 /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD4081A846A8E008A7F54 /* UsageViewController.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +70,7 @@
 		AB1447E31A889EC0004A51DF /* example-parser */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "example-parser"; sourceTree = "<group>"; };
 		AB1DE6261A8949BB006DBC01 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		AB29EB111A8954F600AF811E /* DataGrabber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataGrabber.swift; sourceTree = "<group>"; };
+		FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		FF73C5081A86A356003440CB /* AddAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlertViewController.swift; sourceTree = "<group>"; };
 		FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
 		FFB100661A89C11D0006A83C /* DataOverview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOverview.h; sourceTree = "<group>"; };
@@ -106,7 +107,6 @@
 		FFFCD3F41A846A5A008A7F54 /* yellowlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowlight.png; sourceTree = "<group>"; };
 		FFFCD3FF1A846A75008A7F54 /* AlertsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
 		FFFCD4001A846A75008A7F54 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		FFFCD4011A846A75008A7F54 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FFFCD4051A846A8E008A7F54 /* RoseBandwidth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RoseBandwidth-Bridging-Header.h"; sourceTree = "<group>"; };
 		FFFCD4061A846A8E008A7F54 /* DevicesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicesTableViewController.h; sourceTree = "<group>"; };
 		FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicesTableViewController.m; sourceTree = "<group>"; };
@@ -177,7 +177,6 @@
 				FFFCD3FF1A846A75008A7F54 /* AlertsViewController.swift */,
 				FF73C5081A86A356003440CB /* AddAlertViewController.swift */,
 				FFFCD4001A846A75008A7F54 /* LoginViewController.swift */,
-				FFFCD4011A846A75008A7F54 /* SettingsViewController.swift */,
 				FFFCD3C61A8469F7008A7F54 /* AppDelegate.swift */,
 				FFFCD3CB1A8469F7008A7F54 /* MasterViewController.swift */,
 				FFFCD3CD1A8469F7008A7F54 /* DetailViewController.swift */,
@@ -198,6 +197,7 @@
 				FFB1006A1A89C11E0006A83C /* DataDevice.m */,
 				FFB100661A89C11D0006A83C /* DataOverview.h */,
 				FFB100671A89C11D0006A83C /* DataOverview.m */,
+				FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */,
 			);
 			path = RoseBandwidth;
 			sourceTree = "<group>";
@@ -359,7 +359,6 @@
 				FFCDEF071A86F338002ACEDD /* TypeTableView.swift in Sources */,
 				AB1447E11A889D80004A51DF /* HTMLNode.swift in Sources */,
 				FFFCD3CA1A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld in Sources */,
-				FFFCD4041A846A75008A7F54 /* SettingsViewController.swift in Sources */,
 				FFCDEF091A86F4D2002ACEDD /* ModalViewController.swift in Sources */,
 				FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */,
 				AB1447E21A889D80004A51DF /* HTMLParser.swift in Sources */,
@@ -374,6 +373,7 @@
 				FFFCD3CC1A8469F7008A7F54 /* MasterViewController.swift in Sources */,
 				FFB1006B1A89C11E0006A83C /* DataDevice.m in Sources */,
 				FFB100681A89C11D0006A83C /* DataOverview.m in Sources */,
+				FF549FE41A8C53B9000C2B18 /* SettingsTableViewController.swift in Sources */,
 				FFFCD3CE1A8469F7008A7F54 /* DetailViewController.swift in Sources */,
 				FFFCD4021A846A75008A7F54 /* AlertsViewController.swift in Sources */,
 				FFE4CB371A86F08D00922F1D /* ValueTableView.swift in Sources */,

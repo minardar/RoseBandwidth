@@ -49,7 +49,8 @@ class UsageViewController: UIViewController {
         var received : String = overview[0].recievedData
         receivedLabel.text = received
         received = received.substringToIndex(received.endIndex.predecessor().predecessor().predecessor())
-        var rec : Float = NSString(string: received).floatValue
+        var recNoComma = NSString(string: received).stringByReplacingOccurrencesOfString(",", withString: "")
+        var rec : Float = NSString(string: recNoComma).floatValue
         rec = rec / 8000
         
         receivedBar.setProgress(rec, animated: true)
@@ -58,7 +59,8 @@ class UsageViewController: UIViewController {
         var sent : String = overview[0].sentData
         sentLabel.text = sent
         sent = sent.substringToIndex(sent.endIndex.predecessor().predecessor().predecessor())
-        var sen : Float = NSString(string: sent).floatValue
+        var senNoComma = NSString(string: sent).stringByReplacingOccurrencesOfString(",", withString: "")
+        var sen : Float = NSString(string: senNoComma).floatValue
         sen = sen / 8000
         
         sentBar.setProgress(sen, animated: true)
