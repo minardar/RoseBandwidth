@@ -48,7 +48,6 @@ class DataGrabber: NSObject {
     convenience init(login : LoginCredentials) {
         self.init()
         self.login = login
-        println(login.password+" "+login.username);
     }
     
     
