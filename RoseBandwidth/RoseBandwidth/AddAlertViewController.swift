@@ -24,6 +24,19 @@ class AddAlertViewController: UIViewController {
         if newAlert != nil {
             alerts.append(newAlert!)
             savedManagedObjectContext()
+            
+            if (newAlert!.alertType == "%") {
+                newAlert!.threshold = ((newAlert!.alertName as NSString).floatValue / 100) * 8000
+                
+            } else if (newAlert!.alertType == " GB") {
+                newAlert!.threshold = (newAlert!.alertName as NSString).floatValue * 1000
+                
+            } else {
+                newAlert!.threshold = (newAlert!.alertName as NSString).floatValue
+                
+            }
+            println("Saved: \(newAlert!.threshold)")
+            
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }

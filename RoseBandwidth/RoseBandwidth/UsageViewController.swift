@@ -33,6 +33,11 @@ class UsageViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        fetchOverview()
+        updateView()
+    }
+    
     func updateView() {
         var bandwidth : String = overview[0].bandwidthClass
         bandwidthClass.text = bandwidth

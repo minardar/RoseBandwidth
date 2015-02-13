@@ -49,14 +49,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         let controller = self.window!.rootViewController as LoginViewController
+        var loginCredentialsIdentifier = "LoginCredentials"
+        let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
+        
+        var error : NSError? = nil
+        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        
+        if error != nil {
+            println("There was an unresolved error: \(error?.userInfo)")
+            abort()
+        }
+        if (credentials.count == 0) {
+            return
+        }
+        DataGrabber(login: credentials[0]);
+        
+        delay(11) {
+            var alertsIdentifier = "Alerts"
+            var overviewIdentifier = "DataOverview"
+            let fetchRequest2 = NSFetchRequest(entityName: overviewIdentifier)
+            var overview = self.managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error) as [DataOverview]
+            let fetchRequest3 = NSFetchRequest(entityName: alertsIdentifier)
+            var alerts = self.managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error) as [Alerts]
+            
+            var received : String = overview[0].recievedData
+            received = received.substringToIndex(received.endIndex.predecessor().predecessor().predecessor())
+            var recNoComma = NSString(string: received).stringByReplacingOccurrencesOfString(",", withString: "")
+            var rec : Float = NSString(string: recNoComma).floatValue
+            
+            for alert in alerts {
+                println(alert.threshold.floatValue)
+                println(rec)
+                if alert.threshold.floatValue <= rec {
+                    var localNotification:UILocalNotification = UILocalNotification()
+                    localNotification.alertBody = "\(alert.description)"
+                    localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
+                    localNotification.category = "alert"
+                    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                }
+            }
+        }
         
         
-        var localNotification:UILocalNotification = UILocalNotification()
-        localNotification.alertBody = "Local notifications are working"
-        localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
-        localNotification.category = "alert"
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 let logoutIdentifier = "logoutSegue"
 let loginCredentialsIdentifier = "LoginCredentials"
+let devicesIdentifier = "DataDevice"
+let overviewIdentifier = "DataOverview"
 
 class SettingsTableViewController: UITableViewController {
 
@@ -18,6 +21,8 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        managedObjectContext = appDelegate.managedObjectContext
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -51,8 +56,6 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 && indexPath.row == 0 {
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-            var managedObjectContext = appDelegate.managedObjectContext
             let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
             
             var error : NSError? = nil
@@ -63,9 +66,32 @@ class SettingsTableViewController: UITableViewController {
                 abort()
             }
             
+            println(managedObjectContext)
+            
             for index in credentials {
-                managedObjectContext?.deleteObject(index);
+                managedObjectContext?.deleteObject(index)
             }
+            
+            let fetchRequest2 = NSFetchRequest(entityName: devicesIdentifier)
+            
+            var error2 : NSError? = nil
+            var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error) as [DataDevice]
+            
+            for index2 in devices {
+                managedObjectContext?.deleteObject(index2)
+            }
+            
+            let fetchRequest3 = NSFetchRequest(entityName: overviewIdentifier)
+            
+            var error3 : NSError? = nil
+            var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error) as [DataOverview]
+            
+            for index3 in overview {
+                managedObjectContext?.deleteObject(index3)
+            }
+            
+            
+            savedManagedObjectContext()
             
             performSegueWithIdentifier(logoutIdentifier, sender: self)
 
@@ -126,5 +152,15 @@ class SettingsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func savedManagedObjectContext() {
+        var error : NSError?
+        
+        managedObjectContext?.save(&error)
+        if error != nil {
+            println("There was an unresolved error: \(error?.userInfo)")
+            abort()
+        }
+    }
 
 }

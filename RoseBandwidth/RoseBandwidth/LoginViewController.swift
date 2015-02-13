@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     var credentials = [LoginCredentials]()
     
     let loginCredentialsIdentifier = "LoginCredentials"
+    let devicesIdentifier = "DataDevice"
+    let overviewIdentifier = "DataOverview"
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -21,7 +23,8 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         updateLoginCredentials()
@@ -30,8 +33,17 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        credentials.removeAll(keepCapacity: false);
+        updateLoginCredentials()
+        println("YES")
+    }
+    
     override func viewDidAppear(animated: Bool) {
+        credentials.removeAll(keepCapacity: false);
+        updateLoginCredentials()
         if (credentials.count > 0) {
+            println(credentials[0].username)
             var isLogged = credentials[0].isLoggedIn
             if isLogged.boolValue {
                 println("Logged :D")
@@ -105,6 +117,31 @@ class LoginViewController: UIViewController {
     }
     
     func loadingData(newCredentials: LoginCredentials){
+        
+        let fetchRequest2 = NSFetchRequest(entityName: devicesIdentifier)
+        
+        var error2 : NSError? = nil
+        var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error2) as [DataDevice]
+        
+        for index2 in devices {
+            managedObjectContext?.deleteObject(index2)
+        }
+        
+        let fetchRequest3 = NSFetchRequest(entityName: overviewIdentifier)
+        
+        var error3 : NSError? = nil
+        var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error3) as [DataOverview]
+        
+        for index3 in overview {
+            managedObjectContext?.deleteObject(index3)
+        }
+        
+        
+        savedManagedObjectContext()
+        
+        
+        
+        
         var dataGrabber = DataGrabber(login: credentials[0])
         
         let loadingController = UIAlertController(title: "Connecting...", message: "", preferredStyle: UIAlertControllerStyle.Alert)
