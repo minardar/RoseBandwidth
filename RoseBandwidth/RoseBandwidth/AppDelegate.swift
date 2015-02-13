@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(forTypes: notificationType, categories: categories)
         application.registerUserNotificationSettings(settings)
         
-        application.setMinimumBackgroundFetchInterval(NSTimeInterval.abs(10))
+        application.setMinimumBackgroundFetchInterval(NSTimeInterval.abs(600))
         
         return true
     }

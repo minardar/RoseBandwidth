@@ -13,6 +13,7 @@ let logoutIdentifier = "logoutSegue"
 let loginCredentialsIdentifier = "LoginCredentials"
 let devicesIdentifier = "DataDevice"
 let overviewIdentifier = "DataOverview"
+let alertsIdentifier = "Alerts"
 
 class SettingsTableViewController: UITableViewController {
 
@@ -28,6 +29,30 @@ class SettingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
+        
+        var error : NSError? = nil
+        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        
+        var error2 : NSError? = nil
+        let fetchRequest2 = NSFetchRequest(entityName: alertsIdentifier)
+        var alerts = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error) as [Alerts]
+        
+        var count = 0
+        if credentials.count > 0 {
+            if alerts.count > 0 {
+                for alert in alerts {
+                    if ((alert.username == credentials[0].username) && (alert.isEnabled.boolValue)){
+                        count++
+                    }
+                }
+            }
+        }
+        
+        self.tableView(self.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 1, inSection: 0)).detailTextLabel?.text = count != 1 ? "\(count) alerts" : "\(count) alert"
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +72,7 @@ class SettingsTableViewController: UITableViewController {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         if section == 0 {
-            return 2
+            return 1
         } else if section == 1 {
             return 1
         }
