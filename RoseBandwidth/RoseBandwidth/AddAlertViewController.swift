@@ -75,6 +75,21 @@ class AddAlertViewController: UIViewController {
             newAlert?.isEnabled = true
         }
         
+        var loginCredentialsIdentifier = "LoginCredentials"
+        let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
+        
+        var error : NSError? = nil
+        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        
+        if error != nil {
+            println("There was an unresolved error: \(error?.userInfo)")
+            abort()
+        }
+        
+        if (credentials.count > 0){
+            newAlert?.username = credentials[0].username
+        }
+        
         if viewTitle != nil {
             navItemTitle.title = viewTitle
         }

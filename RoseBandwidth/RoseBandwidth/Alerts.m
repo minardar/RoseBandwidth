@@ -2,7 +2,7 @@
 //  Alerts.m
 //  RoseBandwidth
 //
-//  Created by Anthony Minardo on 2/7/15.
+//  Created by Jonathan Jungck on 2/12/15.
 //  Copyright (c) 2015 edu.rosehulman. All rights reserved.
 //
 
@@ -12,8 +12,9 @@
 @implementation Alerts
 
 @dynamic alertName;
+@dynamic alertType;
 @dynamic isEnabled;
 @dynamic threshold;
-@dynamic alertType;
+@dynamic username;
 
 @end

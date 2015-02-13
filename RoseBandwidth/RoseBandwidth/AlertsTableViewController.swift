@@ -48,16 +48,45 @@ class AlertsTableViewController: UITableViewController {
     }
     
     func updateAlerts() {
-        let fetchRequest = NSFetchRequest(entityName: alertsIdentifier)
+        
+        var loginCredentialsIdentifier = "LoginCredentials"
+        let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
         
         var error : NSError? = nil
-        alerts = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [Alerts]
+        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
         
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")
             abort()
         }
         
+        if (credentials.count > 0){
+        
+            let fetchRequest = NSFetchRequest(entityName: alertsIdentifier)
+        
+            var error : NSError? = nil
+            alerts = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [Alerts]
+        
+            if error != nil {
+                println("There was an unresolved error: \(error?.userInfo)")
+                abort()
+            }
+        
+            if (alerts.count > 0) {
+                var i = 0
+                for alert in alerts {
+                    if alert.username != credentials[0].username {
+                        alerts.removeAtIndex(i)
+                        i--
+                    }
+                    i++
+                }
+            }
+            
+            alerts.sort({
+                $0.threshold.floatValue > $1.threshold.floatValue
+            })
+        }
     }
     
     func savedManagedObjectContext() {

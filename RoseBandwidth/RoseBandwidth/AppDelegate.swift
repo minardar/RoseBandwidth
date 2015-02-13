@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         DataGrabber(login: credentials[0]);
         
-        delay(11) {
+        delay(10) {
             var alertsIdentifier = "Alerts"
             var overviewIdentifier = "DataOverview"
             let fetchRequest2 = NSFetchRequest(entityName: overviewIdentifier)
@@ -77,16 +77,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var recNoComma = NSString(string: received).stringByReplacingOccurrencesOfString(",", withString: "")
             var rec : Float = NSString(string: recNoComma).floatValue
             
+            var currThreshold : Float = 0.0
+            var currAlert : Alerts?
             for alert in alerts {
                 println(alert.threshold.floatValue)
                 println(rec)
-                if alert.threshold.floatValue <= rec {
-                    var localNotification:UILocalNotification = UILocalNotification()
-                    localNotification.alertBody = "\(alert.description)"
-                    localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
-                    localNotification.category = "alert"
-                    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                if ((alert.threshold.floatValue <= rec) && (alert.isEnabled.boolValue) && (alert.username == credentials[0].username)) {
+                    if alert.threshold.floatValue > currThreshold {
+                        currAlert = alert
+                        currThreshold = alert.threshold.floatValue
+                    }
                 }
+            }
+            if (currAlert != nil) {
+                var localNotification:UILocalNotification = UILocalNotification()
+                localNotification.alertBody = "Your data has exceeded your \(currAlert!.alertName)\(currAlert!.alertType) limit!"
+                localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+                localNotification.category = "alert"
+                UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
             }
         }
         

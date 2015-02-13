@@ -15,6 +15,7 @@
 		AB1447E41A889EC0004A51DF /* example-parser in Resources */ = {isa = PBXBuildFile; fileRef = AB1447E31A889EC0004A51DF /* example-parser */; };
 		AB1DE6271A8949BB006DBC01 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1DE6261A8949BB006DBC01 /* libxml2.dylib */; };
 		AB29EB121A8954F600AF811E /* DataGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29EB111A8954F600AF811E /* DataGrabber.swift */; };
+		ABE2FD631A8D8E6F00F52F97 /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE2FD621A8D8E6F00F52F97 /* Alerts.m */; };
 		FF549FE41A8C53B9000C2B18 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */; };
 		FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73C5081A86A356003440CB /* AddAlertViewController.swift */; };
 		FFABA60C1A8711DC00263E76 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */; };
@@ -24,7 +25,6 @@
 		FFCDEF091A86F4D2002ACEDD /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDEF081A86F4D2002ACEDD /* ModalViewController.swift */; };
 		FFCDEF0F1A87072F002ACEDD /* AlertSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCDEF0E1A87072F002ACEDD /* AlertSettingTableViewController.swift */; };
 		FFE4CB301A86BE7F00922F1D /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4CB2F1A86BE7F00922F1D /* AlertTableViewCell.swift */; };
-		FFE4CB331A86CD6E00922F1D /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE4CB321A86CD6E00922F1D /* Alerts.m */; };
 		FFE4CB371A86F08D00922F1D /* ValueTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4CB361A86F08D00922F1D /* ValueTableView.swift */; };
 		FFFCD3C71A8469F7008A7F54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3C61A8469F7008A7F54 /* AppDelegate.swift */; };
 		FFFCD3CA1A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFFCD3C81A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld */; };
@@ -70,6 +70,8 @@
 		AB1447E31A889EC0004A51DF /* example-parser */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "example-parser"; sourceTree = "<group>"; };
 		AB1DE6261A8949BB006DBC01 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		AB29EB111A8954F600AF811E /* DataGrabber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataGrabber.swift; sourceTree = "<group>"; };
+		ABE2FD611A8D8E6F00F52F97 /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
+		ABE2FD621A8D8E6F00F52F97 /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
 		FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		FF73C5081A86A356003440CB /* AddAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlertViewController.swift; sourceTree = "<group>"; };
 		FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
@@ -81,8 +83,6 @@
 		FFCDEF081A86F4D2002ACEDD /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		FFCDEF0E1A87072F002ACEDD /* AlertSettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertSettingTableViewController.swift; sourceTree = "<group>"; };
 		FFE4CB2F1A86BE7F00922F1D /* AlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
-		FFE4CB311A86CD6E00922F1D /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
-		FFE4CB321A86CD6E00922F1D /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
 		FFE4CB361A86F08D00922F1D /* ValueTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTableView.swift; sourceTree = "<group>"; };
 		FFFCD3C11A8469F7008A7F54 /* RoseBandwidth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoseBandwidth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFCD3C51A8469F7008A7F54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -187,8 +187,6 @@
 				FFFCD4051A846A8E008A7F54 /* RoseBandwidth-Bridging-Header.h */,
 				AB1115991A8C1F540002F803 /* LoginCredentials.h */,
 				AB11159A1A8C1F540002F803 /* LoginCredentials.m */,
-				FFE4CB311A86CD6E00922F1D /* Alerts.h */,
-				FFE4CB321A86CD6E00922F1D /* Alerts.m */,
 				FFE4CB2F1A86BE7F00922F1D /* AlertTableViewCell.swift */,
 				FFE4CB361A86F08D00922F1D /* ValueTableView.swift */,
 				FFCDEF081A86F4D2002ACEDD /* ModalViewController.swift */,
@@ -198,6 +196,8 @@
 				FFB100661A89C11D0006A83C /* DataOverview.h */,
 				FFB100671A89C11D0006A83C /* DataOverview.m */,
 				FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */,
+				ABE2FD611A8D8E6F00F52F97 /* Alerts.h */,
+				ABE2FD621A8D8E6F00F52F97 /* Alerts.m */,
 			);
 			path = RoseBandwidth;
 			sourceTree = "<group>";
@@ -359,12 +359,12 @@
 				FFCDEF071A86F338002ACEDD /* TypeTableView.swift in Sources */,
 				AB1447E11A889D80004A51DF /* HTMLNode.swift in Sources */,
 				FFFCD3CA1A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld in Sources */,
+				ABE2FD631A8D8E6F00F52F97 /* Alerts.m in Sources */,
 				FFCDEF091A86F4D2002ACEDD /* ModalViewController.swift in Sources */,
 				FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */,
 				AB1447E21A889D80004A51DF /* HTMLParser.swift in Sources */,
 				AB11159B1A8C1F540002F803 /* LoginCredentials.m in Sources */,
 				AB1115A01A8C30690002F803 /* DeviceTableViewCell.m in Sources */,
-				FFE4CB331A86CD6E00922F1D /* Alerts.m in Sources */,
 				AB29EB121A8954F600AF811E /* DataGrabber.swift in Sources */,
 				FFFCD40A1A846A8E008A7F54 /* UsageViewController.swift in Sources */,
 				FFFCD3C71A8469F7008A7F54 /* AppDelegate.swift in Sources */,
