@@ -11,6 +11,7 @@ import UIKit
 var managedObjectContext : NSManagedObjectContext?
 var overview = [DataOverview]()
 let usageIdentifier = "DataOverview"
+var credentials = [LoginCredentials]()
 
 class UsageViewController: UIViewController {
     @IBOutlet weak var receivedBar: UIProgressView!
@@ -38,6 +39,20 @@ class UsageViewController: UIViewController {
         updateView()
     }
     
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    @IBOutlet weak var refreshPressed: UIBarButtonItem!
+    
+    @IBAction func refreshPressed(sender: UIBarButtonItem) {
+        updateLoginCredentials()
+        loadingData(credentials[0])
+    }
     func updateView() {
         fetchOverview()
         var bandwidth : String = overview[0].bandwidthClass
@@ -60,7 +75,9 @@ class UsageViewController: UIViewController {
         var rec : Float = NSString(string: recNoComma).floatValue
         rec = rec / 8000
         
-        receivedBar.setProgress(rec, animated: true)
+        //receivedBar.setProgress(rec, animated: false)
+        receivedBar.progress = rec;
+        receivedBar.updateConstraints()
         receivedPercent.text = String(format: "%.1f%%", rec*100)
         
         var sent : String = overview[0].sentData
@@ -69,9 +86,129 @@ class UsageViewController: UIViewController {
         var senNoComma = NSString(string: sent).stringByReplacingOccurrencesOfString(",", withString: "")
         var sen : Float = NSString(string: senNoComma).floatValue
         sen = sen / 8000
-        
-        sentBar.setProgress(sen, animated: true)
+        println("New: \(sen)")
+        //sentBar.setProgress(sen, animated: false)
+        sentBar.progress = sen;
+        sentBar.updateConstraints()
         sentPercent.text = String(format: "%.1f%%", sen*100)
+    }
+    
+    func updateLoginCredentials() {
+        let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
+        
+        var error : NSError? = nil
+        credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        
+        if error != nil {
+            println("There was an unresolved error: \(error?.userInfo)")
+            abort()
+        }
+        
+    }
+    
+    func savedManagedObjectContext() {
+        var error : NSError?
+        
+        managedObjectContext?.save(&error)
+        if error != nil {
+            println("There was an unresolved error: \(error?.userInfo)")
+            abort()
+        }
+    }
+    
+    func verifyLogin(dataGrabber : DataGrabber) -> Bool {
+        if (dataGrabber.isReady) {
+            if (dataGrabber.loginSuccessful) {
+                println("Login Successful")
+                println(credentials[0].username)
+                return true
+            } else {
+                println("Login Failed")
+                return false
+            }
+        }
+        return false
+    }
+    
+    func loadingData(newCredentials: LoginCredentials){
+        
+        let fetchRequest2 = NSFetchRequest(entityName: devicesIdentifier)
+        
+        var error2 : NSError? = nil
+        var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error2) as [DataDevice]
+        for index2 in devices {
+            managedObjectContext?.deleteObject(index2)
+        }
+        
+        let fetchRequest3 = NSFetchRequest(entityName: overviewIdentifier)
+        
+        var error3 : NSError? = nil
+        var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error3) as [DataOverview]
+        
+        for index3 in overview {
+            managedObjectContext?.deleteObject(index3)
+        }
+        
+        
+        savedManagedObjectContext()
+        
+        
+        
+        
+        var dataGrabber = DataGrabber(login: credentials[0])
+        
+        let loadingController = UIAlertController(title: "Connecting...", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (_) -> Void in
+            loadingController.dismissViewControllerAnimated(true, completion: nil)
+            dataGrabber.cancelledAttempt = true
+            dataGrabber.killConnection()
+        }
+        
+        loadingController.addAction(cancelAction)
+        
+        let loginFailController = UIAlertController(title: "Login Failed", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+        loginFailController.addAction(okAction)
+        
+        presentViewController(loadingController, animated: true, completion: nil)
+        
+        delay(5) {
+            if (dataGrabber.cancelledAttempt) {
+                return
+            }
+            if(self.verifyLogin(dataGrabber)) {
+                println("Pushing")
+                loadingController.dismissViewControllerAnimated(true) {
+                    newCredentials.isLoggedIn = true
+                    self.savedManagedObjectContext()
+                    self.updateView()
+                }
+            } else {
+                self.delay(5) {
+                    if (dataGrabber.cancelledAttempt) {
+                        println("Cancelled")
+                        loadingController.dismissViewControllerAnimated(true, completion: nil)
+                        return
+                    }
+                    if(self.verifyLogin(dataGrabber)) {
+                        println("Pushing")
+                        loadingController.dismissViewControllerAnimated(true) {
+                            newCredentials.isLoggedIn = true
+                            self.savedManagedObjectContext()
+                            self.updateView()
+                        }
+                    } else {
+                        println("Failure")
+                        loadingController.dismissViewControllerAnimated(true, completion: nil)
+                        self.presentViewController(loginFailController, animated: true, completion: nil)
+                        dataGrabber.killConnection()
+                        
+                    }
+                }
+            }
+        }
     }
     
     func fetchOverview() {

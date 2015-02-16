@@ -153,10 +153,16 @@
                                     <constraint firstAttribute="height" constant="65" id="LsM-LA-hkj"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Usage" id="xYp-uw-JVM"/>
+                                    <navigationItem title="Usage" id="xYp-uw-JVM">
+                                        <barButtonItem key="rightBarButtonItem" tag="10" systemItem="refresh" id="fcn-bd-Sm3">
+                                            <connections>
+                                                <action selector="refreshPressed:" destination="9pv-A4-QxB" id="Asr-Kh-xyC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhN-Tf-s9b">
+                            <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhN-Tf-s9b">
                                 <rect key="frame" x="0.0" y="151" width="600" height="199"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="80%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Lw-eT-UYB">
@@ -165,16 +171,20 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNo-Mm-XDF">
+                                    <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNo-Mm-XDF">
                                         <rect key="frame" x="32" y="77" width="536" height="50"/>
                                         <subviews>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jjA-qy-ffF">
+                                            <progressView autoresizesSubviews="NO" opaque="NO" contentMode="redraw" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jjA-qy-ffF">
                                                 <rect key="frame" x="0.0" y="0.0" width="536" height="50"/>
                                                 <color key="tintColor" red="0.0" green="0.78039215689999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </progressView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="jjA-qy-ffF" firstAttribute="leading" secondItem="QNo-Mm-XDF" secondAttribute="leading" id="0Kj-5k-0nN"/>
+                                            <constraint firstAttribute="bottom" secondItem="jjA-qy-ffF" secondAttribute="bottom" id="Bpu-gE-X6Q"/>
+                                            <constraint firstAttribute="trailing" secondItem="jjA-qy-ffF" secondAttribute="trailing" id="Dmu-EO-4HS"/>
+                                            <constraint firstItem="jjA-qy-ffF" firstAttribute="top" secondItem="QNo-Mm-XDF" secondAttribute="top" id="Rf7-me-r8v"/>
                                             <constraint firstAttribute="bottom" secondItem="jjA-qy-ffF" secondAttribute="bottom" id="RzA-hf-1Uz"/>
                                             <constraint firstItem="jjA-qy-ffF" firstAttribute="top" secondItem="QNo-Mm-XDF" secondAttribute="top" id="YmN-KT-N2h"/>
                                             <constraint firstAttribute="trailing" secondItem="jjA-qy-ffF" secondAttribute="trailing" id="d2n-zo-TJX"/>
@@ -211,7 +221,7 @@
                                     <constraint firstAttribute="centerY" secondItem="QNo-Mm-XDF" secondAttribute="centerY" constant="-2.25" id="zbR-K3-2he"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWX-ZW-qrN">
+                            <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWX-ZW-qrN">
                                 <rect key="frame" x="0.0" y="352" width="600" height="199"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6G-FC-YVm">
@@ -220,20 +230,24 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MzY-Rs-bvt">
+                                    <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MzY-Rs-bvt">
                                         <rect key="frame" x="32" y="77" width="536" height="50"/>
                                         <subviews>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="a3J-bK-c8k">
+                                            <progressView autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="a3J-bK-c8k">
                                                 <rect key="frame" x="0.0" y="0.0" width="536" height="50"/>
                                                 <color key="tintColor" red="0.0" green="0.78039215689999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </progressView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="a3J-bK-c8k" firstAttribute="top" secondItem="MzY-Rs-bvt" secondAttribute="top" id="EIf-Fq-Eqt"/>
                                             <constraint firstAttribute="trailing" secondItem="a3J-bK-c8k" secondAttribute="trailing" id="Ojc-DC-OU0"/>
                                             <constraint firstAttribute="bottom" secondItem="a3J-bK-c8k" secondAttribute="bottom" id="aU3-yg-mzB"/>
+                                            <constraint firstAttribute="trailing" secondItem="a3J-bK-c8k" secondAttribute="trailing" id="cha-EI-w8h"/>
+                                            <constraint firstAttribute="bottom" secondItem="a3J-bK-c8k" secondAttribute="bottom" id="fSx-W2-v6L"/>
                                             <constraint firstItem="a3J-bK-c8k" firstAttribute="top" secondItem="MzY-Rs-bvt" secondAttribute="top" id="jR2-FM-sc0"/>
                                             <constraint firstItem="a3J-bK-c8k" firstAttribute="leading" secondItem="MzY-Rs-bvt" secondAttribute="leading" id="kEN-vf-McU"/>
+                                            <constraint firstItem="a3J-bK-c8k" firstAttribute="leading" secondItem="MzY-Rs-bvt" secondAttribute="leading" id="kzn-U1-gvv"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.15 MB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPB-HC-ftW">
@@ -334,6 +348,7 @@
                             <constraint firstItem="xWX-ZW-qrN" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Q3X-4a-M0W"/>
                             <constraint firstItem="xWX-ZW-qrN" firstAttribute="height" secondItem="yhN-Tf-s9b" secondAttribute="height" id="QsG-O8-u84"/>
                             <constraint firstAttribute="trailing" secondItem="xWX-ZW-qrN" secondAttribute="trailing" id="TDI-EI-wkb"/>
+                            <constraint firstItem="jjA-qy-ffF" firstAttribute="width" secondItem="a3J-bK-c8k" secondAttribute="width" id="Umw-wN-iRH"/>
                             <constraint firstItem="xWX-ZW-qrN" firstAttribute="top" secondItem="cug-4D-vNM" secondAttribute="bottom" id="Wkx-SM-REP"/>
                             <constraint firstItem="xWX-ZW-qrN" firstAttribute="height" secondItem="yhN-Tf-s9b" secondAttribute="height" id="b8a-5n-PXV"/>
                             <constraint firstAttribute="trailing" secondItem="IcO-DX-7kG" secondAttribute="trailing" id="bHv-Hy-rHR"/>
@@ -376,6 +391,7 @@
                         <outlet property="receivedBar" destination="jjA-qy-ffF" id="M8y-KV-TH5"/>
                         <outlet property="receivedLabel" destination="rif-wg-WC1" id="cgc-sq-h7J"/>
                         <outlet property="receivedPercent" destination="4Lw-eT-UYB" id="7a1-wd-WgW"/>
+                        <outlet property="refreshPressed" destination="fcn-bd-Sm3" id="9NY-UD-sCP"/>
                         <outlet property="sentBar" destination="a3J-bK-c8k" id="u3v-ah-lpB"/>
                         <outlet property="sentLabel" destination="uPB-HC-ftW" id="cft-Pa-SA5"/>
                         <outlet property="sentPercent" destination="r6G-FC-YVm" id="sWg-ng-y77"/>

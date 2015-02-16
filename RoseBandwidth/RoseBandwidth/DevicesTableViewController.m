@@ -35,6 +35,12 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [self fetchData];
+    [self.tableView reloadData];
+    NSLog(@"Updated");
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
