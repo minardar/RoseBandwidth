@@ -28,18 +28,40 @@ class DataGrabber: NSObject {
     var cancelledAttempt = false
 
     override init() {
+
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
-        myURLString = "http://netreg.rose-hulman.edu/tools/networkUsage.pl"
+        myURLString = "http://netreg.rose-hulman.edu/tools/networkUsage.pl#"
         super.init()
+        
+        
+        
+        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        
+        var storage : NSHTTPCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in storage.cookies  as [NSHTTPCookie]{
+            storage.deleteCookie(cookie)
+        }
+        
+        
+        
+        NSUserDefaults.standardUserDefaults()
+        println("cookiesdeleted")
+        self.killConnection()
+        
         myURL = NSURL(string: myURLString)
+        
+        
         if myURL != nil {
             println(myURL)
-            request = NSMutableURLRequest(URL: myURL!)
+            request = NSMutableURLRequest(URL: myURL!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 15.0)
+            //NSMutableURLRequest(
             conn = NSURLConnection(request: request!, delegate: self)
             conn?.start()
         }
+        self.data = NSMutableData()
     }
+
     
     func killConnection() {
         conn?.cancel()
@@ -58,23 +80,29 @@ class DataGrabber: NSObject {
     
     func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge!){
         if login != nil {
+            println("Logging in: \(login!.username)")
             var authentication: NSURLCredential = NSURLCredential(user: login!.username, password: login!.password, persistence: NSURLCredentialPersistence.ForSession)
             challenge.sender.useCredential(authentication, forAuthenticationChallenge: challenge)
         }
     }
     
+    func connection(connection: NSURLConnection!, willCacheResponse: NSCachedURLResponse) -> Bool {
+        return false
+    }
+    
     //NSURLConnection delegate method
     func connection(didReceiveResponse: NSURLConnection!, didReceiveResponse response: NSURLResponse!) {
         //New request so we need to clear the data object
-        
-        self.data = NSMutableData()
+        self.data = NSMutableData(data: NSMutableData())
+        self.data.setData(NSData())
     }
     
     //NSURLConnection delegate method
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
         //Append incoming data
+        self.data = NSMutableData(data: NSMutableData())
+        self.data.setData(NSData())
         self.data.appendData(data)
-
         
     }
     
@@ -133,7 +161,7 @@ class DataGrabber: NSObject {
                     //Set devices data
                     var newDevice = NSEntityDescription.insertNewObjectForEntityForName(dataDeviceIdentifier, inManagedObjectContext: self.managedObjectContext!) as DataDevice
                     newDevice.addressIP = array[28+7*i].contents
-                    newDevice.hostName = array[29+7*i].contents
+                    newDevice.hostName = array[30+7*i].contents
                     newDevice.recievedData = array[31+7*i].contents
                     newDevice.sentData = array[32+7*i].contents
                     devices.append(newDevice)
@@ -145,6 +173,7 @@ class DataGrabber: NSObject {
         NSLog("connectionDidFinishLoading");
         isReady = true
         loginSuccessful = true
+        killConnection()
     }
 
     func updateData() {

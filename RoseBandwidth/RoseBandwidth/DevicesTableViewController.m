@@ -53,7 +53,6 @@
     
     NSError * error;
     self.devices = [self.managedObjectContext executeFetchRequest:request error:&error];
-    NSLog(@"%@",self.devices);
     self.devices = [self.devices sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
             DataDevice* device1 = (DataDevice *)obj1;
             DataDevice* device2 = (DataDevice *)obj2;
@@ -85,8 +84,6 @@
             return NSOrderedSame;
         }
     }];
-    
-    NSLog(@"%@",self.devices);
     
     if (&error != nil) {
         // ERRA

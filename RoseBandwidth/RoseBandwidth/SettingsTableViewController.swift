@@ -21,7 +21,6 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         // Uncomment the following line to preserve selection between presentations
@@ -52,7 +51,9 @@ class SettingsTableViewController: UITableViewController {
             }
         }
         
-        self.tableView(self.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 1, inSection: 0)).detailTextLabel?.text = count != 1 ? "\(count) alerts" : "\(count) alert"
+        self.tableView(self.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)).detailTextLabel?.text = count != 1 ? "\(count) alerts" : "\(count) alert"
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +66,7 @@ class SettingsTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 2
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,8 +92,6 @@ class SettingsTableViewController: UITableViewController {
                 abort()
             }
             
-            println(managedObjectContext)
-            
             for index in credentials {
                 managedObjectContext?.deleteObject(index)
             }
@@ -116,10 +115,29 @@ class SettingsTableViewController: UITableViewController {
             }
             
             
-            savedManagedObjectContext()
-            
+            savedManagedObjectContext()            
             performSegueWithIdentifier(logoutIdentifier, sender: self)
 
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
+        
+        var error : NSError? = nil
+        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        
+        if error != nil {
+            println("There was an unresolved error: \(error?.userInfo)")
+            abort()
+        }
+        if section == 0 {
+            return "ALERTS"
+        } else if section == 1 {
+            return "ACCOUNT ACTIONS"
+        }
+        else {
+            return "LOGGED IN AS \(credentials[0].username)"
         }
     }
     

@@ -39,6 +39,7 @@ class UsageViewController: UIViewController {
     }
     
     func updateView() {
+        fetchOverview()
         var bandwidth : String = overview[0].bandwidthClass
         bandwidthClass.text = bandwidth
         if bandwidth == "1024k" {
@@ -53,6 +54,7 @@ class UsageViewController: UIViewController {
         
         var received : String = overview[0].recievedData
         receivedLabel.text = received
+        println("Label changed to \(received)")
         received = received.substringToIndex(received.endIndex.predecessor().predecessor().predecessor())
         var recNoComma = NSString(string: received).stringByReplacingOccurrencesOfString(",", withString: "")
         var rec : Float = NSString(string: recNoComma).floatValue
@@ -77,6 +79,10 @@ class UsageViewController: UIViewController {
         
         var error : NSError? = nil
         overview = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [DataOverview]
+        
+        
+        println(overview[0].recievedData)
+        
         
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")

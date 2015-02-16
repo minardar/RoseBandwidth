@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate{
     var managedObjectContext : NSManagedObjectContext?
     var credentials = [LoginCredentials]()
     
@@ -24,7 +24,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        username.delegate = self
+        password.delegate = self
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         updateLoginCredentials()
@@ -51,6 +52,7 @@ class LoginViewController: UIViewController {
                 loadingData(credentials[0])
             }
         }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,6 +87,7 @@ class LoginViewController: UIViewController {
         if (dataGrabber.isReady) {
             if (dataGrabber.loginSuccessful) {
                 println("Login Successful")
+                println(credentials[0].username)
                 return true
             } else {
                 println("Login Failed")
@@ -94,7 +97,23 @@ class LoginViewController: UIViewController {
         return false
     }
     
-    @IBAction func loginPressed(sender: AnyObject) {
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        println(textField.tag)
+        println(password.tag)
+        if (textField.tag == password.tag){
+            textField.resignFirstResponder()
+            self.view.endEditing(true);
+            login()
+        }
+        else {
+            //txtUser.resignFirstResponder()
+            password.becomeFirstResponder()
+        }
+        
+        return true;
+    }
+    
+    func login() {
         for dataSet in credentials {
             managedObjectContext?.deleteObject(dataSet)
         }
@@ -116,13 +135,16 @@ class LoginViewController: UIViewController {
         
     }
     
+    @IBAction func loginPressed(sender: AnyObject) {
+        login()
+    }
+    
     func loadingData(newCredentials: LoginCredentials){
         
         let fetchRequest2 = NSFetchRequest(entityName: devicesIdentifier)
         
         var error2 : NSError? = nil
         var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error2) as [DataDevice]
-        
         for index2 in devices {
             managedObjectContext?.deleteObject(index2)
         }

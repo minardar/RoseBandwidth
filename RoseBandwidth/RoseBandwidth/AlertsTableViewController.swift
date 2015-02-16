@@ -21,6 +21,23 @@ class AlertsTableViewController: UITableViewController {
         var cell  = (sender.superview?.superview?.superview?.superview as AlertTableViewCell)
         var path = self.tableView.indexPathForCell(cell)
         alerts[path!.row].isEnabled = sender.on
+        updateOn(sender, cell: cell)
+    }
+    
+    func updateOn(sender: UISwitch, cell: AlertTableViewCell) {
+        if (!sender.on) {
+            UIView.animateWithDuration(0.5, animations: {
+                cell.backgroundColor = UIColor.groupTableViewBackgroundColor()
+                cell.contentView.viewWithTag(5)?.backgroundColor = UIColor.groupTableViewBackgroundColor()
+                cell.contentView.viewWithTag(6)?.backgroundColor = UIColor.groupTableViewBackgroundColor()
+            })
+        } else {
+            UIView.animateWithDuration(0.5, animations: {
+                cell.backgroundColor = UIColor.whiteColor()
+                cell.contentView.viewWithTag(5)?.backgroundColor = UIColor.whiteColor()
+                cell.contentView.viewWithTag(6)?.backgroundColor = UIColor.whiteColor()
+            })
+        }
     }
     
     
@@ -117,14 +134,12 @@ class AlertsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(alertCellIdentifier, forIndexPath: indexPath) as AlertTableViewCell
-        
-        println(alerts[indexPath.row])
         // Configure the cell...
         cell.titleLabel.text = "\(alerts[indexPath.row].alertName)\(alerts[indexPath.row].alertType)";
         cell.descLabel.text = "Your data has exceeded your \(alerts[indexPath.row].alertName)\(alerts[indexPath.row].alertType) limit";
         var truth = alerts[indexPath.row].isEnabled as Bool;
         cell.onSwitch.setOn(truth, animated: false)
-        
+        updateOn(cell.onSwitch, cell: cell)
         return cell
     }
     
