@@ -1104,7 +1104,7 @@
                         <sections>
                             <tableViewSection id="NtZ-ae-iyz">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hb6-Ur-3bk">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="hb6-Ur-3bk">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hb6-Ur-3bk" id="v3i-cI-wuF">
                                             <autoresizingMask key="autoresizingMask"/>

@@ -82,6 +82,10 @@ class DataGrabber: NSObject {
         if login != nil {
             println("Logging in: \(login!.username)")
             var authentication: NSURLCredential = NSURLCredential(user: login!.username, password: login!.password, persistence: NSURLCredentialPersistence.ForSession)
+            
+            // If the website allows for user session cookies, use this instead to allow multiple logins in one session.
+            //var authentication: NSURLCredential = NSURLCredential(user: login!.username, password: login!.password, persistence: NSURLCredentialPersistence.None)
+            
             challenge.sender.useCredential(authentication, forAuthenticationChallenge: challenge)
         }
     }
