@@ -14,28 +14,33 @@ let usageIdentifier = "DataOverview"
 var credentials = [LoginCredentials]()
 
 class UsageViewController: UIViewController {
-    @IBOutlet weak var receivedBar: UIProgressView!
-    @IBOutlet weak var sentBar: UIProgressView!
     @IBOutlet weak var receivedLabel: UILabel!
     @IBOutlet weak var sentLabel: UILabel!
     @IBOutlet weak var receivedPercent: UILabel!
     @IBOutlet weak var sentPercent: UILabel!
     @IBOutlet weak var bandwidthClass: UILabel!
     @IBOutlet weak var classStatus: UIImageView!
+    @IBOutlet weak var recBar: UIView!
+    @IBOutlet weak var recProg: UIView!
+    @IBOutlet weak var senBar: UIView!
+    @IBOutlet weak var senProg: UIView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         fetchOverview()
-        updateView()
-        
-        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
         fetchOverview()
+        updateView()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         updateView()
     }
     
@@ -53,44 +58,59 @@ class UsageViewController: UIViewController {
         updateLoginCredentials()
         loadingData(credentials[0])
     }
+    
     func updateView() {
         fetchOverview()
         var bandwidth : String = overview[0].bandwidthClass
         bandwidthClass.text = bandwidth
         if bandwidth == "1024k" {
             classStatus.image = UIImage(named: "yellowlight.png")
-            receivedBar.progressTintColor = UIColor(red: 221/255, green: 229/255, blue: 10/255, alpha: 1)
-            sentBar.progressTintColor = UIColor(red: 221/255, green: 229/255, blue: 10/255, alpha: 1)
+            recProg.backgroundColor = UIColor(red: 221/255, green: 229/255, blue: 10/255, alpha: 1)
+            senProg.backgroundColor = UIColor(red: 221/255, green: 229/255, blue: 10/255, alpha: 1)
         } else if bandwidth == "256k" {
             classStatus.image = UIImage(named: "redlight.png")
-            receivedBar.progressTintColor = UIColor(red: 227/255, green: 36/255, blue: 5/255, alpha: 1)
-            sentBar.progressTintColor = UIColor(red: 227/255, green: 36/255, blue: 5/255, alpha: 1)
+            recProg.backgroundColor = UIColor(red: 227/255, green: 36/255, blue: 5/255, alpha: 1)
+            senProg.backgroundColor = UIColor(red: 227/255, green: 36/255, blue: 5/255, alpha: 1)
         }
-        
+        /* Recieved Math & Contraints */
         var received : String = overview[0].recievedData
         receivedLabel.text = received
-        println("Label changed to \(received)")
         received = received.substringToIndex(received.endIndex.predecessor().predecessor().predecessor())
         var recNoComma = NSString(string: received).stringByReplacingOccurrencesOfString(",", withString: "")
         var rec : Float = NSString(string: recNoComma).floatValue
         rec = rec / 8000
         
-        //receivedBar.setProgress(rec, animated: false)
-        receivedBar.progress = rec;
-        receivedBar.updateConstraints()
+        var prog = rec
+        if bandwidth == "1024k" || bandwidth == "256k" {
+            prog = 1.0
+        }
+        
+        var recCon : NSLayoutConstraint
+        var mult = CGFloat(prog)
+        
+        recCon = NSLayoutConstraint(item: recProg, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: recBar, attribute: NSLayoutAttribute.Width, multiplier: mult, constant: 0.0)
+        
+        recCon.active = true
         receivedPercent.text = String(format: "%.1f%%", rec*100)
         
+        /* Sent Math & Contraints */
         var sent : String = overview[0].sentData
         sentLabel.text = sent
         sent = sent.substringToIndex(sent.endIndex.predecessor().predecessor().predecessor())
         var senNoComma = NSString(string: sent).stringByReplacingOccurrencesOfString(",", withString: "")
         var sen : Float = NSString(string: senNoComma).floatValue
         sen = sen / 8000
-        println("New: \(sen)")
-        //sentBar.setProgress(sen, animated: false)
-        sentBar.progress = sen;
-        sentBar.updateConstraints()
+        
+        var senCon : NSLayoutConstraint
+        var mult2 = CGFloat(sen)
+        
+        senCon = NSLayoutConstraint(item: senProg, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: senBar, attribute: NSLayoutAttribute.Width, multiplier: mult2, constant: 0.0)
+        
+        senCon.active = true
         sentPercent.text = String(format: "%.1f%%", sen*100)
+        
+        self.updateViewConstraints()
+            
     }
     
     func updateLoginCredentials() {
@@ -173,13 +193,14 @@ class UsageViewController: UIViewController {
         loginFailController.addAction(okAction)
         
         presentViewController(loadingController, animated: true, completion: nil)
-        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         delay(5) {
             if (dataGrabber.cancelledAttempt) {
                 return
             }
             if(self.verifyLogin(dataGrabber)) {
                 println("Pushing")
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 loadingController.dismissViewControllerAnimated(true) {
                     newCredentials.isLoggedIn = true
                     self.savedManagedObjectContext()
@@ -187,6 +208,7 @@ class UsageViewController: UIViewController {
                 }
             } else {
                 self.delay(5) {
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     if (dataGrabber.cancelledAttempt) {
                         println("Cancelled")
                         loadingController.dismissViewControllerAnimated(true, completion: nil)
