@@ -96,7 +96,8 @@ class AlertSettingTableViewController: UITableViewController {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == setTypeIdentifier {
-            (segue.destinationViewController as ModalViewController).tableSettingCell = sender as UITableViewCell;
+            (segue.destinationViewController as ModalViewController).tableSettingCell = sender as UITableViewCell!;
+
             
             (segue.destinationViewController as ModalViewController).alert = (self.parentViewController? as AddAlertViewController).newAlert
             (segue.destinationViewController as ModalViewController).managedObjectContext = (self.parentViewController? as AddAlertViewController).managedObjectContext
@@ -104,7 +105,8 @@ class AlertSettingTableViewController: UITableViewController {
             (segue.destinationViewController as ModalViewController).valueView = false
         }
         if segue.identifier == setValueIdentifier {
-            (segue.destinationViewController as ModalViewController).tableSettingCell = sender as UITableViewCell
+            (segue.destinationViewController as ModalViewController).tableSettingCell = sender as UITableViewCell!
+            (segue.destinationViewController as ModalViewController).tableSettingCell?.becomeFirstResponder()
             (segue.destinationViewController as ModalViewController).alert = (self.parentViewController? as AddAlertViewController).newAlert
             (segue.destinationViewController as ModalViewController).managedObjectContext = (self.parentViewController? as AddAlertViewController).managedObjectContext
             (segue.destinationViewController as ModalViewController).valueView = true

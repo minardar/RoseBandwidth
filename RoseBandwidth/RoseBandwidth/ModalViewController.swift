@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ModalViewController: UIViewController {
+class ModalViewController: UIViewController, UITextFieldDelegate {
     
     var managedObjectContext : NSManagedObjectContext?
 

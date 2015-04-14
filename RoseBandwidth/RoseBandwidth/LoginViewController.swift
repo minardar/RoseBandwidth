@@ -106,7 +106,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             login()
         }
         else {
-            //txtUser.resignFirstResponder()
             password.becomeFirstResponder()
         }
         

@@ -42,6 +42,7 @@
 		ABE50CDC1A91C3AD00B6117E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE50CCB1A91C3AD00B6117E /* Icon-Small@2x.png */; };
 		ABE50CDD1A91C3AD00B6117E /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE50CCC1A91C3AD00B6117E /* Icon-Small@3x.png */; };
 		ABE50CDE1A91C3AD00B6117E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE50CCD1A91C3AD00B6117E /* Icon.png */; };
+		ABFBBE031ADD9AD000F573E7 /* ValueTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBBE021ADD9AD000F573E7 /* ValueTextField.swift */; };
 		FF549FE41A8C53B9000C2B18 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */; };
 		FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73C5081A86A356003440CB /* AddAlertViewController.swift */; };
 		FFABA60C1A8711DC00263E76 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */; };
@@ -124,6 +125,7 @@
 		ABE50CCB1A91C3AD00B6117E /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		ABE50CCC1A91C3AD00B6117E /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
 		ABE50CCD1A91C3AD00B6117E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		ABFBBE021ADD9AD000F573E7 /* ValueTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueTextField.swift; path = ../ValueTextField.swift; sourceTree = "<group>"; };
 		FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		FF73C5081A86A356003440CB /* AddAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlertViewController.swift; sourceTree = "<group>"; };
 		FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */,
 				AB11159E1A8C30690002F803 /* DeviceTableViewCell.h */,
 				AB11159F1A8C30690002F803 /* DeviceTableViewCell.m */,
+				ABFBBE021ADD9AD000F573E7 /* ValueTextField.swift */,
 				AB1447DD1A889D74004A51DF /* HTML Parser */,
 				FFFCD3D21A8469F7008A7F54 /* Images.xcassets */,
 				FFFCD3D41A8469F7008A7F54 /* LaunchScreen.xib */,
@@ -479,6 +482,7 @@
 				FFABA60C1A8711DC00263E76 /* AlertsTableViewController.swift in Sources */,
 				FFCDEF071A86F338002ACEDD /* TypeTableView.swift in Sources */,
 				AB1447E11A889D80004A51DF /* HTMLNode.swift in Sources */,
+				ABFBBE031ADD9AD000F573E7 /* ValueTextField.swift in Sources */,
 				FFFCD3CA1A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld in Sources */,
 				ABE2FD631A8D8E6F00F52F97 /* Alerts.m in Sources */,
 				FFCDEF091A86F4D2002ACEDD /* ModalViewController.swift in Sources */,
