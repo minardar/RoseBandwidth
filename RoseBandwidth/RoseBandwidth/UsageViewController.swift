@@ -182,57 +182,42 @@ class UsageViewController: UIViewController {
         
         loadingController.addAction(cancelAction)
         
-        let loginFailController = UIAlertController(title: "Login Failed", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        let loginFailController = UIAlertController(title: "Update Failed", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
         loginFailController.addAction(okAction)
         
         //presentViewController(loadingController, animated: true, completion: nil)
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        delay(5) {
-            if (dataGrabber.cancelledAttempt) {
-                return
-            }
-            if(self.verifyLogin(dataGrabber)) {
-                println("Pushing")
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            self.delay(10) {
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                loadingController.dismissViewControllerAnimated(true) {
-                    newCredentials.isLoggedIn = true
-                    self.savedManagedObjectContext()
-                    self.updateView()
+                if (dataGrabber.cancelledAttempt) {
+                    println("Cancelled")
+                    return
                 }
-            } else {
-                self.delay(5) {
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    if (dataGrabber.cancelledAttempt) {
-                        println("Cancelled")
-                        loadingController.dismissViewControllerAnimated(true, completion: nil)
-                        return
+                if(self.verifyLogin(dataGrabber)) {
+                    for index2 in devices {
+                        managedObjectContext?.deleteObject(index2)
                     }
-                    if(self.verifyLogin(dataGrabber)) {
-                        for index2 in devices {
-                            managedObjectContext?.deleteObject(index2)
-                        }
-                        for index3 in overview {
-                            managedObjectContext?.deleteObject(index3)
-                        }
-                        println("Pushing")
-                        loadingController.dismissViewControllerAnimated(true) {
-                            newCredentials.isLoggedIn = true
-                            self.savedManagedObjectContext()
-                            self.updateView()
-                        }
-                    } else {
-                        println("Failure")
-                        loadingController.dismissViewControllerAnimated(true, completion: nil)
-                        self.presentViewController(loginFailController, animated: true, completion: nil)
-                        dataGrabber.killConnection()
-                        
+                    for index3 in overview {
+                        managedObjectContext?.deleteObject(index3)
                     }
+                    println("Pushing")
+                        newCredentials.isLoggedIn = true
+                        self.savedManagedObjectContext()
+                        self.updateView()
+                } else {
+                    println("Failure")
+                    self.presentViewController(loginFailController, animated: true, completion: nil)
+                    dataGrabber.killConnection()
+                    
                 }
             }
         }
-    }
+
+            }
     
     func fetchOverview() {
         let fetchRequest = NSFetchRequest(entityName: usageIdentifier)
