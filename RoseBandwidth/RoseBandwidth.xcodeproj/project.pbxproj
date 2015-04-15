@@ -24,7 +24,6 @@
 		AB3898751AB758FF0054DF1A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3898741AB758FF0054DF1A /* Security.framework */; };
 		AB3898771AB759070054DF1A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3898761AB759070054DF1A /* SystemConfiguration.framework */; };
 		ABE2FD631A8D8E6F00F52F97 /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE2FD621A8D8E6F00F52F97 /* Alerts.m */; };
-		ABE50CBC1A91C2C500B6117E /* logoTransparent.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE50CBB1A91C2C500B6117E /* logoTransparent.png */; };
 		ABE50CCE1A91C3AD00B6117E /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE50CBD1A91C3AD00B6117E /* Icon-40@3x.png */; };
 		ABE50CCF1A91C3AD00B6117E /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE50CBE1A91C3AD00B6117E /* Icon-60@2x.png */; };
 		ABE50CD01A91C3AD00B6117E /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE50CBF1A91C3AD00B6117E /* Icon-60@3x.png */; };
@@ -43,6 +42,8 @@
 		ABE50CDD1A91C3AD00B6117E /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE50CCC1A91C3AD00B6117E /* Icon-Small@3x.png */; };
 		ABE50CDE1A91C3AD00B6117E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE50CCD1A91C3AD00B6117E /* Icon.png */; };
 		ABFBBE031ADD9AD000F573E7 /* ValueTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBBE021ADD9AD000F573E7 /* ValueTextField.swift */; };
+		FF3BC0561ADF2DDD004F965D /* logo-full.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3BC0551ADF2DDD004F965D /* logo-full.png */; };
+		FF3BC0581ADF2F31004F965D /* rosebandwidthicon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3BC0571ADF2F31004F965D /* rosebandwidthicon.png */; };
 		FF549FE41A8C53B9000C2B18 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */; };
 		FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73C5081A86A356003440CB /* AddAlertViewController.swift */; };
 		FFABA60C1A8711DC00263E76 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */; };
@@ -107,7 +108,6 @@
 		AB3898761AB759070054DF1A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		ABE2FD611A8D8E6F00F52F97 /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
 		ABE2FD621A8D8E6F00F52F97 /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
-		ABE50CBB1A91C2C500B6117E /* logoTransparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoTransparent.png; sourceTree = "<group>"; };
 		ABE50CBD1A91C3AD00B6117E /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@3x.png"; sourceTree = "<group>"; };
 		ABE50CBE1A91C3AD00B6117E /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		ABE50CBF1A91C3AD00B6117E /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
@@ -126,6 +126,8 @@
 		ABE50CCC1A91C3AD00B6117E /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
 		ABE50CCD1A91C3AD00B6117E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		ABFBBE021ADD9AD000F573E7 /* ValueTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueTextField.swift; path = ../ValueTextField.swift; sourceTree = "<group>"; };
+		FF3BC0551ADF2DDD004F965D /* logo-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-full.png"; sourceTree = "<group>"; };
+		FF3BC0571ADF2F31004F965D /* rosebandwidthicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rosebandwidthicon.png; sourceTree = "<group>"; };
 		FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		FF73C5081A86A356003440CB /* AddAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlertViewController.swift; sourceTree = "<group>"; };
 		FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +278,8 @@
 		FFFCD3C41A8469F7008A7F54 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF3BC0571ADF2F31004F965D /* rosebandwidthicon.png */,
+				FF3BC0551ADF2DDD004F965D /* logo-full.png */,
 				ABE50CBD1A91C3AD00B6117E /* Icon-40@3x.png */,
 				ABE50CBE1A91C3AD00B6117E /* Icon-60@2x.png */,
 				ABE50CBF1A91C3AD00B6117E /* Icon-60@3x.png */,
@@ -293,7 +297,6 @@
 				ABE50CCB1A91C3AD00B6117E /* Icon-Small@2x.png */,
 				ABE50CCC1A91C3AD00B6117E /* Icon-Small@3x.png */,
 				ABE50CCD1A91C3AD00B6117E /* Icon.png */,
-				ABE50CBB1A91C2C500B6117E /* logoTransparent.png */,
 				FFFCD3EB1A846A5A008A7F54 /* devices.png */,
 				FFFCD3EC1A846A5A008A7F54 /* deviceshover.png */,
 				FFFCD3ED1A846A5A008A7F54 /* greenlight.png */,
@@ -429,8 +432,8 @@
 				ABE50CCE1A91C3AD00B6117E /* Icon-40@3x.png in Resources */,
 				FFFCD3F81A846A5A008A7F54 /* redlight.png in Resources */,
 				ABE50CD31A91C3AD00B6117E /* Icon-Small-50@2x.png in Resources */,
-				ABE50CBC1A91C2C500B6117E /* logoTransparent.png in Resources */,
 				ABE50CCF1A91C3AD00B6117E /* Icon-60@2x.png in Resources */,
+				FF3BC0561ADF2DDD004F965D /* logo-full.png in Resources */,
 				AB1115981A8BF77E0002F803 /* Main.storyboard in Resources */,
 				FFFCD3FD1A846A5A008A7F54 /* usagehover.png in Resources */,
 				ABE50CD91A91C3AD00B6117E /* Icon-76.png in Resources */,
@@ -441,6 +444,7 @@
 				FFFCD3FA1A846A5A008A7F54 /* settings.png in Resources */,
 				FFFCD3FB1A846A5A008A7F54 /* settingshover.png in Resources */,
 				FFFCD3F71A846A5A008A7F54 /* greenlight.png in Resources */,
+				FF3BC0581ADF2F31004F965D /* rosebandwidthicon.png in Resources */,
 				ABE50CD21A91C3AD00B6117E /* Icon-76@2x.png in Resources */,
 				FFFCD3D31A8469F7008A7F54 /* Images.xcassets in Resources */,
 				ABE50CD71A91C3AD00B6117E /* Icon-40@2x.png in Resources */,

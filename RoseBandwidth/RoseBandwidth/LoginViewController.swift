@@ -22,8 +22,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var bottomView: UIView!
-    var cons : NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,19 +29,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         password.delegate = self
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
-        updateLoginCredentials()
-        self.cons = NSLayoutConstraint(item: topView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: bottomView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
-        self.cons!.active = true
+//        self.cons = NSLayoutConstraint(item: topView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: bottomView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
+//        self.cons!.active = true
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func editingBegan(sender: AnyObject) {
-        cons?.active = false
-        var cons2 = NSLayoutConstraint(item: topView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: bottomView, attribute: NSLayoutAttribute.Height, multiplier: 0.4, constant: 0.0)
-        cons2.active = true
-        self.updateViewConstraints()
-    }
     override func viewWillAppear(animated: Bool) {
 
         
