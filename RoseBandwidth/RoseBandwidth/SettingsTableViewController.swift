@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MessageUI
 
 let logoutIdentifier = "logoutSegue"
 let loginCredentialsIdentifier = "LoginCredentials"
@@ -15,7 +16,7 @@ let devicesIdentifier = "DataDevice"
 let overviewIdentifier = "DataOverview"
 let alertsIdentifier = "Alerts"
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var logoutCell: UITableViewCell!
     
@@ -77,7 +78,7 @@ class SettingsTableViewController: UITableViewController {
         } else if section == 1 {
             return 1
         }
-        return 0
+        return 2
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -119,6 +120,28 @@ class SettingsTableViewController: UITableViewController {
             performSegueWithIdentifier(logoutIdentifier, sender: self)
 
         }
+        
+        if indexPath.section == 2 && indexPath.row == 1 {
+            var mailComposerVC = MFMailComposeViewController()
+            mailComposerVC.mailComposeDelegate = self
+            mailComposerVC.setToRecipients(["jungckjp@rose-hulman.edu"])
+            mailComposerVC.setSubject("[RoseBandwidth] Feedback")
+            mailComposerVC.setMessageBody(" ", isHTML: false)
+            if MFMailComposeViewController.canSendMail() {
+                self.presentViewController(mailComposerVC, animated: true, completion: nil)
+            } else {
+                self.showSendMailErrorAlert()
+            }
+        }
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -134,10 +157,10 @@ class SettingsTableViewController: UITableViewController {
         if section == 0 {
             return "ALERTS"
         } else if section == 1 {
-            return "ACCOUNT ACTIONS"
+            return "LOGGED IN AS \(credentials[0].username)"
         }
         else {
-            return "LOGGED IN AS \(credentials[0].username)"
+            return "ABOUT"
         }
     }
     

@@ -132,7 +132,7 @@
     DeviceTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: @"deviceTableCell"];
     DataDevice *curr = ((DataDevice *)self.devices[indexPath.row]);
     DataOverview * overview = ((DataOverview *)self.dataOverview[0]);
-    if ([curr.hostName isEqualToString:@""]){
+    if ([curr.hostName isEqualToString:@"Created by Captive Portal service"]){
         cell.deviceLabel.text = @"Unnamed Device";
     } else {
         cell.deviceLabel.text = curr.hostName;

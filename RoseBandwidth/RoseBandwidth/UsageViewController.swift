@@ -11,6 +11,7 @@ import UIKit
 var managedObjectContext : NSManagedObjectContext?
 var overview = [DataOverview]()
 let usageIdentifier = "DataOverview"
+let credentialIdentifier = "LoginCredentials"
 var credentials = [LoginCredentials]()
 
 class UsageViewController: UIViewController {
@@ -25,6 +26,7 @@ class UsageViewController: UIViewController {
     @IBOutlet weak var senBar: UIView!
     @IBOutlet weak var senProg: UIView!
     
+    @IBOutlet weak var titleBarItem: UINavigationItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +34,16 @@ class UsageViewController: UIViewController {
         managedObjectContext = appDelegate.managedObjectContext
         fetchOverview()
         // Do any additional setup after loading the view.
+        println("Credentials : \(credentials[0].username)")
+        var username = (credentials[0].username).capitalizedString
+        titleBarItem.title = "\(username)'s Usage"
+        refreshPressed(refreshPressed)
     }
     
     override func viewWillAppear(animated: Bool) {
         fetchOverview()
         updateView()
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -156,24 +163,12 @@ class UsageViewController: UIViewController {
         
         var error2 : NSError? = nil
         var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error2) as [DataDevice]
-        for index2 in devices {
-            managedObjectContext?.deleteObject(index2)
-        }
+
         
         let fetchRequest3 = NSFetchRequest(entityName: overviewIdentifier)
         
         var error3 : NSError? = nil
         var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error3) as [DataOverview]
-        
-        for index3 in overview {
-            managedObjectContext?.deleteObject(index3)
-        }
-        
-        
-        savedManagedObjectContext()
-        
-        
-        
         
         var dataGrabber = DataGrabber(login: credentials[0])
         
@@ -192,7 +187,7 @@ class UsageViewController: UIViewController {
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
         loginFailController.addAction(okAction)
         
-        presentViewController(loadingController, animated: true, completion: nil)
+        //presentViewController(loadingController, animated: true, completion: nil)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         delay(5) {
             if (dataGrabber.cancelledAttempt) {
@@ -215,6 +210,12 @@ class UsageViewController: UIViewController {
                         return
                     }
                     if(self.verifyLogin(dataGrabber)) {
+                        for index2 in devices {
+                            managedObjectContext?.deleteObject(index2)
+                        }
+                        for index3 in overview {
+                            managedObjectContext?.deleteObject(index3)
+                        }
                         println("Pushing")
                         loadingController.dismissViewControllerAnimated(true) {
                             newCredentials.isLoggedIn = true
@@ -238,15 +239,22 @@ class UsageViewController: UIViewController {
         
         var error : NSError? = nil
         overview = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [DataOverview]
-        
-        
-        println(overview[0].recievedData)
-        
-        
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")
             abort()
         }
+        
+        let credRequest = NSFetchRequest(entityName: credentialIdentifier)
+        credentials = managedObjectContext?.executeFetchRequest(credRequest, error: &error) as [LoginCredentials]
+        if error != nil {
+            println("There was an unresolved error: \(error?.userInfo)")
+            abort()
+        }
+        
+        println(overview[0].recievedData)
+        
+        
+
     }
 
     override func didReceiveMemoryWarning() {
