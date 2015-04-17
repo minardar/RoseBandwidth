@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let controller = self.window!.rootViewController as LoginViewController
+        let controller = self.window!.rootViewController as! LoginViewController
         controller.managedObjectContext = self.managedObjectContext
         
         let notificationType = UIUserNotificationType.Alert
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         category.identifier = "alert"
         category.setActions([acceptAction], forContext: UIUserNotificationActionContext.Default)
         let categories = NSSet(array: [category])
-        let settings = UIUserNotificationSettings(forTypes: notificationType, categories: categories)
+        let settings = UIUserNotificationSettings(forTypes: notificationType, categories: categories as Set<NSObject>)
         application.registerUserNotificationSettings(settings)
         
         application.setMinimumBackgroundFetchInterval(NSTimeInterval.abs(600))
@@ -48,12 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        let controller = self.window!.rootViewController as LoginViewController
+        let controller = self.window!.rootViewController as! LoginViewController
         var loginCredentialsIdentifier = "LoginCredentials"
         let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
         
         var error : NSError? = nil
-        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [LoginCredentials]
         
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")
@@ -68,9 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var alertsIdentifier = "Alerts"
             var overviewIdentifier = "DataOverview"
             let fetchRequest2 = NSFetchRequest(entityName: overviewIdentifier)
-            var overview = self.managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error) as [DataOverview]
+            var overview = self.managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error) as! [DataOverview]
             let fetchRequest3 = NSFetchRequest(entityName: alertsIdentifier)
-            var alerts = self.managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error) as [Alerts]
+            var alerts = self.managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error) as! [Alerts]
             
             var received : String = overview[0].recievedData
             received = received.substringToIndex(received.endIndex.predecessor().predecessor().predecessor())
@@ -139,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "Anthony-Minardo.RoseBandwidth" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -162,7 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")

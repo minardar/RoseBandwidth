@@ -27,7 +27,7 @@ public class HTMLNode {
     
     private var doc       : htmlDocPtr
     private var node      : xmlNode?
-    private let nodeType  : HTMLNodeType = HTMLNodeType.HTMLUnkownNode
+    private var nodeType  : HTMLNodeType = HTMLNodeType.HTMLUnkownNode
     
     /**
     * Parent node.

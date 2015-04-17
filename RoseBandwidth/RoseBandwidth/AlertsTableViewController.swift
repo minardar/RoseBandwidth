@@ -18,7 +18,7 @@ class AlertsTableViewController: UITableViewController {
 
 
     @IBAction func cellSwitched(sender: UISwitch) {
-        var cell  = (sender.superview?.superview?.superview?.superview as AlertTableViewCell)
+        var cell  = (sender.superview?.superview?.superview?.superview as! AlertTableViewCell)
         var path = self.tableView.indexPathForCell(cell)
         alerts[path!.row].isEnabled = sender.on
         updateOn(sender, cell: cell)
@@ -47,7 +47,7 @@ class AlertsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         updateAlerts()
         savedManagedObjectContext()
@@ -70,7 +70,7 @@ class AlertsTableViewController: UITableViewController {
         let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
         
         var error : NSError? = nil
-        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [LoginCredentials]
         
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")
@@ -82,7 +82,7 @@ class AlertsTableViewController: UITableViewController {
             let fetchRequest = NSFetchRequest(entityName: alertsIdentifier)
         
             var error : NSError? = nil
-            alerts = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [Alerts]
+            alerts = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [Alerts]
         
             if error != nil {
                 println("There was an unresolved error: \(error?.userInfo)")
@@ -133,7 +133,7 @@ class AlertsTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(alertCellIdentifier, forIndexPath: indexPath) as AlertTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(alertCellIdentifier, forIndexPath: indexPath) as! AlertTableViewCell
         // Configure the cell...
         cell.titleLabel.text = "\(alerts[indexPath.row].alertName)\(alerts[indexPath.row].alertType)";
         cell.descLabel.text = "Your data has exceeded your \(alerts[indexPath.row].alertName)\(alerts[indexPath.row].alertType) limit";
@@ -171,9 +171,9 @@ class AlertsTableViewController: UITableViewController {
         if segue.identifier == showDetailSegueIdentifier {
             if let selectedIndexPath = tableView.indexPathForSelectedRow(){
                 let alert = alerts[selectedIndexPath.row]
-                (segue.destinationViewController as AddAlertViewController).viewTitle = "Edit Alert"
-                (segue.destinationViewController as AddAlertViewController).alert = alert
-                (segue.destinationViewController as AddAlertViewController).managedObjectContext = managedObjectContext
+                (segue.destinationViewController as! AddAlertViewController).viewTitle = "Edit Alert"
+                (segue.destinationViewController as! AddAlertViewController).alert = alert
+                (segue.destinationViewController as! AddAlertViewController).managedObjectContext = managedObjectContext
             }
         }
     }

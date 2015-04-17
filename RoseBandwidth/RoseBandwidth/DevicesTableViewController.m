@@ -91,8 +91,8 @@
         }
     }];
     
-    if (&error != nil) {
-        // ERRA
+    if (error != nil) {
+        // ERROR
     }
     
     self.dataIdentifier = @"DataOverview";
@@ -105,8 +105,8 @@
     NSError * error2;
     self.dataOverview = [self.managedObjectContext executeFetchRequest:request2 error:&error2];
     
-    if (&error2 != nil) {
-        // ERRA
+    if (error2 != nil) {
+        // ERROR
     }
 
     

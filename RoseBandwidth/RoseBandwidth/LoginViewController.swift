@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         username.delegate = self
         password.delegate = self
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
 //        self.cons = NSLayoutConstraint(item: topView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: bottomView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
 //        self.cons!.active = true
@@ -97,7 +97,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         return false
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         println(textField.tag)
         println(password.tag)
         if (textField.tag == password.tag){
@@ -120,7 +120,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         credentials.removeAll(keepCapacity: false);
         
-        let newCredentials = NSEntityDescription.insertNewObjectForEntityForName(loginCredentialsIdentifier, inManagedObjectContext: self.managedObjectContext!) as LoginCredentials
+        let newCredentials = NSEntityDescription.insertNewObjectForEntityForName(loginCredentialsIdentifier, inManagedObjectContext: self.managedObjectContext!) as! LoginCredentials
         newCredentials.isLoggedIn = false;
         newCredentials.username = username.text
         newCredentials.password = password.text
@@ -143,7 +143,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         let fetchRequest2 = NSFetchRequest(entityName: devicesIdentifier)
         
         var error2 : NSError? = nil
-        var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error2) as [DataDevice]
+        var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error2) as! [DataDevice]
         for index2 in devices {
             managedObjectContext?.deleteObject(index2)
         }
@@ -151,7 +151,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         let fetchRequest3 = NSFetchRequest(entityName: overviewIdentifier)
         
         var error3 : NSError? = nil
-        var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error3) as [DataOverview]
+        var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error3) as! [DataOverview]
         
         for index3 in overview {
             managedObjectContext?.deleteObject(index3)
@@ -224,7 +224,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
         
         var error : NSError? = nil
-        credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [LoginCredentials]
         
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")

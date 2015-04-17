@@ -79,7 +79,7 @@ class AddAlertViewController: UIViewController {
         let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
         
         var error : NSError? = nil
-        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [LoginCredentials]
         
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")
@@ -91,7 +91,7 @@ class AddAlertViewController: UIViewController {
         }
         
         if viewTitle != nil {
-            navItemTitle.title = viewTitle
+            navItemTitle.title = viewTitle! as String
         }
         // Do any additional setup after loading the view.
     }
@@ -100,8 +100,8 @@ class AddAlertViewController: UIViewController {
         valueLabel.text = "\(newAlert!.alertName)"
         typeLabel.text = "\(newAlert!.alertType)"
         descLabel.text = "Your data has exceeded your \(newAlert!.alertName)\(newAlert!.alertType) limit"
-        var typeCell = (containedView.subviews[0] as UITableView).cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!
-        var valueCell = (containedView.subviews[0] as UITableView).cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!
+        var typeCell = (containedView.subviews[0] as! UITableView).cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!
+        var valueCell = (containedView.subviews[0] as! UITableView).cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!
         
         
         if (newAlert!.alertType == "%") {
@@ -127,7 +127,7 @@ class AddAlertViewController: UIViewController {
         let fetchRequest = NSFetchRequest(entityName: alertsIdentifier)
         
         var error : NSError? = nil
-        alerts = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [Alerts]
+        alerts = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [Alerts]
         
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")

@@ -11,7 +11,7 @@ import CoreData
 class DataGrabber: NSObject {
 
     let myURLString : NSString
-    let myURL : NSURL?
+    var myURL : NSURL?
     var conn: NSURLConnection?
     var request : NSMutableURLRequest?
     var data: NSMutableData = NSMutableData()
@@ -29,7 +29,7 @@ class DataGrabber: NSObject {
 
     override init() {
 
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         myURLString = "http://netreg.rose-hulman.edu/tools/networkUsage.pl#"
         super.init()
@@ -39,7 +39,7 @@ class DataGrabber: NSObject {
         NSURLCache.sharedURLCache().removeAllCachedResponses()
         
         var storage : NSHTTPCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-        for cookie in storage.cookies  as [NSHTTPCookie]{
+        for cookie in storage.cookies  as! [NSHTTPCookie]{
             storage.deleteCookie(cookie)
         }
         
@@ -49,7 +49,7 @@ class DataGrabber: NSObject {
         println("cookiesdeleted")
         self.killConnection()
         
-        myURL = NSURL(string: myURLString)
+        myURL = NSURL(string: myURLString as String)
         
         
         if myURL != nil {
@@ -124,7 +124,7 @@ class DataGrabber: NSObject {
         
         
         var err : NSError?
-        var parser     = HTMLParser(html: myHTMLString!, error: &err)
+        var parser     = HTMLParser(html: myHTMLString as String!, error: &err)
         if err != nil {
             println(err)
             exit(1)
@@ -151,7 +151,7 @@ class DataGrabber: NSObject {
                 }
                 
                 //Set overview data
-                var newOverview = NSEntityDescription.insertNewObjectForEntityForName(dataOverviewIdentifier, inManagedObjectContext: self.managedObjectContext!) as DataOverview
+                var newOverview = NSEntityDescription.insertNewObjectForEntityForName(dataOverviewIdentifier, inManagedObjectContext: self.managedObjectContext!) as! DataOverview
                 newOverview.bandwidthClass = array[16].contents
                 newOverview.recievedData = array[17].contents
                 newOverview.sentData = array[18].contents
@@ -163,7 +163,7 @@ class DataGrabber: NSObject {
                     var device = [NSString]()
                     
                     //Set devices data
-                    var newDevice = NSEntityDescription.insertNewObjectForEntityForName(dataDeviceIdentifier, inManagedObjectContext: self.managedObjectContext!) as DataDevice
+                    var newDevice = NSEntityDescription.insertNewObjectForEntityForName(dataDeviceIdentifier, inManagedObjectContext: self.managedObjectContext!) as! DataDevice
                     newDevice.addressIP = array[28+7*i].contents
                     newDevice.hostName = array[30+7*i].contents
                     newDevice.recievedData = array[31+7*i].contents
@@ -185,8 +185,8 @@ class DataGrabber: NSObject {
         let fetchRequestOverview = NSFetchRequest(entityName: dataOverviewIdentifier)
         
         var error : NSError? = nil
-        devices = managedObjectContext?.executeFetchRequest(fetchRequestDevices, error: &error) as [DataDevice]
-        overviews = managedObjectContext?.executeFetchRequest(fetchRequestOverview, error: &error) as [DataOverview]
+        devices = managedObjectContext?.executeFetchRequest(fetchRequestDevices, error: &error) as! [DataDevice]
+        overviews = managedObjectContext?.executeFetchRequest(fetchRequestOverview, error: &error) as! [DataOverview]
         
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")
@@ -218,7 +218,7 @@ class DataGrabber: NSObject {
         
         
         var err : NSError?
-        var parser     = HTMLParser(html: myHTMLString!, error: &err)
+        var parser     = HTMLParser(html: myHTMLString! as String, error: &err)
         if err != nil {
             println(err)
             exit(1)

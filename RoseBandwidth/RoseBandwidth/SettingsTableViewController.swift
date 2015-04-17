@@ -22,7 +22,7 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -35,11 +35,11 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
         let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
         
         var error : NSError? = nil
-        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [LoginCredentials]
         
         var error2 : NSError? = nil
         let fetchRequest2 = NSFetchRequest(entityName: alertsIdentifier)
-        var alerts = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error) as [Alerts]
+        var alerts = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error) as! [Alerts]
         
         var count = 0
         if credentials.count > 0 {
@@ -86,7 +86,7 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
             let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
             
             var error : NSError? = nil
-            var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+            var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [LoginCredentials]
             
             if error != nil {
                 println("There was an unresolved error: \(error?.userInfo)")
@@ -100,7 +100,7 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
             let fetchRequest2 = NSFetchRequest(entityName: devicesIdentifier)
             
             var error2 : NSError? = nil
-            var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error) as [DataDevice]
+            var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error) as! [DataDevice]
             
             for index2 in devices {
                 managedObjectContext?.deleteObject(index2)
@@ -109,7 +109,7 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
             let fetchRequest3 = NSFetchRequest(entityName: overviewIdentifier)
             
             var error3 : NSError? = nil
-            var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error) as [DataOverview]
+            var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error) as! [DataOverview]
             
             for index3 in overview {
                 managedObjectContext?.deleteObject(index3)
@@ -148,7 +148,7 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
         let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
         
         var error : NSError? = nil
-        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [LoginCredentials]
         
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")

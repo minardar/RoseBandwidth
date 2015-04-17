@@ -17,20 +17,20 @@ class AlertsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "showEditAlertsView"), animated: true)
     }
     
     func showEditAlertsView() {
-        var alertTableView = containedView.subviews[0] as UITableView
+        var alertTableView = containedView.subviews[0] as! UITableView
         alertTableView.setEditing(true, animated: true)
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "hideEditAlertsView"), animated: true)
         
     }
     
     func hideEditAlertsView() {
-        var alertTableView = containedView.subviews[0] as UITableView
+        var alertTableView = containedView.subviews[0] as! UITableView
         alertTableView.setEditing(false, animated: true)
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "showEditAlertsView"), animated: true)
     }
@@ -45,8 +45,8 @@ class AlertsViewController: UIViewController {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == showAddViewIdentifier {
-            (segue.destinationViewController as AddAlertViewController).viewTitle = "Add Alert"
-            (segue.destinationViewController as AddAlertViewController).managedObjectContext = managedObjectContext
+            (segue.destinationViewController as! AddAlertViewController).viewTitle = "Add Alert"
+            (segue.destinationViewController as! AddAlertViewController).managedObjectContext = managedObjectContext
         }
     }
 

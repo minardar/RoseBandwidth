@@ -30,7 +30,7 @@ class UsageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         fetchOverview()
         // Do any additional setup after loading the view.
@@ -124,7 +124,7 @@ class UsageViewController: UIViewController {
         let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
         
         var error : NSError? = nil
-        credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginCredentials]
+        credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [LoginCredentials]
         
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")
@@ -162,13 +162,13 @@ class UsageViewController: UIViewController {
         let fetchRequest2 = NSFetchRequest(entityName: devicesIdentifier)
         
         var error2 : NSError? = nil
-        var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error2) as [DataDevice]
+        var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error2) as! [DataDevice]
 
         
         let fetchRequest3 = NSFetchRequest(entityName: overviewIdentifier)
         
         var error3 : NSError? = nil
-        var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error3) as [DataOverview]
+        var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error3) as! [DataOverview]
         
         var dataGrabber = DataGrabber(login: credentials[0])
         
@@ -223,14 +223,14 @@ class UsageViewController: UIViewController {
         let fetchRequest = NSFetchRequest(entityName: usageIdentifier)
         
         var error : NSError? = nil
-        overview = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [DataOverview]
+        overview = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [DataOverview]
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")
             abort()
         }
         
         let credRequest = NSFetchRequest(entityName: credentialIdentifier)
-        credentials = managedObjectContext?.executeFetchRequest(credRequest, error: &error) as [LoginCredentials]
+        credentials = managedObjectContext?.executeFetchRequest(credRequest, error: &error) as! [LoginCredentials]
         if error != nil {
             println("There was an unresolved error: \(error?.userInfo)")
             abort()

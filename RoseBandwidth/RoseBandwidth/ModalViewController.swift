@@ -25,17 +25,17 @@ class ModalViewController: UIViewController, UITextFieldDelegate {
                 println("Alert")
                 if typeView {
                     println("Type")
-                    var typeTable = containedView.subviews[0] as TypeTableView
+                    var typeTable = containedView.subviews[0] as! TypeTableView
                     var string = typeTable.getSelected()
-                    tableSettingCell?.detailTextLabel?.text = string
-                    alert!.alertType = typeTable.getType()
+                    tableSettingCell?.detailTextLabel?.text = string as String
+                    alert!.alertType = typeTable.getType() as String
                     savedManagedObjectContext()
                 } else if valueView {
                     println("Value")
-                    var valueTable = containedView.subviews[0] as ValueTableView
+                    var valueTable = containedView.subviews[0] as! ValueTableView
                     var string = valueTable.getSelected()
-                    tableSettingCell?.detailTextLabel?.text = string
-                    alert!.alertName = valueTable.getValue()
+                    tableSettingCell?.detailTextLabel?.text = string as String
+                    alert!.alertName = valueTable.getValue() as String
                     savedManagedObjectContext()
                 }
             }
