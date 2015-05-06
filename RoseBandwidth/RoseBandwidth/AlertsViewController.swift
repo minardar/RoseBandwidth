@@ -19,7 +19,9 @@ class AlertsViewController: UIViewController {
         super.viewDidLoad()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
-        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "showEditAlertsView"), animated: true)
+        //self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "showEditAlertsView"), animated: true)
+        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "pushAddView"), animated: true)
+        
     }
     
     func showEditAlertsView() {
@@ -27,6 +29,10 @@ class AlertsViewController: UIViewController {
         alertTableView.setEditing(true, animated: true)
         self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "hideEditAlertsView"), animated: true)
         
+    }
+    
+    func pushAddView() {
+        performSegueWithIdentifier("showAddView", sender: self)
     }
     
     func hideEditAlertsView() {

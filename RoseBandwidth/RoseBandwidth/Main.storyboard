@@ -502,7 +502,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Set Alerts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IcS-q9-anJ">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="3 alerts" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Rd-PK-L3V">
@@ -516,7 +516,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <segue destination="wZk-LH-4vc" kind="show" id="5ze-mN-kzz"/>
+                                            <segue destination="3ou-8N-eva" kind="show" id="5ze-mN-kzz"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="fRf-2q-Ouq" rowHeight="35" style="IBUITableViewCellStyleDefault" id="yRq-nG-91D">
@@ -559,7 +559,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Logout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3aZ-t1-npD">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -607,7 +607,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MF5-sO-vSC">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -625,7 +625,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zu6-Fx-fEg">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -640,7 +640,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Contact Us" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Oa-vZ-jjA">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -923,17 +923,19 @@
         <!--Settings-->
         <scene sceneID="IfT-h0-JUH">
             <objects>
-                <navigationController extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overFullScreen" hidesBottomBarWhenPushed="YES" id="typ-O9-U5V" sceneMemberID="viewController">
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overFullScreen" id="typ-O9-U5V" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="5DQ-ME-nuR">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="settingshover.png"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F20-dI-sEO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="rOW-h6-0Fa">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="VTq-hu-43l" kind="relationship" relationship="rootViewController" id="2eE-Mp-tyN"/>
                     </connections>
@@ -945,30 +947,19 @@
         <!--Alerts View Controller-->
         <scene sceneID="VSW-nj-B2W">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="wZk-LH-4vc" customClass="AlertsViewController" customModule="RoseBandwidth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="wZk-LH-4vc" customClass="AlertsViewController" customModule="RoseBandwidth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="41c-HO-cPZ"/>
                         <viewControllerLayoutGuide type="bottom" id="XuH-4H-QC6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EPe-s4-84C">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cd4-Br-XD4">
-                                <rect key="frame" x="0.0" y="26" width="600" height="600"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cd4-Br-XD4">
+                                <rect key="frame" x="0.0" y="26" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PA6-Fa-j22">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2JZ-Aa-IYa"/>
-                                    <barButtonItem systemItem="add" id="DOh-jO-PiV">
-                                        <connections>
-                                            <segue destination="Uh2-au-RNA" kind="presentation" identifier="showAddView" id="aI3-dt-XZW"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4l-GO-yBD">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <connections>
@@ -979,30 +970,37 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Cd4-Br-XD4" secondAttribute="centerX" id="3xh-OO-jwS"/>
-                            <constraint firstItem="XuH-4H-QC6" firstAttribute="top" secondItem="PA6-Fa-j22" secondAttribute="bottom" id="59u-bd-OVx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="O4l-GO-yBD" secondAttribute="trailing" constant="-16" id="5Dc-PW-jco"/>
                             <constraint firstAttribute="height" secondItem="Cd4-Br-XD4" secondAttribute="height" id="CDh-BJ-6KN"/>
                             <constraint firstAttribute="centerY" secondItem="Cd4-Br-XD4" secondAttribute="centerY" constant="-26" id="ENr-cG-TYM"/>
+                            <constraint firstItem="XuH-4H-QC6" firstAttribute="top" secondItem="O4l-GO-yBD" secondAttribute="bottom" id="G3o-sZ-4ao"/>
                             <constraint firstItem="O4l-GO-yBD" firstAttribute="leading" secondItem="EPe-s4-84C" secondAttribute="leadingMargin" constant="-16" id="I47-bd-tjG"/>
                             <constraint firstAttribute="width" secondItem="Cd4-Br-XD4" secondAttribute="width" id="Xjm-NY-DAg"/>
-                            <constraint firstItem="PA6-Fa-j22" firstAttribute="leading" secondItem="EPe-s4-84C" secondAttribute="leading" id="aPR-iE-Tmc"/>
-                            <constraint firstItem="PA6-Fa-j22" firstAttribute="top" secondItem="O4l-GO-yBD" secondAttribute="bottom" id="dTi-AU-7aQ"/>
                             <constraint firstItem="O4l-GO-yBD" firstAttribute="top" secondItem="41c-HO-cPZ" secondAttribute="bottom" id="iKV-yJ-vDx"/>
-                            <constraint firstAttribute="trailing" secondItem="PA6-Fa-j22" secondAttribute="trailing" id="tfn-Wz-hVG"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="J5l-23-7wb"/>
+                        <barButtonItem systemItem="add" id="WIw-I5-Tdc">
+                            <connections>
+                                <segue destination="Uh2-au-RNA" kind="presentation" identifier="showAddView" id="Jck-zN-g8X"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="Iff-Df-uMx"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="containedView" destination="O4l-GO-yBD" id="kJj-1t-3uo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="laE-sM-rlS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1619" y="2197"/>
+            <point key="canvasLocation" x="2431" y="2197"/>
         </scene>
         <!--Alerts Table View Controller-->
         <scene sceneID="QvU-nI-iG6">
             <objects>
-                <tableViewController id="LmQ-Kh-IuY" customClass="AlertsTableViewController" customModule="RoseBandwidth" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="LmQ-Kh-IuY" customClass="AlertsTableViewController" customModule="RoseBandwidth" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="121" sectionHeaderHeight="22" sectionFooterHeight="22" id="adU-UB-idV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1098,6 +1096,8 @@
                             <outlet property="delegate" destination="LmQ-Kh-IuY" id="SKh-7y-E7F"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oK2-ST-s1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1239,7 +1239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2G7-a6-k0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2605" y="2234"/>
+            <point key="canvasLocation" x="3417" y="2234"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="bdN-0o-ats">
@@ -1838,6 +1838,28 @@
             </objects>
             <point key="canvasLocation" x="3132" y="4160.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="x6M-Q4-hUQ">
+            <objects>
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="3ou-8N-eva" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXz-Bx-gq2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="CeP-as-TOZ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="wZk-LH-4vc" kind="relationship" relationship="rootViewController" id="rRu-F0-qKk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gid-UT-spM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1619" y="2197"/>
+        </scene>
     </scenes>
     <resources>
         <image name="devices.png" width="30" height="30"/>
@@ -1850,6 +1872,6 @@
         <image name="usagehover.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aI3-dt-XZW"/>
+        <segue reference="Jck-zN-g8X"/>
     </inferredMetricsTieBreakers>
 </document>
