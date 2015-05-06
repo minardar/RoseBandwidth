@@ -52,7 +52,10 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
             }
         }
         
-        self.tableView(self.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)).detailTextLabel?.text = count != 1 ? "\(count) alerts" : "\(count) alert"
+        self.tableView(self.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 2, inSection: 0)).detailTextLabel?.text = count != 1 ? "\(count) alerts" : "\(count) alert"
+        
+        var user : NSString = credentials[0].username
+        self.tableView(self.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 4, inSection: 0)).textLabel?.text = "LOGGED IN AS \(user.uppercaseString)"
         
         
     }
@@ -67,22 +70,17 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 3
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if section == 0 {
-            return 1
-        } else if section == 1 {
-            return 1
-        }
-        return 2
+        return 11
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 1 && indexPath.row == 0 {
+        if indexPath.section == 0 && indexPath.row == 5 {
             let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
             
             var error : NSError? = nil
@@ -121,12 +119,15 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
 
         }
         
-        if indexPath.section == 2 && indexPath.row == 1 {
+        if indexPath.section == 0 && indexPath.row == 10 {
+            var device = UIDevice.currentDevice().model
+            var version = UIDevice.currentDevice().systemName + ": " + UIDevice.currentDevice().systemVersion
             var mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
             mailComposerVC.setToRecipients(["jungckjp@rose-hulman.edu"])
             mailComposerVC.setSubject("[RoseBandwidth] Feedback")
-            mailComposerVC.setMessageBody(" ", isHTML: false)
+            
+            mailComposerVC.setMessageBody(" \n \n \n \nDevice: \(device)\n\(version)", isHTML: false)
             if MFMailComposeViewController.canSendMail() {
                 self.presentViewController(mailComposerVC, animated: true, completion: nil)
             } else {
@@ -144,25 +145,6 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
         sendMailErrorAlert.show()
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
-        
-        var error : NSError? = nil
-        var credentials = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as! [LoginCredentials]
-        
-        if error != nil {
-            println("There was an unresolved error: \(error?.userInfo)")
-            abort()
-        }
-        if section == 0 {
-            return "ALERTS"
-        } else if section == 1 {
-            return "LOGGED IN AS \(credentials[0].username)"
-        }
-        else {
-            return "ABOUT"
-        }
-    }
     
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
