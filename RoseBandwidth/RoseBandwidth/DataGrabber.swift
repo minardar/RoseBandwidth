@@ -84,11 +84,13 @@ class DataGrabber: NSObject {
     
     func killConnection() {
         conn?.cancel()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
     
     
     //NSURLConnection delegate method
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
+        killConnection()
         println("Failed with error:\(error.localizedDescription)")
     }
     
@@ -99,7 +101,12 @@ class DataGrabber: NSObject {
             
             // If the website allows for user session cookies, use this instead to allow multiple logins in one session.
             //var authentication: NSURLCredential = NSURLCredential(user: login!.username, password: login!.password, persistence: NSURLCredentialPersistence.None)
-            
+            if challenge.previousFailureCount > 0 {
+                if (loginViewController != nil) {
+                    killConnection()
+                    loginViewController!.loginFailed()
+                }
+            }
             challenge.sender.useCredential(authentication, forAuthenticationChallenge: challenge)
         }
     }

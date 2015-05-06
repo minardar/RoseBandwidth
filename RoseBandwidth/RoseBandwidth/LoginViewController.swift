@@ -19,26 +19,49 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     let overviewIdentifier = "DataOverview"
     
     let loadingController = UIAlertController(title: "Connecting...", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var loginViewArea: UIView!
+    
+    var c : NSLayoutConstraint?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.updateViewConstraints()
         username.delegate = self
         password.delegate = self
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (_) -> Void in
+            self.loadingController.dismissViewControllerAnimated(true, completion: nil)
+            dataGrabber!.cancelledAttempt = true
+            dataGrabber!.killConnection()
+        }
+        self.loadingController.addAction(cancelAction)
 //        self.cons = NSLayoutConstraint(item: topView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: bottomView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
 //        self.cons!.active = true
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func textFieldSelected(sender: AnyObject) {
+        UIView.animateWithDuration(0.5, animations: {
+            self.c?.constant = -120
+            self.view.layoutIfNeeded()
+            self.username.updateConstraints()
+            self.password.updateConstraints()
+        })
+    }
+
     
     override func viewWillAppear(animated: Bool) {
-
+        c = NSLayoutConstraint(item: loginViewArea, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: topView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: -45)
+        c!.active = true
         
         credentials.removeAll(keepCapacity: false);
         updateLoginCredentials()
@@ -115,6 +138,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     func login() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        UIView.animateWithDuration(0.5, animations: {
+            self.c?.constant = -45
+            self.view.layoutIfNeeded()
+        })
+        
         for dataSet in credentials {
             managedObjectContext?.deleteObject(dataSet)
         }
@@ -138,6 +167,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func loginPressed(sender: AnyObject) {
         login()
+    }
+    
+    func loginFailed() {
+        self.loadingController.dismissViewControllerAnimated(true, completion: {
+            let loginFailController = UIAlertController(title: "Login Failed", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+            loginFailController.addAction(okAction)
+            self.presentViewController(loginFailController, animated: true, completion: nil)
+        })
+
     }
     
     func loadingData(newCredentials: LoginCredentials){
@@ -166,20 +206,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         
         var dataGrabber = DataGrabber(login: credentials[0], loginView: self)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (_) -> Void in
-            self.loadingController.dismissViewControllerAnimated(true, completion: nil)
-            dataGrabber.cancelledAttempt = true
-            dataGrabber.killConnection()
-        }
-        
-        self.loadingController.addAction(cancelAction)
-        
-        let loginFailController = UIAlertController(title: "Login Failed", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
-        loginFailController.addAction(okAction)
-        
         presentViewController(loadingController, animated: true, completion: nil)
         
 //        

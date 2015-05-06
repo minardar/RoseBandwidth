@@ -13,6 +13,7 @@ var overview = [DataOverview]()
 let usageIdentifier = "DataOverview"
 let credentialIdentifier = "LoginCredentials"
 var credentials = [LoginCredentials]()
+var dataGrabber : DataGrabber?
 
 class UsageViewController: UIViewController {
     @IBOutlet weak var receivedLabel: UILabel!
@@ -27,6 +28,8 @@ class UsageViewController: UIViewController {
     @IBOutlet weak var senProg: UIView!
     
     @IBOutlet weak var titleBarItem: UINavigationItem!
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,14 +161,14 @@ class UsageViewController: UIViewController {
     }
     
     func loadingData(newCredentials: LoginCredentials){
-        var dataGrabber = DataGrabber(login: credentials[0], usageView : self)
+        dataGrabber = DataGrabber(login: credentials[0], usageView : self)
         
         let loadingController = UIAlertController(title: "Connecting...", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (_) -> Void in
             loadingController.dismissViewControllerAnimated(true, completion: nil)
-            dataGrabber.cancelledAttempt = true
-            dataGrabber.killConnection()
+            dataGrabber!.cancelledAttempt = true
+            dataGrabber!.killConnection()
         }
         
         loadingController.addAction(cancelAction)

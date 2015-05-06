@@ -81,6 +81,8 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 && indexPath.row == 5 {
+            dataGrabber?.killConnection()
+            
             let fetchRequest = NSFetchRequest(entityName: loginCredentialsIdentifier)
             
             var error : NSError? = nil
