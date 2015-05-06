@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0F9E571AFA7A68005F3EFA /* devices@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0F9E511AFA7A68005F3EFA /* devices@2x.png */; };
+		AB0F9E581AFA7A68005F3EFA /* deviceshover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0F9E521AFA7A68005F3EFA /* deviceshover@2x.png */; };
+		AB0F9E591AFA7A68005F3EFA /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0F9E531AFA7A68005F3EFA /* settings@2x.png */; };
+		AB0F9E5A1AFA7A68005F3EFA /* settingshover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0F9E541AFA7A68005F3EFA /* settingshover@2x.png */; };
+		AB0F9E5B1AFA7A68005F3EFA /* usage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0F9E551AFA7A68005F3EFA /* usage@2x.png */; };
+		AB0F9E5C1AFA7A68005F3EFA /* usagehover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0F9E561AFA7A68005F3EFA /* usagehover@2x.png */; };
+		AB0F9E5E1AFA7C01005F3EFA /* DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0F9E5D1AFA7C01005F3EFA /* DeviceTableViewCell.m */; };
 		AB1115981A8BF77E0002F803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB1115971A8BF77E0002F803 /* Main.storyboard */; };
 		AB11159B1A8C1F540002F803 /* LoginCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = AB11159A1A8C1F540002F803 /* LoginCredentials.m */; };
-		AB1115A01A8C30690002F803 /* DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB11159F1A8C30690002F803 /* DeviceTableViewCell.m */; };
+		AB1115A01A8C30690002F803 /* ValueTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB11159F1A8C30690002F803 /* ValueTextField.swift */; };
 		AB1447E11A889D80004A51DF /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1447DE1A889D80004A51DF /* HTMLNode.swift */; };
 		AB1447E21A889D80004A51DF /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1447DF1A889D80004A51DF /* HTMLParser.swift */; };
 		AB1447E41A889EC0004A51DF /* example-parser in Resources */ = {isa = PBXBuildFile; fileRef = AB1447E31A889EC0004A51DF /* example-parser */; };
@@ -46,7 +53,6 @@
 		AB52D02B1AE08CA50055343F /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = AB52D02A1AE08CA50055343F /* Icon-120.png */; };
 		ABE2FD631A8D8E6F00F52F97 /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE2FD621A8D8E6F00F52F97 /* Alerts.m */; };
 		ABE50CD51A91C3AD00B6117E /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = ABE50CC41A91C3AD00B6117E /* Contents.json */; };
-		ABFBBE031ADD9AD000F573E7 /* ValueTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFBBE021ADD9AD000F573E7 /* ValueTextField.swift */; };
 		FF3BC0561ADF2DDD004F965D /* logo-full.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3BC0551ADF2DDD004F965D /* logo-full.png */; };
 		FF3BC0581ADF2F31004F965D /* rosebandwidthicon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF3BC0571ADF2F31004F965D /* rosebandwidthicon.png */; };
 		FF549FE41A8C53B9000C2B18 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */; };
@@ -93,11 +99,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB0F9E511AFA7A68005F3EFA /* devices@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devices@2x.png"; sourceTree = "<group>"; };
+		AB0F9E521AFA7A68005F3EFA /* deviceshover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deviceshover@2x.png"; sourceTree = "<group>"; };
+		AB0F9E531AFA7A68005F3EFA /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		AB0F9E541AFA7A68005F3EFA /* settingshover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingshover@2x.png"; sourceTree = "<group>"; };
+		AB0F9E551AFA7A68005F3EFA /* usage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "usage@2x.png"; sourceTree = "<group>"; };
+		AB0F9E561AFA7A68005F3EFA /* usagehover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "usagehover@2x.png"; sourceTree = "<group>"; };
+		AB0F9E5D1AFA7C01005F3EFA /* DeviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceTableViewCell.m; sourceTree = "<group>"; };
 		AB1115971A8BF77E0002F803 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AB1115991A8C1F540002F803 /* LoginCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCredentials.h; sourceTree = "<group>"; };
 		AB11159A1A8C1F540002F803 /* LoginCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCredentials.m; sourceTree = "<group>"; };
 		AB11159E1A8C30690002F803 /* DeviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceTableViewCell.h; sourceTree = "<group>"; };
-		AB11159F1A8C30690002F803 /* DeviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceTableViewCell.m; sourceTree = "<group>"; };
+		AB11159F1A8C30690002F803 /* ValueTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTextField.swift; sourceTree = "<group>"; };
 		AB1447DE1A889D80004A51DF /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		AB1447DF1A889D80004A51DF /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 		AB1447E31A889EC0004A51DF /* example-parser */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "example-parser"; sourceTree = "<group>"; };
@@ -135,7 +148,6 @@
 		ABE2FD611A8D8E6F00F52F97 /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
 		ABE2FD621A8D8E6F00F52F97 /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
 		ABE50CC41A91C3AD00B6117E /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
-		ABFBBE021ADD9AD000F573E7 /* ValueTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueTextField.swift; path = ../ValueTextField.swift; sourceTree = "<group>"; };
 		FF3BC0551ADF2DDD004F965D /* logo-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-full.png"; sourceTree = "<group>"; };
 		FF3BC0571ADF2F31004F965D /* rosebandwidthicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rosebandwidthicon.png; sourceTree = "<group>"; };
 		FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -281,8 +293,8 @@
 				FFFCD4061A846A8E008A7F54 /* DevicesTableViewController.h */,
 				FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */,
 				AB11159E1A8C30690002F803 /* DeviceTableViewCell.h */,
-				AB11159F1A8C30690002F803 /* DeviceTableViewCell.m */,
-				ABFBBE021ADD9AD000F573E7 /* ValueTextField.swift */,
+				AB0F9E5D1AFA7C01005F3EFA /* DeviceTableViewCell.m */,
+				AB11159F1A8C30690002F803 /* ValueTextField.swift */,
 				AB1447DD1A889D74004A51DF /* HTML Parser */,
 				FFFCD3D21A8469F7008A7F54 /* Images.xcassets */,
 				FFFCD3D41A8469F7008A7F54 /* LaunchScreen.xib */,
@@ -306,6 +318,12 @@
 		FFFCD3C41A8469F7008A7F54 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AB0F9E511AFA7A68005F3EFA /* devices@2x.png */,
+				AB0F9E521AFA7A68005F3EFA /* deviceshover@2x.png */,
+				AB0F9E531AFA7A68005F3EFA /* settings@2x.png */,
+				AB0F9E541AFA7A68005F3EFA /* settingshover@2x.png */,
+				AB0F9E551AFA7A68005F3EFA /* usage@2x.png */,
+				AB0F9E561AFA7A68005F3EFA /* usagehover@2x.png */,
 				FF3BC0571ADF2F31004F965D /* rosebandwidthicon.png */,
 				AB52D0001AE08C5B0055343F /* AppIcon.appiconset */,
 				AB52D00C1AE08C5B0055343F /* Icon-60.png */,
@@ -453,6 +471,8 @@
 				FFFCD3F81A846A5A008A7F54 /* redlight.png in Resources */,
 				FF3BC0561ADF2DDD004F965D /* logo-full.png in Resources */,
 				AB1115981A8BF77E0002F803 /* Main.storyboard in Resources */,
+				AB0F9E5C1AFA7A68005F3EFA /* usagehover@2x.png in Resources */,
+				AB0F9E581AFA7A68005F3EFA /* deviceshover@2x.png in Resources */,
 				AB52D0281AE08C5B0055343F /* iTunesArtwork@2x.png in Resources */,
 				AB52D0211AE08C5B0055343F /* Icon-72.png in Resources */,
 				AB52D0171AE08C5B0055343F /* Icon-40@2x.png in Resources */,
@@ -460,9 +480,13 @@
 				AB52D01E1AE08C5B0055343F /* Icon-Small@2x.png in Resources */,
 				FFFCD3D61A8469F7008A7F54 /* LaunchScreen.xib in Resources */,
 				AB52D0151AE08C5B0055343F /* Contents.json in Resources */,
+				AB0F9E571AFA7A68005F3EFA /* devices@2x.png in Resources */,
 				ABE50CD51A91C3AD00B6117E /* Contents.json in Resources */,
+				AB0F9E591AFA7A68005F3EFA /* settings@2x.png in Resources */,
 				FFFCD3FA1A846A5A008A7F54 /* settings.png in Resources */,
 				AB52D01D1AE08C5B0055343F /* Icon-Small.png in Resources */,
+				AB0F9E5A1AFA7A68005F3EFA /* settingshover@2x.png in Resources */,
+				AB0F9E5B1AFA7A68005F3EFA /* usage@2x.png in Resources */,
 				AB52D0241AE08C5B0055343F /* Icon-Small-50@2x.png in Resources */,
 				AB52D0191AE08C5B0055343F /* Icon-60@2x.png in Resources */,
 				AB52D01B1AE08C5B0055343F /* Icon-76.png in Resources */,
@@ -510,18 +534,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFFCD4031A846A75008A7F54 /* LoginViewController.swift in Sources */,
+				AB0F9E5E1AFA7C01005F3EFA /* DeviceTableViewCell.m in Sources */,
 				FFFCD4091A846A8E008A7F54 /* DevicesTableViewController.m in Sources */,
 				FFABA60C1A8711DC00263E76 /* AlertsTableViewController.swift in Sources */,
 				FFCDEF071A86F338002ACEDD /* TypeTableView.swift in Sources */,
 				AB1447E11A889D80004A51DF /* HTMLNode.swift in Sources */,
-				ABFBBE031ADD9AD000F573E7 /* ValueTextField.swift in Sources */,
 				FFFCD3CA1A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld in Sources */,
 				ABE2FD631A8D8E6F00F52F97 /* Alerts.m in Sources */,
 				FFCDEF091A86F4D2002ACEDD /* ModalViewController.swift in Sources */,
 				FF73C5091A86A356003440CB /* AddAlertViewController.swift in Sources */,
 				AB1447E21A889D80004A51DF /* HTMLParser.swift in Sources */,
 				AB11159B1A8C1F540002F803 /* LoginCredentials.m in Sources */,
-				AB1115A01A8C30690002F803 /* DeviceTableViewCell.m in Sources */,
+				AB1115A01A8C30690002F803 /* ValueTextField.swift in Sources */,
 				AB29EB121A8954F600AF811E /* DataGrabber.swift in Sources */,
 				FFFCD40A1A846A8E008A7F54 /* UsageViewController.swift in Sources */,
 				FFFCD3C71A8469F7008A7F54 /* AppDelegate.swift in Sources */,

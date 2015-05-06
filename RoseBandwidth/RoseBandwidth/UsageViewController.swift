@@ -158,19 +158,7 @@ class UsageViewController: UIViewController {
     }
     
     func loadingData(newCredentials: LoginCredentials){
-        
-        let fetchRequest2 = NSFetchRequest(entityName: devicesIdentifier)
-        
-        var error2 : NSError? = nil
-        var devices = managedObjectContext?.executeFetchRequest(fetchRequest2, error: &error2) as! [DataDevice]
-
-        
-        let fetchRequest3 = NSFetchRequest(entityName: overviewIdentifier)
-        
-        var error3 : NSError? = nil
-        var overview = managedObjectContext?.executeFetchRequest(fetchRequest3, error: &error3) as! [DataOverview]
-        
-        var dataGrabber = DataGrabber(login: credentials[0])
+        var dataGrabber = DataGrabber(login: credentials[0], usageView : self)
         
         let loadingController = UIAlertController(title: "Connecting...", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -187,37 +175,47 @@ class UsageViewController: UIViewController {
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
         loginFailController.addAction(okAction)
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
         //presentViewController(loadingController, animated: true, completion: nil)
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-            self.delay(10) {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                if (dataGrabber.cancelledAttempt) {
-                    println("Cancelled")
-                    return
-                }
-                if(self.verifyLogin(dataGrabber)) {
-                    for index2 in devices {
-                        managedObjectContext?.deleteObject(index2)
-                    }
-                    for index3 in overview {
-                        managedObjectContext?.deleteObject(index3)
-                    }
-                    println("Pushing")
-                        newCredentials.isLoggedIn = true
-                        self.savedManagedObjectContext()
-                        self.updateView()
-                } else {
-                    println("Failure")
-                    self.presentViewController(loginFailController, animated: true, completion: nil)
-                    dataGrabber.killConnection()
-                    
-                }
-            }
-        }
+//        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+//        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+//            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//            self.delay(10) {
+//                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//                if (dataGrabber.cancelledAttempt) {
+//                    println("Cancelled")
+//                    return
+//                }
+//                if(self.verifyLogin(dataGrabber)) {
+//                    for index2 in devices {
+//                        managedObjectContext?.deleteObject(index2)
+//                    }
+//                    for index3 in overview {
+//                        managedObjectContext?.deleteObject(index3)
+//                    }
+//                    println("Pushing")
+//                        newCredentials.isLoggedIn = true
+//                        self.savedManagedObjectContext()
+//                        self.updateView()
+//                } else {
+//                    println("Failure")
+//                    self.presentViewController(loginFailController, animated: true, completion: nil)
+//                    dataGrabber.killConnection()
+//                    
+//                }
+//            }
+//        }
 
-            }
+    }
+    
+    func replaceData(newCredentials : LoginCredentials) {
+        self.fetchOverview()
+        newCredentials.isLoggedIn = true
+        self.savedManagedObjectContext()
+        self.updateView()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
     
     func fetchOverview() {
         let fetchRequest = NSFetchRequest(entityName: usageIdentifier)

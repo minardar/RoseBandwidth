@@ -18,6 +18,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     let devicesIdentifier = "DataDevice"
     let overviewIdentifier = "DataOverview"
     
+    let loadingController = UIAlertController(title: "Connecting...", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+    
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -163,17 +165,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         
         
-        var dataGrabber = DataGrabber(login: credentials[0])
-        
-        let loadingController = UIAlertController(title: "Connecting...", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        var dataGrabber = DataGrabber(login: credentials[0], loginView: self)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (_) -> Void in
-            loadingController.dismissViewControllerAnimated(true, completion: nil)
+            self.loadingController.dismissViewControllerAnimated(true, completion: nil)
             dataGrabber.cancelledAttempt = true
             dataGrabber.killConnection()
         }
         
-        loadingController.addAction(cancelAction)
+        self.loadingController.addAction(cancelAction)
         
         let loginFailController = UIAlertController(title: "Login Failed", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -182,42 +182,51 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         presentViewController(loadingController, animated: true, completion: nil)
         
-        delay(5) {
-            if (dataGrabber.cancelledAttempt) {
-                return
-            }
-            if(self.verifyLogin(dataGrabber)) {
-                println("Pushing")
-                loadingController.dismissViewControllerAnimated(true) {
-                    newCredentials.isLoggedIn = true
-                    self.savedManagedObjectContext()
-                    self.loadNextPage()
-                }
-            } else {
-                self.delay(5) {
-                    if (dataGrabber.cancelledAttempt) {
-                        println("Cancelled")
-                        loadingController.dismissViewControllerAnimated(true, completion: nil)
-                        return
-                    }
-                    if(self.verifyLogin(dataGrabber)) {
-                        println("Pushing")
-                        loadingController.dismissViewControllerAnimated(true) {
-                            newCredentials.isLoggedIn = true
-                            self.savedManagedObjectContext()
-                            self.loadNextPage()
-                        }
-                    } else {
-                        println("Failure")
-                        loadingController.dismissViewControllerAnimated(true, completion: nil)
-                        self.presentViewController(loginFailController, animated: true, completion: nil)
-                        dataGrabber.killConnection()
-                        
-                    }
-                }
-            }
-        }
+//        
+//        delay(5) {
+//            if (dataGrabber.cancelledAttempt) {
+//                return
+//            }
+//            if(self.verifyLogin(dataGrabber)) {
+//                println("Pushing")
+//                self.loadingController.dismissViewControllerAnimated(true) {
+//                    newCredentials.isLoggedIn = true
+//                    self.savedManagedObjectContext()
+//                    self.loadNextPage()
+//                }
+//            } else {
+//                self.delay(5) {
+//                    if (dataGrabber.cancelledAttempt) {
+//                        println("Cancelled")
+//                        self.loadingController.dismissViewControllerAnimated(true, completion: nil)
+//                        return
+//                    }
+//                    if(self.verifyLogin(dataGrabber)) {
+//                        println("Pushing")
+//                        self.loadingController.dismissViewControllerAnimated(true) {
+//                            newCredentials.isLoggedIn = true
+//                            self.savedManagedObjectContext()
+//                            self.loadNextPage()
+//                        }
+//                    } else {
+//                        println("Failure")
+//                        self.loadingController.dismissViewControllerAnimated(true, completion: nil)
+//                        self.presentViewController(loginFailController, animated: true, completion: nil)
+//                        dataGrabber.killConnection()
+//                        
+//                    }
+//                }
+//            }
+//        }
 
+    }
+    
+    func loginFromGrabber(newCredentials : LoginCredentials){
+        loadingController.dismissViewControllerAnimated(true) {
+            newCredentials.isLoggedIn = true
+            self.savedManagedObjectContext()
+            self.loadNextPage()
+        }
     }
     
     func updateLoginCredentials() {

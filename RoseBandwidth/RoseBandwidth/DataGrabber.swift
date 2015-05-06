@@ -26,6 +26,25 @@ class DataGrabber: NSObject {
     var isReady = false
     var loginSuccessful = false
     var cancelledAttempt = false
+    var usageViewController : UsageViewController?
+    var loginViewController : LoginViewController?
+    
+    convenience init(login : LoginCredentials, usageView: UsageViewController) {
+        self.init()
+        self.login = login
+        self.usageViewController = usageView
+    }
+    
+    convenience init(login : LoginCredentials, loginView: LoginViewController) {
+        self.init()
+        self.login = login
+        self.loginViewController = loginView
+    }
+    
+    convenience init(login : LoginCredentials) {
+        self.init()
+        self.login = login
+    }
 
     override init() {
 
@@ -67,11 +86,6 @@ class DataGrabber: NSObject {
         conn?.cancel()
     }
     
-    convenience init(login : LoginCredentials) {
-        self.init()
-        self.login = login
-    }
-    
     
     //NSURLConnection delegate method
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
@@ -81,7 +95,7 @@ class DataGrabber: NSObject {
     func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge!){
         if login != nil {
             println("Logging in: \(login!.username)")
-            var authentication: NSURLCredential = NSURLCredential(user: login!.username, password: login!.password, persistence: NSURLCredentialPersistence.ForSession)
+            var authentication: NSURLCredential = NSURLCredential(user: login!.username, password: login!.password, persistence: NSURLCredentialPersistence.None)
             
             // If the website allows for user session cookies, use this instead to allow multiple logins in one session.
             //var authentication: NSURLCredential = NSURLCredential(user: login!.username, password: login!.password, persistence: NSURLCredentialPersistence.None)
@@ -107,21 +121,12 @@ class DataGrabber: NSObject {
         self.data = NSMutableData(data: NSMutableData())
         self.data.setData(NSData())
         self.data.appendData(data)
-        
     }
+    
     
     //NSURLConnection delegate method
     func connectionDidFinishLoading(connection: NSURLConnection!) {
-        //println(self.data)
-        var error: NSError?
-        let myHTMLString = NSString(contentsOfURL: myURL!, encoding: NSUTF8StringEncoding, error: &error)
-        
-        if let error = error {
-            println("Error : \(error)")
-        } else {
-            //println("HTML : \(myHTMLString)")
-        }
-        
+        let myHTMLString = NSString(data: self.data, encoding: NSUTF8StringEncoding)
         
         var err : NSError?
         var parser     = HTMLParser(html: myHTMLString as String!, error: &err)
@@ -174,10 +179,17 @@ class DataGrabber: NSObject {
             }
             
         }
+
         NSLog("connectionDidFinishLoading");
         isReady = true
         loginSuccessful = true
         killConnection()
+        if (usageViewController != nil) {
+            usageViewController?.replaceData(login!)
+        } else if (loginViewController != nil){
+            loginViewController?.loginFromGrabber(login!)
+        }
+        
     }
 
     func updateData() {
