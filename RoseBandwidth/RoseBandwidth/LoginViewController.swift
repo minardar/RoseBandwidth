@@ -199,13 +199,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             managedObjectContext?.deleteObject(index3)
         }
         
-        
         savedManagedObjectContext()
         
         
-        
-        
-        var dataGrabber = DataGrabber(login: credentials[0], loginView: self)
+        dataGrabber = DataGrabber(login: credentials[0], loginView: self)
         presentViewController(loadingController, animated: true, completion: nil)
         
 //        
