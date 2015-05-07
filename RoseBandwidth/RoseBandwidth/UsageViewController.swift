@@ -75,8 +75,8 @@ class UsageViewController: UIViewController {
         bandwidthClass.text = bandwidth
         if bandwidth == "1024k" {
             classStatus.image = UIImage(named: "yellowlight.png")
-            recProg.backgroundColor = UIColor(red: 221/255, green: 229/255, blue: 10/255, alpha: 1)
-            senProg.backgroundColor = UIColor(red: 221/255, green: 229/255, blue: 10/255, alpha: 1)
+            recProg.backgroundColor = UIColor(red: 233/255, green: 220/255, blue: 2/255, alpha: 1)
+            senProg.backgroundColor = UIColor(red: 233/255, green: 220/255, blue: 2/255, alpha: 1)
         } else if bandwidth == "256k" {
             classStatus.image = UIImage(named: "redlight.png")
             recProg.backgroundColor = UIColor(red: 227/255, green: 36/255, blue: 5/255, alpha: 1)
