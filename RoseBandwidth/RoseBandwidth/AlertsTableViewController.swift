@@ -148,7 +148,6 @@ class AlertsTableViewController: UITableViewController {
             // Delete the row from the data source
             let alertToDelete = alerts[indexPath.row]
             managedObjectContext?.deleteObject(alertToDelete)
-            
             savedManagedObjectContext()
             updateAlerts()
             
