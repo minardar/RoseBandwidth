@@ -247,7 +247,69 @@
 			path = AppIcon.appiconset;
 			sourceTree = "<group>";
 		};
-		FFFCD3B81A8469F7008A7F54 = {
+		ABB9A5B01B05A3560012BBCA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD4001A846A75008A7F54 /* LoginViewController.swift */,
+				AB1115991A8C1F540002F803 /* LoginCredentials.h */,
+				AB11159A1A8C1F540002F803 /* LoginCredentials.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		ABB9A5B11B05A36F0012BBCA /* Usage */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD4081A846A8E008A7F54 /* UsageViewController.swift */,
+				FFB100661A89C11D0006A83C /* DataOverview.h */,
+				FFB100671A89C11D0006A83C /* DataOverview.m */,
+			);
+			name = Usage;
+			sourceTree = "<group>";
+		};
+		ABB9A5B21B05A3770012BBCA /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD4061A846A8E008A7F54 /* DevicesTableViewController.h */,
+				FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */,
+				AB11159E1A8C30690002F803 /* DeviceTableViewCell.h */,
+				AB0F9E5D1AFA7C01005F3EFA /* DeviceTableViewCell.m */,
+				FFB100691A89C11E0006A83C /* DataDevice.h */,
+				FFB1006A1A89C11E0006A83C /* DataDevice.m */,
+			);
+			name = Devices;
+			sourceTree = "<group>";
+		};
+		ABB9A5B31B05A37B0012BBCA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */,
+				ABB9A5B41B05A38C0012BBCA /* Alerts */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		ABB9A5B41B05A38C0012BBCA /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD3CB1A8469F7008A7F54 /* MasterViewController.swift */,
+				FFCDEF081A86F4D2002ACEDD /* ModalViewController.swift */,
+				FF73C5081A86A356003440CB /* AddAlertViewController.swift */,
+				ABE2FD611A8D8E6F00F52F97 /* Alerts.h */,
+				ABE2FD621A8D8E6F00F52F97 /* Alerts.m */,
+				FFCDEF0E1A87072F002ACEDD /* AlertSettingTableViewController.swift */,
+				FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */,
+				FFFCD3FF1A846A75008A7F54 /* AlertsViewController.swift */,
+				FFE4CB2F1A86BE7F00922F1D /* AlertTableViewCell.swift */,
+				FFFCD3CD1A8469F7008A7F54 /* DetailViewController.swift */,
+				AB11159F1A8C30690002F803 /* ValueTextField.swift */,
+				FFCDEF061A86F338002ACEDD /* TypeTableView.swift */,
+				FFE4CB361A86F08D00922F1D /* ValueTableView.swift */,
+			);
+			name = Alerts;
+			sourceTree = "<group>";
+		};
+		ABB9A5B51B05A42D0012BBCA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				AB3898761AB759070054DF1A /* SystemConfiguration.framework */,
@@ -259,65 +321,14 @@
 				AB38986A1AB758DD0054DF1A /* CoreGraphics.framework */,
 				AB3898681AB758D80054DF1A /* AssetsLibrary.framework */,
 				AB1DE6261A8949BB006DBC01 /* libxml2.dylib */,
-				FFFCD3C21A8469F7008A7F54 /* Products */,
-				FFFCD3C31A8469F7008A7F54 /* RoseBandwidth */,
-				FFFCD3DE1A8469F7008A7F54 /* RoseBandwidthTests */,
 			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FFFCD3C21A8469F7008A7F54 /* Products */ = {
+		ABB9A5B61B05A44C0012BBCA /* App Icons */ = {
 			isa = PBXGroup;
 			children = (
-				FFFCD3C11A8469F7008A7F54 /* RoseBandwidth.app */,
-				FFFCD3DB1A8469F7008A7F54 /* RoseBandwidthTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		FFFCD3C31A8469F7008A7F54 /* RoseBandwidth */ = {
-			isa = PBXGroup;
-			children = (
-				FF73C5081A86A356003440CB /* AddAlertViewController.swift */,
-				ABE2FD611A8D8E6F00F52F97 /* Alerts.h */,
-				ABE2FD621A8D8E6F00F52F97 /* Alerts.m */,
-				FFCDEF0E1A87072F002ACEDD /* AlertSettingTableViewController.swift */,
-				FFABA60B1A8711DC00263E76 /* AlertsTableViewController.swift */,
-				FFFCD3FF1A846A75008A7F54 /* AlertsViewController.swift */,
-				FFE4CB2F1A86BE7F00922F1D /* AlertTableViewCell.swift */,
-				FFFCD3C61A8469F7008A7F54 /* AppDelegate.swift */,
-				FFB100691A89C11E0006A83C /* DataDevice.h */,
-				FFB1006A1A89C11E0006A83C /* DataDevice.m */,
-				FFB100661A89C11D0006A83C /* DataOverview.h */,
-				FFB100671A89C11D0006A83C /* DataOverview.m */,
-				FFFCD3CD1A8469F7008A7F54 /* DetailViewController.swift */,
-				FFFCD4061A846A8E008A7F54 /* DevicesTableViewController.h */,
-				FFFCD4071A846A8E008A7F54 /* DevicesTableViewController.m */,
-				AB11159E1A8C30690002F803 /* DeviceTableViewCell.h */,
-				AB0F9E5D1AFA7C01005F3EFA /* DeviceTableViewCell.m */,
-				AB11159F1A8C30690002F803 /* ValueTextField.swift */,
-				AB1447DD1A889D74004A51DF /* HTML Parser */,
-				FFFCD3D21A8469F7008A7F54 /* Images.xcassets */,
-				FFFCD3D41A8469F7008A7F54 /* LaunchScreen.xib */,
-				AB1115991A8C1F540002F803 /* LoginCredentials.h */,
-				AB11159A1A8C1F540002F803 /* LoginCredentials.m */,
-				FFFCD4001A846A75008A7F54 /* LoginViewController.swift */,
-				AB1115971A8BF77E0002F803 /* Main.storyboard */,
-				FFFCD3CB1A8469F7008A7F54 /* MasterViewController.swift */,
-				FFCDEF081A86F4D2002ACEDD /* ModalViewController.swift */,
-				FFFCD4051A846A8E008A7F54 /* RoseBandwidth-Bridging-Header.h */,
-				FFFCD3C81A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld */,
-				FF549FE31A8C53B9000C2B18 /* SettingsTableViewController.swift */,
-				FFFCD3C41A8469F7008A7F54 /* Supporting Files */,
-				FFCDEF061A86F338002ACEDD /* TypeTableView.swift */,
-				FFFCD4081A846A8E008A7F54 /* UsageViewController.swift */,
-				FFE4CB361A86F08D00922F1D /* ValueTableView.swift */,
-			);
-			path = RoseBandwidth;
-			sourceTree = "<group>";
-		};
-		FFFCD3C41A8469F7008A7F54 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				AB52D0001AE08C5B0055343F /* AppIcon.appiconset */,
 				AB0F9E511AFA7A68005F3EFA /* devices@2x.png */,
 				AB0F9E521AFA7A68005F3EFA /* deviceshover@2x.png */,
 				AB0F9E531AFA7A68005F3EFA /* settings@2x.png */,
@@ -325,7 +336,6 @@
 				AB0F9E551AFA7A68005F3EFA /* usage@2x.png */,
 				AB0F9E561AFA7A68005F3EFA /* usagehover@2x.png */,
 				FF3BC0571ADF2F31004F965D /* rosebandwidthicon.png */,
-				AB52D0001AE08C5B0055343F /* AppIcon.appiconset */,
 				AB52D00C1AE08C5B0055343F /* Icon-60.png */,
 				AB52D02A1AE08CA50055343F /* Icon-120.png */,
 				AB52D00D1AE08C5B0055343F /* Icon-72.png */,
@@ -348,6 +358,60 @@
 				FFFCD3F21A846A5A008A7F54 /* usage.png */,
 				FFFCD3F31A846A5A008A7F54 /* usagehover.png */,
 				FFFCD3F41A846A5A008A7F54 /* yellowlight.png */,
+			);
+			name = "App Icons";
+			sourceTree = "<group>";
+		};
+		ABB9A5B71B05A4960012BBCA /* Main Application */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD3C61A8469F7008A7F54 /* AppDelegate.swift */,
+				FFFCD4051A846A8E008A7F54 /* RoseBandwidth-Bridging-Header.h */,
+				AB1115971A8BF77E0002F803 /* Main.storyboard */,
+				FFFCD3D41A8469F7008A7F54 /* LaunchScreen.xib */,
+			);
+			name = "Main Application";
+			sourceTree = "<group>";
+		};
+		FFFCD3B81A8469F7008A7F54 = {
+			isa = PBXGroup;
+			children = (
+				FFFCD3C21A8469F7008A7F54 /* Products */,
+				FFFCD3C31A8469F7008A7F54 /* RoseBandwidth */,
+				FFFCD3DE1A8469F7008A7F54 /* RoseBandwidthTests */,
+			);
+			sourceTree = "<group>";
+		};
+		FFFCD3C21A8469F7008A7F54 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFFCD3C11A8469F7008A7F54 /* RoseBandwidth.app */,
+				FFFCD3DB1A8469F7008A7F54 /* RoseBandwidthTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFFCD3C31A8469F7008A7F54 /* RoseBandwidth */ = {
+			isa = PBXGroup;
+			children = (
+				ABB9A5B71B05A4960012BBCA /* Main Application */,
+				ABB9A5B01B05A3560012BBCA /* Login */,
+				ABB9A5B11B05A36F0012BBCA /* Usage */,
+				ABB9A5B21B05A3770012BBCA /* Devices */,
+				ABB9A5B31B05A37B0012BBCA /* Settings */,
+				AB1447DD1A889D74004A51DF /* HTML Parser */,
+				FFFCD3C41A8469F7008A7F54 /* Supporting Files */,
+				FFFCD3D21A8469F7008A7F54 /* Images.xcassets */,
+				FFFCD3C81A8469F7008A7F54 /* RoseBandwidth.xcdatamodeld */,
+			);
+			path = RoseBandwidth;
+			sourceTree = "<group>";
+		};
+		FFFCD3C41A8469F7008A7F54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABB9A5B51B05A42D0012BBCA /* Frameworks */,
+				ABB9A5B61B05A44C0012BBCA /* App Icons */,
 				FFFCD3C51A8469F7008A7F54 /* Info.plist */,
 			);
 			name = "Supporting Files";
