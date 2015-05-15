@@ -18,6 +18,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     let devicesIdentifier = "DataDevice"
     let overviewIdentifier = "DataOverview"
     
+    var alertShowing = false
+    
     let loadingController = UIAlertController(title: "Connecting...", message: "", preferredStyle: UIAlertControllerStyle.Alert)
 
     
@@ -44,6 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             dataGrabber!.killConnection()
         }
         self.loadingController.addAction(cancelAction)
+        
 //        self.cons = NSLayoutConstraint(item: topView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: bottomView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
 //        self.cons!.active = true
 
@@ -169,6 +172,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         login()
     }
     
+    
     func loginFailed() {
         self.loadingController.dismissViewControllerAnimated(true, completion: {
             let loginFailController = UIAlertController(title: "Login Failed", message: "", preferredStyle: UIAlertControllerStyle.Alert)
@@ -178,6 +182,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             self.presentViewController(loginFailController, animated: true, completion: nil)
         })
 
+    }
+    
+    func couldNotConnect() {
+        //self.loadingController.dismissViewControllerAnimated(true, completion: {
+            let networkFailController = UIAlertController(title: "Connection Failed", message: "Please ensure you are connected to the Rose-Hulman Wi-Fi.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let failedAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+            networkFailController.addAction(failedAction)
+            self.presentViewController(networkFailController, animated: true, completion: nil)
+        self.alertShowing = true
+        //})
+        
     }
     
     func loadingData(newCredentials: LoginCredentials){
@@ -204,7 +220,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         dataGrabber = DataGrabber(login: credentials[0], loginView: self)
         presentViewController(loadingController, animated: true, completion: nil)
-        
+        self.alertShowing = true
 //        
 //        delay(5) {
 //            if (dataGrabber.cancelledAttempt) {

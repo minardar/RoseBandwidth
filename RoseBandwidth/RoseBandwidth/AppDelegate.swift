@@ -62,6 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (credentials.count == 0) {
             return
         }
+        if (!credentials[0].isLoggedIn.boolValue) {
+            return
+        }
         DataGrabber(login: credentials[0]);
         
         delay(10) {

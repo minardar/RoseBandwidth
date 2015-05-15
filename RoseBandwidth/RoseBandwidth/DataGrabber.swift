@@ -73,7 +73,7 @@ class DataGrabber: NSObject {
         
         if myURL != nil {
             println(myURL)
-            request = NSMutableURLRequest(URL: myURL!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 15.0)
+            request = NSMutableURLRequest(URL: myURL!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 8.0)
             //NSMutableURLRequest(
             conn = NSURLConnection(request: request!, delegate: self)
             conn?.start()
@@ -91,7 +91,30 @@ class DataGrabber: NSObject {
     //NSURLConnection delegate method
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
         killConnection()
+        if (self.loginViewController != nil) {
+            if (self.loginViewController!.alertShowing) {
+                self.loginViewController!.loadingController.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    self.loginViewController!.alertShowing = false
+                    self.loginViewController!.couldNotConnect()
+                    
+                })
+            } else {
+                self.loginViewController!.couldNotConnect()
+            }
+        } else {
+            couldNotConnect()
+        }
         println("Failed with error:\(error.localizedDescription)")
+
+    }
+    
+    func couldNotConnect() {
+        let networkFailController = UIAlertController(title: "Connection Failed", message: "Please ensure you are connected to the Rose-Hulman Wi-Fi.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let failedAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+        networkFailController.addAction(failedAction)
+        UIApplication.sharedApplication().keyWindow?.rootViewController!.presentedViewController!.presentViewController(networkFailController, animated: true, completion: nil)
+        
     }
     
     func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge!){

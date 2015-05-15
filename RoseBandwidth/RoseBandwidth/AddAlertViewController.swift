@@ -65,8 +65,16 @@ class AddAlertViewController: UIViewController {
             newAlert?.alertName = alert!.alertName
             newAlert?.alertType = alert!.alertType
             newAlert?.isEnabled = alert!.isEnabled
-            typeLabel.text = "\(newAlert!.alertType)"
-            valueLabel.text = "\(newAlert!.alertName)"
+            if (newAlert!.alertType == "") {
+                typeLabel.text = "%"
+            } else {
+               typeLabel.text = "\(newAlert!.alertType)"
+            }
+            if (newAlert!.alertName == "") {
+                valueLabel.text = "0"
+            } else {
+                valueLabel.text = "\(newAlert!.alertName)"
+            }
             descLabel.text = "Your data has exceeded your \(newAlert!.alertName)\(newAlert!.alertType) limit"
         } else {
             newAlert?.threshold = 1000.00
@@ -97,8 +105,15 @@ class AddAlertViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-        valueLabel.text = "\(newAlert!.alertName)"
+        if (newAlert!.alertType == "") {
+            newAlert!.alertType = "%"
+        }
         typeLabel.text = "\(newAlert!.alertType)"
+        if (newAlert!.alertName == "") {
+            newAlert!.alertName = "0"
+        }
+        valueLabel.text = "\(newAlert!.alertName)"
+
         descLabel.text = "Your data has exceeded your \(newAlert!.alertName)\(newAlert!.alertType) limit"
         var typeCell = (containedView.subviews[0] as! UITableView).cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!
         var valueCell = (containedView.subviews[0] as! UITableView).cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!

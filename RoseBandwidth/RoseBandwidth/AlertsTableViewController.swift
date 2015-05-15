@@ -135,6 +135,12 @@ class AlertsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(alertCellIdentifier, forIndexPath: indexPath) as! AlertTableViewCell
         // Configure the cell...
+        if (alerts[indexPath.row].alertName == "") {
+            alerts[indexPath.row].alertName = "0"
+        }
+        if (alerts[indexPath.row].alertType == "") {
+            alerts[indexPath.row].alertType = "%"
+        }
         cell.titleLabel.text = "\(alerts[indexPath.row].alertName)\(alerts[indexPath.row].alertType)";
         cell.descLabel.text = "Your data has exceeded your \(alerts[indexPath.row].alertName)\(alerts[indexPath.row].alertType) limit";
         var truth = alerts[indexPath.row].isEnabled as Bool;
