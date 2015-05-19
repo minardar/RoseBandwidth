@@ -217,6 +217,7 @@ class DataGrabber: NSObject {
         if (usageViewController != nil) {
             usageViewController?.replaceData(login!)
         } else if (loginViewController != nil){
+            loginViewController!.justLoggedIn = true
             loginViewController?.loginFromGrabber(login!)
         }
         

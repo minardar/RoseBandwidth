@@ -40,7 +40,6 @@ class UsageViewController: UIViewController {
         println("Credentials : \(credentials[0].username)")
         var username = (credentials[0].username).capitalizedString
         titleBarItem.title = "\(username)'s Usage"
-        refreshPressed(refreshPressed)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -52,6 +51,9 @@ class UsageViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         updateView()
+        if ((UIApplication.sharedApplication().keyWindow?.rootViewController! as! LoginViewController).justLoggedIn == false) {
+            refreshPressed(refreshPressed)
+        }
     }
     
     func delay(delay:Double, closure:()->()) {
@@ -99,7 +101,6 @@ class UsageViewController: UIViewController {
         var mult = CGFloat(prog)
         
         recCon = NSLayoutConstraint(item: recProg, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: recBar, attribute: NSLayoutAttribute.Width, multiplier: mult, constant: 0.0)
-        
         recCon.active = true
         receivedPercent.text = String(format: "%.1f%%", rec*100)
         
@@ -179,36 +180,6 @@ class UsageViewController: UIViewController {
         loginFailController.addAction(okAction)
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        
-        //presentViewController(loadingController, animated: true, completion: nil)
-//        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-//        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-//            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-//            self.delay(10) {
-//                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-//                if (dataGrabber.cancelledAttempt) {
-//                    println("Cancelled")
-//                    return
-//                }
-//                if(self.verifyLogin(dataGrabber)) {
-//                    for index2 in devices {
-//                        managedObjectContext?.deleteObject(index2)
-//                    }
-//                    for index3 in overview {
-//                        managedObjectContext?.deleteObject(index3)
-//                    }
-//                    println("Pushing")
-//                        newCredentials.isLoggedIn = true
-//                        self.savedManagedObjectContext()
-//                        self.updateView()
-//                } else {
-//                    println("Failure")
-//                    self.presentViewController(loginFailController, animated: true, completion: nil)
-//                    dataGrabber.killConnection()
-//                    
-//                }
-//            }
-//        }
 
     }
     

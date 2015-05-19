@@ -18,6 +18,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     let devicesIdentifier = "DataDevice"
     let overviewIdentifier = "DataOverview"
     
+    var justLoggedIn = false
+    
     var alertShowing = false
     
     let loadingController = UIAlertController(title: "Connecting...", message: "", preferredStyle: UIAlertControllerStyle.Alert)
@@ -65,6 +67,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     override func viewWillAppear(animated: Bool) {
         c = NSLayoutConstraint(item: loginViewArea, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: topView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: -45)
         c!.active = true
+        
+        self.username.text = ""
+        self.password.text = ""
         
         credentials.removeAll(keepCapacity: false);
         updateLoginCredentials()
@@ -116,6 +121,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             if (dataGrabber.loginSuccessful) {
                 println("Login Successful")
                 println(credentials[0].username)
+                
                 return true
             } else {
                 println("Login Failed")
@@ -164,8 +170,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         loadingData(newCredentials)
         
-        //println("username: \(credentials[0].username!) password: \(credentials[0].password!)");
-        
     }
     
     @IBAction func loginPressed(sender: AnyObject) {
@@ -175,7 +179,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     func loginFailed() {
         self.loadingController.dismissViewControllerAnimated(true, completion: {
-            let loginFailController = UIAlertController(title: "Login Failed", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            let loginFailController = UIAlertController(title: "Login Failed", message: "Your login details may be incorrect.", preferredStyle: UIAlertControllerStyle.Alert)
             
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
             loginFailController.addAction(okAction)
@@ -185,14 +189,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     func couldNotConnect() {
-        //self.loadingController.dismissViewControllerAnimated(true, completion: {
-            let networkFailController = UIAlertController(title: "Connection Failed", message: "Please ensure you are connected to the Rose-Hulman Wi-Fi.", preferredStyle: UIAlertControllerStyle.Alert)
+        let networkFailController = UIAlertController(title: "Connection Failed", message: "Please ensure you are connected to the Rose-Hulman Wi-Fi.", preferredStyle: UIAlertControllerStyle.Alert)
             
-            let failedAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
-            networkFailController.addAction(failedAction)
-            self.presentViewController(networkFailController, animated: true, completion: nil)
+        let failedAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+        networkFailController.addAction(failedAction)
+        self.presentViewController(networkFailController, animated: true, completion: nil)
         self.alertShowing = true
-        //})
         
     }
     
@@ -219,44 +221,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         
         dataGrabber = DataGrabber(login: credentials[0], loginView: self)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         presentViewController(loadingController, animated: true, completion: nil)
         self.alertShowing = true
-//        
-//        delay(5) {
-//            if (dataGrabber.cancelledAttempt) {
-//                return
-//            }
-//            if(self.verifyLogin(dataGrabber)) {
-//                println("Pushing")
-//                self.loadingController.dismissViewControllerAnimated(true) {
-//                    newCredentials.isLoggedIn = true
-//                    self.savedManagedObjectContext()
-//                    self.loadNextPage()
-//                }
-//            } else {
-//                self.delay(5) {
-//                    if (dataGrabber.cancelledAttempt) {
-//                        println("Cancelled")
-//                        self.loadingController.dismissViewControllerAnimated(true, completion: nil)
-//                        return
-//                    }
-//                    if(self.verifyLogin(dataGrabber)) {
-//                        println("Pushing")
-//                        self.loadingController.dismissViewControllerAnimated(true) {
-//                            newCredentials.isLoggedIn = true
-//                            self.savedManagedObjectContext()
-//                            self.loadNextPage()
-//                        }
-//                    } else {
-//                        println("Failure")
-//                        self.loadingController.dismissViewControllerAnimated(true, completion: nil)
-//                        self.presentViewController(loginFailController, animated: true, completion: nil)
-//                        dataGrabber.killConnection()
-//                        
-//                    }
-//                }
-//            }
-//        }
 
     }
     

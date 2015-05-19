@@ -116,8 +116,9 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
             }
             
             
-            savedManagedObjectContext()            
-            performSegueWithIdentifier(logoutIdentifier, sender: self)
+            savedManagedObjectContext()
+            self.dismissViewControllerAnimated(true, completion: nil)
+            //performSegueWithIdentifier(logoutIdentifier, sender: self)
 
         }
         
