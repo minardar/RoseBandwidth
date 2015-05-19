@@ -65,14 +65,12 @@ class DataGrabber: NSObject {
         
         
         NSUserDefaults.standardUserDefaults()
-        println("cookiesdeleted")
         self.killConnection()
         
         myURL = NSURL(string: myURLString as String)
         
         
         if myURL != nil {
-            println(myURL)
             request = NSMutableURLRequest(URL: myURL!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 8.0)
             //NSMutableURLRequest(
             conn = NSURLConnection(request: request!, delegate: self)
@@ -119,7 +117,6 @@ class DataGrabber: NSObject {
     
     func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge!){
         if login != nil {
-            println("Logging in: \(login!.username)")
             var authentication: NSURLCredential = NSURLCredential(user: login!.username, password: login!.password, persistence: NSURLCredentialPersistence.None)
             
             // If the website allows for user session cookies, use this instead to allow multiple logins in one session.
@@ -166,10 +163,10 @@ class DataGrabber: NSObject {
         } else {
             var items = parser.body?.findChildTags("td")
             var i = 0
-            for item in items! {
-                println("\(i): \(item.contents)")
-                i++
-            }
+//            for item in items! {
+//                println("\(i): \(item.contents)")
+//                i++
+//            }
             if items != nil {
                 
                 var array = items!
@@ -209,8 +206,6 @@ class DataGrabber: NSObject {
             }
             
         }
-
-        NSLog("connectionDidFinishLoading");
         isReady = true
         loginSuccessful = true
         killConnection()
@@ -255,8 +250,6 @@ class DataGrabber: NSObject {
         
         if let error = error {
             println("Error : \(error)")
-        } else {
-            println("HTML : \(myHTMLString)")
         }
         
         

@@ -924,7 +924,7 @@
         <scene sceneID="IfT-h0-JUH">
             <objects>
                 <navigationController extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overFullScreen" id="typ-O9-U5V" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="5DQ-ME-nuR">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings.png" selectedImage="settingshover.png" id="5DQ-ME-nuR">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="settingshover.png"/>
                         </userDefinedRuntimeAttributes>

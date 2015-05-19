@@ -73,14 +73,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         credentials.removeAll(keepCapacity: false);
         updateLoginCredentials()
-        println("YES")
     }
     
     override func viewDidAppear(animated: Bool) {
         credentials.removeAll(keepCapacity: false);
         updateLoginCredentials()
         if (credentials.count > 0) {
-            println(credentials[0].username)
             var isLogged = credentials[0].isLoggedIn
             if isLogged.boolValue {
                 loadNextPage()
@@ -119,12 +117,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     func verifyLogin(dataGrabber : DataGrabber) -> Bool {
         if (dataGrabber.isReady) {
             if (dataGrabber.loginSuccessful) {
-                println("Login Successful")
-                println(credentials[0].username)
-                
                 return true
             } else {
-                println("Login Failed")
                 return false
             }
         }
@@ -132,8 +126,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        println(textField.tag)
-        println(password.tag)
         if (textField.tag == password.tag){
             textField.resignFirstResponder()
             self.view.endEditing(true);

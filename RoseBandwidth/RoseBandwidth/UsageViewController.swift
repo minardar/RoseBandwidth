@@ -36,10 +36,11 @@ class UsageViewController: UIViewController {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedObjectContext = appDelegate.managedObjectContext
         fetchOverview()
-        // Do any additional setup after loading the view.
-        println("Credentials : \(credentials[0].username)")
         var username = (credentials[0].username).capitalizedString
         titleBarItem.title = "\(username)'s Usage"
+        if ((UIApplication.sharedApplication().keyWindow?.rootViewController! as! LoginViewController).justLoggedIn == false) {
+            refreshPressed(refreshPressed)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -51,9 +52,6 @@ class UsageViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         updateView()
-        if ((UIApplication.sharedApplication().keyWindow?.rootViewController! as! LoginViewController).justLoggedIn == false) {
-            refreshPressed(refreshPressed)
-        }
     }
     
     func delay(delay:Double, closure:()->()) {
@@ -150,11 +148,8 @@ class UsageViewController: UIViewController {
     func verifyLogin(dataGrabber : DataGrabber) -> Bool {
         if (dataGrabber.isReady) {
             if (dataGrabber.loginSuccessful) {
-                println("Login Successful")
-                println(credentials[0].username)
                 return true
             } else {
-                println("Login Failed")
                 return false
             }
         }
@@ -207,11 +202,6 @@ class UsageViewController: UIViewController {
             println("There was an unresolved error: \(error?.userInfo)")
             abort()
         }
-        
-        println(overview[0].recievedData)
-        
-        
-
     }
 
     override func didReceiveMemoryWarning() {

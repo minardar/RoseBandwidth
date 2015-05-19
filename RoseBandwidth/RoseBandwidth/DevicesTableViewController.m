@@ -38,7 +38,6 @@
 - (void) viewWillAppear:(BOOL)animated {
     [self fetchData];
     [self.tableView reloadData];
-    NSLog(@"Updated");
 }
 
 - (void)didReceiveMemoryWarning {
