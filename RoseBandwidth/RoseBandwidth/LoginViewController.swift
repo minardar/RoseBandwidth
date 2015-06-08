@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import NetworkExtension
 
 class LoginViewController: UIViewController, UITextFieldDelegate{
 
@@ -48,12 +49,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             dataGrabber!.killConnection()
         }
         self.loadingController.addAction(cancelAction)
-        
-//        self.cons = NSLayoutConstraint(item: topView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: bottomView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
-//        self.cons!.active = true
-
-        // Do any additional setup after loading the view.
     }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+        UIView.animateWithDuration(0.5, animations: {
+            self.c?.constant = -45
+            self.view.layoutIfNeeded()
+            self.username.updateConstraints()
+            self.password.updateConstraints()
+        })
+    }
+    
     @IBAction func textFieldSelected(sender: AnyObject) {
         UIView.animateWithDuration(0.5, animations: {
             self.c?.constant = -120
